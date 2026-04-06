@@ -1,0 +1,1680 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>АССКД — модуль КД | Редизайн + дизайн-система</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F3F5FA;
+      --panel:#FFFFFF;
+      --panel-2:#F8FAFC;
+      --panel-3:#FBFCFE;
+
+      --line:#D5DDEB;
+      --line-2:#E4EAF3;
+      --line-3:#EEF1F7;
+
+      --text:#111827;
+      --text-2:#374151;
+      --muted:#6B7280;
+      --muted-2:#9CA3AF;
+
+      --blue:#2563EB;
+      --blue-hover:#1D4ED8;
+      --blue-light:#DBEAFE;
+      --blue-lighter:#EFF6FF;
+
+      --success:#059669;
+      --success-light:#D1FAE5;
+      --success-lighter:#ECFDF5;
+
+      --warning:#D97706;
+      --warning-light:#FDE68A;
+      --warning-lighter:#FFFBEB;
+
+      --danger:#DC2626;
+      --danger-light:#FECACA;
+      --danger-lighter:#FEF2F2;
+
+      --neutral-50:#F9FAFB;
+      --neutral-100:#F3F4F6;
+      --neutral-200:#E5E7EB;
+      --neutral-800:#1F2937;
+      --neutral-900:#111827;
+
+      --shadow-xs:0 1px 2px rgba(0,0,0,.05);
+      --shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow:0 4px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+      --shadow-md:0 8px 24px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+      --shadow-lg:0 16px 40px rgba(0,0,0,.1), 0 4px 12px rgba(0,0,0,.04);
+
+      --radius:14px;
+      --radius-sm:10px;
+      --radius-xs:8px;
+      --radius-lg:20px;
+      --radius-xl:24px;
+
+      --transition:150ms cubic-bezier(.4,0,.2,1);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5}
+
+    .page{max-width:1560px;margin:0 auto;padding:32px 28px 64px}
+
+    /* ═══ HERO ═══ */
+    .hero{
+      background:linear-gradient(135deg,#0C1629 0%,#162044 40%,#1E3A7B 75%,#2563EB 100%);
+      color:#fff;border-radius:var(--radius-xl);padding:40px 44px 36px;
+      box-shadow:var(--shadow-lg);position:relative;overflow:hidden
+    }
+    .hero::before{
+      content:'';position:absolute;top:-80px;right:-40px;width:420px;height:420px;
+      background:radial-gradient(circle,rgba(37,99,235,.2) 0%,transparent 70%);pointer-events:none
+    }
+    .hero-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start;position:relative;z-index:1}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;
+      border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+      font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;
+      margin-bottom:16px
+    }
+    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#34D399}
+    .hero h1{font-size:34px;font-weight:800;line-height:1.18;margin-bottom:14px;letter-spacing:-.01em}
+    .hero p{max-width:680px;color:rgba(255,255,255,.72);font-size:15px;line-height:1.6}
+    .hero-card{
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;padding:24px;backdrop-filter:blur(8px)
+    }
+    .hero-card h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-bottom:14px;font-weight:700}
+    .hero-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .hero-list li{
+      display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.85);line-height:1.45
+    }
+    .hero-list li::before{
+      content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;background:#60A5FA;margin-top:7px
+    }
+
+    /* ═══ SECTIONS ═══ */
+    .section{margin-top:40px}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px}
+    .section-title h2{font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--neutral-900)}
+    .section-title p{color:var(--muted);font-size:14px;margin-top:4px}
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 14px;border-radius:999px;
+      border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:12px;font-weight:600;
+      white-space:nowrap
+    }
+
+    /* ═══ GRID ═══ */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+    /* ═══ CARD ═══ */
+    .card{
+      background:var(--panel);border:1px solid var(--line-2);border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-sm);padding:24px;transition:box-shadow var(--transition)
+    }
+    .card:hover{box-shadow:var(--shadow)}
+    .card h3{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--neutral-800)}
+
+    /* ═══ TOKENS ═══ */
+    .tokens{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .token{border:1px solid var(--line-2);border-radius:var(--radius-sm);overflow:hidden;background:#fff;transition:transform var(--transition),box-shadow var(--transition)}
+    .token:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .swatch{height:68px}
+    .token .meta{padding:10px 12px}
+    .token strong{display:block;font-size:13px;font-weight:700}
+    .token span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:2px;font-family:monospace}
+
+    /* ═══ TYPOGRAPHY SCALE ═══ */
+    .type-row{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-3)}
+    .type-row:last-child{border-bottom:none}
+    .type-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+
+    /* ═══ SPACING TOKENS ═══ */
+    .spacing-row{display:flex;align-items:center;gap:16px;padding:8px 0}
+    .spacing-bar{height:20px;background:var(--blue-light);border-radius:4px;border:1px solid rgba(37,99,235,.15)}
+    .spacing-label{font-size:12px;font-weight:600;color:var(--muted);min-width:60px}
+    .spacing-val{font-size:12px;font-family:monospace;color:var(--text-2)}
+
+    /* ═══ BUTTONS ═══ */
+    .btn-row,.field-row,.badge-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      height:40px;padding:0 18px;border-radius:var(--radius-xs);border:1px solid transparent;
+      font-weight:600;font-size:14px;cursor:default;transition:all var(--transition);
+      white-space:nowrap;letter-spacing:-.01em
+    }
+    .btn svg{width:16px;height:16px;flex-shrink:0}
+    .btn.primary{background:var(--blue);color:#fff}
+    .btn.primary:hover{background:var(--blue-hover);box-shadow:0 2px 8px rgba(37,99,235,.3)}
+    .btn.secondary{background:#fff;color:var(--text);border-color:var(--line)}
+    .btn.secondary:hover{background:var(--neutral-50);border-color:var(--line)}
+    .btn.ghost{background:transparent;color:var(--blue);border-color:transparent}
+    .btn.ghost:hover{background:var(--blue-lighter)}
+    .btn.danger{background:#fff;color:var(--danger);border-color:var(--danger-light)}
+    .btn.danger:hover{background:var(--danger-lighter)}
+    .btn.disabled{background:var(--neutral-100);color:var(--muted-2);pointer-events:none}
+
+    /* ═══ FIELDS ═══ */
+    .field{
+      min-width:200px;height:40px;border-radius:var(--radius-xs);border:1px solid var(--line);
+      padding:0 14px;background:#fff;color:var(--text);display:flex;align-items:center;
+      font-size:14px;transition:all var(--transition)
+    }
+    .field.active{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .field.error{border-color:var(--danger);box-shadow:0 0 0 3px rgba(220,38,38,.08);background:var(--danger-lighter)}
+    .field.disabled{background:var(--neutral-100);color:var(--muted-2)}
+
+    /* ═══ BADGES ═══ */
+    .badge{
+      display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;
+      font-size:12px;font-weight:600;white-space:nowrap
+    }
+    .badge .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .b-info{background:var(--blue-light);color:var(--blue)}
+    .b-info .dot{background:var(--blue)}
+    .b-success{background:var(--success-light);color:var(--success)}
+    .b-success .dot{background:var(--success)}
+    .b-warning{background:var(--warning-lighter);color:var(--warning);border:1px solid var(--warning-light)}
+    .b-warning .dot{background:var(--warning)}
+    .b-danger{background:var(--danger-lighter);color:var(--danger);border:1px solid var(--danger-light)}
+    .b-danger .dot{background:var(--danger)}
+    .b-neutral{background:var(--neutral-100);color:var(--muted)}
+    .b-neutral .dot{background:var(--muted-2)}
+
+    /* ═══ CAPTION / NOTE ═══ */
+    .caption{font-size:13px;color:var(--muted);line-height:1.45}
+    .note{
+      border-left:3px solid var(--blue);padding:16px 18px;background:var(--blue-lighter);
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--text-2);font-size:14px;line-height:1.6
+    }
+    .note.warning{border-left-color:var(--warning);background:var(--warning-lighter)}
+    .note.danger{border-left-color:var(--danger);background:var(--danger-lighter)}
+    .note.success{border-left-color:var(--success);background:var(--success-lighter)}
+
+    /* ═══ LAYOUT SHELL ═══ */
+    .layout{
+      margin-top:20px;background:var(--panel);border:1px solid var(--line);
+      border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md)
+    }
+    .layout-shell{display:grid;grid-template-columns:72px 264px 1fr;min-height:840px}
+
+    /* ── Rail ── */
+    .rail{
+      background:#FAFBFD;border-right:1px solid var(--line-2);padding:16px 0;
+      display:flex;flex-direction:column;align-items:center;gap:4px
+    }
+    .rail-logo{
+      width:44px;height:44px;border-radius:12px;background:var(--blue);
+      display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;
+      margin-bottom:12px;box-shadow:0 2px 8px rgba(37,99,235,.3)
+    }
+    .rail-btn{
+      width:48px;height:44px;border-radius:var(--radius-xs);border:none;background:transparent;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+      color:var(--muted);cursor:default;transition:all var(--transition);position:relative
+    }
+    .rail-btn svg{width:20px;height:20px;flex-shrink:0}
+    .rail-btn .rail-label{font-size:9px;font-weight:600;letter-spacing:.02em;line-height:1}
+    .rail-btn.active{background:var(--blue-light);color:var(--blue)}
+    .rail-btn:hover{background:var(--neutral-100)}
+    .rail-btn.active:hover{background:var(--blue-light)}
+    .spacer{flex:1}
+
+    /* ── Subnav ── */
+    .subnav{background:var(--panel-2);border-right:1px solid var(--line-2);padding:24px 16px}
+    .subnav h3{font-size:17px;font-weight:700;margin-bottom:20px}
+    .nav-group{margin-bottom:20px}
+    .nav-group .label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);font-weight:700;margin-bottom:8px;padding-left:12px}
+    .nav-item{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;padding:10px 12px;border-radius:var(--radius-xs);color:var(--text-2);font-size:14px;
+      cursor:default;transition:all var(--transition)
+    }
+    .nav-item:hover{background:var(--neutral-100)}
+    .nav-item.active{background:#fff;border:1px solid var(--line-2);box-shadow:var(--shadow-xs);font-weight:600;color:var(--text)}
+
+    /* ── Content area ── */
+    .content{padding:20px 24px 32px;background:var(--bg);min-width:0}
+
+    /* ── Breadcrumb ── */
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-bottom:12px}
+    .breadcrumb a{color:var(--muted);text-decoration:none;font-weight:500}
+    .breadcrumb a:hover{color:var(--blue)}
+    .breadcrumb .sep{color:var(--muted-2)}
+    .breadcrumb .current{color:var(--text);font-weight:600}
+
+    /* ── Topbar ── */
+    .topbar{
+      background:#fff;border:1px solid var(--line-2);border-radius:var(--radius);padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      box-shadow:var(--shadow-xs)
+    }
+    .title-wrap h4{font-size:20px;font-weight:800;letter-spacing:-.01em}
+    .title-wrap .sub{margin-top:3px;font-size:13px;color:var(--muted)}
+    .top-actions{display:flex;align-items:center;gap:10px}
+    .search{
+      min-width:280px;height:40px;border:1px solid var(--line);background:#fff;border-radius:var(--radius-xs);
+      padding:0 14px;color:var(--muted);display:flex;align-items:center;gap:8px;font-size:13px;
+      transition:all var(--transition)
+    }
+    .search:hover{border-color:var(--blue);background:var(--blue-lighter)}
+    .search svg{width:16px;height:16px;color:var(--muted-2);flex-shrink:0}
+
+    /* ── KPI ── */
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+    .kpi{
+      background:#fff;border:1px solid var(--line-2);border-radius:var(--radius);padding:18px;
+      transition:all var(--transition);position:relative;overflow:hidden
+    }
+    .kpi:hover{box-shadow:var(--shadow);border-color:var(--line)}
+    .kpi .k{font-size:13px;color:var(--muted);font-weight:500}
+    .kpi .v{font-size:30px;font-weight:800;margin-top:6px;letter-spacing:-.02em;line-height:1}
+    .kpi .t{margin-top:10px;font-size:12px;font-weight:500}
+    .kpi .t.up{color:var(--success)}
+    .kpi .t.down{color:var(--danger)}
+    .kpi .t.neutral{color:var(--muted)}
+    .kpi-bar{position:absolute;bottom:0;left:0;right:0;height:3px}
+    .kpi-bar.blue{background:var(--blue)}
+    .kpi-bar.warn{background:var(--warning)}
+    .kpi-bar.red{background:var(--danger)}
+    .kpi-bar.green{background:var(--success)}
+
+    /* ── Toolbar ── */
+    .toolbar{
+      margin-top:16px;background:#fff;border:1px solid var(--line-2);border-radius:var(--radius);padding:10px 14px;
+      display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;box-shadow:var(--shadow-xs)
+    }
+    .toolbar-left,.toolbar-right{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .chip{
+      height:34px;padding:0 12px;border:1px solid var(--line);border-radius:var(--radius-xs);background:#fff;
+      display:inline-flex;align-items:center;gap:6px;color:var(--text-2);font-size:13px;font-weight:500;
+      cursor:default;transition:all var(--transition)
+    }
+    .chip:hover{background:var(--neutral-50);border-color:var(--blue)}
+    .chip.active{background:var(--blue-lighter);border-color:var(--blue);color:var(--blue)}
+    .chip svg{width:14px;height:14px}
+
+    /* ── Tabs ── */
+    .tabs{display:flex;gap:4px;flex-wrap:wrap;margin-top:16px;background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:4px;box-shadow:var(--shadow-xs)}
+    .tab{
+      height:36px;padding:0 16px;border-radius:var(--radius-xs);border:none;background:transparent;color:var(--muted);
+      display:inline-flex;align-items:center;font-size:13px;font-weight:600;cursor:default;transition:all var(--transition)
+    }
+    .tab:hover{color:var(--text);background:var(--neutral-50)}
+    .tab.active{background:var(--blue);color:#fff;box-shadow:0 2px 6px rgba(37,99,235,.25)}
+
+    /* ── Panel ── */
+    .panel{
+      margin-top:14px;background:#fff;border:1px solid var(--line-2);border-radius:var(--radius);overflow:hidden;
+      box-shadow:var(--shadow-xs)
+    }
+    .panel-h{
+      padding:14px 18px;border-bottom:1px solid var(--line-2);display:flex;align-items:center;justify-content:space-between;
+      background:var(--panel-3)
+    }
+    .panel-h h5{font-size:15px;font-weight:700}
+
+    /* ── Table ── */
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:12px 16px;border-bottom:1px solid var(--line-3);vertical-align:middle;text-align:left}
+    th{background:var(--neutral-50);color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0;white-space:nowrap}
+    tbody tr{transition:background var(--transition)}
+    tbody tr:hover td{background:var(--blue-lighter)}
+    tbody tr:last-child td{border-bottom:none}
+    .col-muted{color:var(--muted)}
+    .stack{display:flex;flex-direction:column;gap:2px}
+    .stack strong{font-weight:700;font-size:13px}
+    .stack span{font-size:12px}
+
+    /* ── Chart ── */
+    .chart-box{
+      height:260px;border:1px dashed var(--line);border-radius:var(--radius);
+      background:linear-gradient(180deg,#FAFBFF,#F0F4FF);position:relative;overflow:hidden;padding:14px
+    }
+    .bars{position:absolute;left:28px;right:28px;bottom:28px;display:flex;gap:12px;align-items:flex-end;height:160px}
+    .bar{flex:1;border-radius:6px 6px 0 0;transition:opacity var(--transition)}
+    .bar.b1{background:linear-gradient(180deg,#93B4FF,#2563EB)}
+    .bar.b2{background:linear-gradient(180deg,#A5F3CE,#059669)}
+    .bar:hover{opacity:.8}
+    .legend{display:flex;gap:16px;align-items:center;color:var(--muted);font-size:12px;font-weight:500}
+    .legend i{display:inline-block;width:10px;height:10px;border-radius:3px}
+    .legend .l-blue{background:var(--blue)}
+    .legend .l-green{background:var(--success)}
+
+    /* ── Split ── */
+    .split{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}
+    .mini-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    /* ── States ── */
+    .empty,.error-state,.loading-state{
+      min-height:280px;display:grid;place-items:center;padding:40px;text-align:center
+    }
+    .state-ill{
+      width:64px;height:64px;border-radius:16px;margin:0 auto 16px;
+      display:grid;place-items:center;font-size:24px;
+      border:1px solid
+    }
+    .state-ill.info{background:var(--blue-lighter);color:var(--blue);border-color:var(--blue-light)}
+    .state-ill.err{background:var(--danger-lighter);color:var(--danger);border-color:var(--danger-light)}
+    .state-ill.load{background:var(--neutral-100);color:var(--muted);border-color:var(--neutral-200)}
+    .loading-state .loader{
+      width:40px;height:40px;border:3px solid var(--blue-light);border-top-color:var(--blue);border-radius:50%;
+      animation:spin .8s linear infinite;margin:0 auto 16px
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .state-title{font-size:16px;font-weight:700;margin-bottom:8px}
+    .state-desc{max-width:320px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.5}
+
+    /* ── Modal preview ── */
+    .modal-preview{
+      background:#000;background:rgba(17,24,39,.6);border-radius:var(--radius-lg);padding:40px;
+      display:flex;justify-content:center;align-items:flex-start;min-height:380px
+    }
+    .modal-box{
+      background:#fff;border-radius:var(--radius-lg);width:100%;max-width:520px;
+      box-shadow:var(--shadow-lg);overflow:hidden
+    }
+    .modal-header{
+      padding:20px 24px 16px;border-bottom:1px solid var(--line-2);
+      display:flex;align-items:flex-start;justify-content:space-between
+    }
+    .modal-header h5{font-size:17px;font-weight:700}
+    .modal-close{
+      width:32px;height:32px;border-radius:var(--radius-xs);background:var(--neutral-100);
+      display:grid;place-items:center;font-size:14px;color:var(--muted);cursor:default;
+      transition:all var(--transition);border:none
+    }
+    .modal-close:hover{background:var(--neutral-200);color:var(--text)}
+    .modal-body{padding:20px 24px}
+    .modal-footer{padding:16px 24px;border-top:1px solid var(--line-2);display:flex;gap:10px;justify-content:flex-end;background:var(--neutral-50)}
+
+    /* ── Audit score ── */
+    .audit-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+    .audit-metric{
+      background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:16px 12px;
+      text-align:center;transition:all var(--transition)
+    }
+    .audit-metric:hover{box-shadow:var(--shadow)}
+    .audit-score{font-size:32px;font-weight:900;line-height:1;margin-bottom:6px}
+    .audit-score.score-high{color:var(--success)}
+    .audit-score.score-mid{color:var(--warning)}
+    .audit-score.score-low{color:var(--danger)}
+    .audit-score.score-crit{color:#991B1B}
+    .audit-label{font-size:11px;font-weight:600;color:var(--muted);line-height:1.3}
+    .audit-level{
+      display:inline-block;margin-top:8px;font-size:10px;font-weight:700;text-transform:uppercase;
+      letter-spacing:.04em;padding:2px 8px;border-radius:999px
+    }
+    .lvl-strong{background:var(--success-light);color:var(--success)}
+    .lvl-mid{background:var(--warning-lighter);color:var(--warning)}
+    .lvl-weak{background:var(--danger-lighter);color:var(--danger)}
+    .lvl-crit{background:#FEE2E2;color:#991B1B}
+
+    /* ── Priority table ── */
+    .priority-table{width:100%;border-collapse:collapse}
+    .priority-table th,.priority-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line-3)}
+    .priority-table th{background:var(--neutral-50);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+    .priority-tag{
+      display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 10px;
+      border-radius:999px
+    }
+    .p0{background:#FEE2E2;color:#991B1B}
+    .p1{background:var(--warning-lighter);color:var(--warning)}
+    .p2{background:var(--blue-lighter);color:var(--blue)}
+
+    /* ── Screen title ── */
+    .screen-title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:24px 0 12px}
+    .screen-title h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
+    .screen-title span{color:var(--muted);font-size:13px}
+    .screen-desc{color:var(--muted);font-size:14px;margin-bottom:16px;max-width:800px;line-height:1.6}
+
+    /* ── Footer ── */
+    .footer-note{margin-top:32px;color:var(--muted);font-size:13px;line-height:1.6;padding-top:20px;border-top:1px solid var(--line-2)}
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width:1200px){
+      .hero-grid,.grid-2,.split,.mini-cols,.layout-shell,.tokens,.grid-3,.grid-4,.kpi-grid,.audit-grid{grid-template-columns:1fr}
+      .subnav{border-right:none;border-top:1px solid var(--line)}
+      .rail{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line-2)}
+      .layout-shell{grid-template-columns:1fr}
+      .page{padding:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge"><span class="dot"></span> Концепт v2.0 — 06.04.2026</div>
+          <h1>АССКД — модуль КД<br>Редизайн интерфейса и дизайн&#8209;система</h1>
+          <p>Единый HTML&#8209;концепт целевого визуального подхода и дизайн&#8209;системы. Основан на результатах UX/UI&#8209;аудита текущего интерфейса. Цель — сохранить 100% функционала, устранить выявленные проблемы иерархии и навигации, снизить когнитивную нагрузку и ускорить онбординг инженерной аудитории.</p>
+        </div>
+        <div class="hero-card">
+          <h3>Ключевые принципы</h3>
+          <ul class="hero-list">
+            <li>Ясная иерархия: KPI&#8209;сводка сверху, инструменты управления, затем детальная таблица.</li>
+            <li>Единый data&#8209;grid паттерн: фильтры вынесены, статусы — бейджи, длинные поля — в боковую панель.</li>
+            <li>Стандартный state&#8209;kit: пустое состояние, загрузка, ошибка, нет доступа — с пояснением и действием.</li>
+            <li>Лаконичный B2B&#8209;стиль без декоративного шума, пригодный к прямому переносу в Figma.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         AUDIT RESULTS
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>1. Результаты UX/UI&#8209;аудита</h2>
+          <p>Экспертная оценка текущего интерфейса АССКД — модуль КД. Интегральная оценка: 2.4 из 5.</p>
+        </div>
+        <div class="pill">Отчёт от 06.04.2026 — 12 стр.</div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>Сводная оценка по критериям</h3>
+        <p class="caption" style="margin-bottom:16px">Оценка выполнена как экспертный аудит по статическим скриншотам и ТЗ. Фокус — визуальная структура, навигация, читаемость, иерархия и пригодность к развитию в дизайн&#8209;систему.</p>
+        <div class="audit-grid">
+          <div class="audit-metric">
+            <div class="audit-score score-high">4<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Функциональная полнота</div>
+            <span class="audit-level lvl-strong">Сильная</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-low">2<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Навигация и IA</div>
+            <span class="audit-level lvl-weak">Слабая</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-low">2<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Визуальная иерархия</div>
+            <span class="audit-level lvl-weak">Слабая</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-low">2<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Работа с таблицами</div>
+            <span class="audit-level lvl-weak">Слабая</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-mid">3<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Согласованность паттернов</div>
+            <span class="audit-level lvl-mid">Средняя</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-crit">1<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Пустые / ошибочные состояния</div>
+            <span class="audit-level lvl-crit">Критично</span>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-score score-low">2<span style="font-size:16px;color:var(--muted)">/5</span></div>
+            <div class="audit-label">Читаемость и доступность</div>
+            <span class="audit-level lvl-weak">Слабая</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Приоритетная матрица проблем</h3>
+          <div class="table-wrap">
+            <table class="priority-table">
+              <thead>
+                <tr>
+                  <th style="width:60px">Приоритет</th>
+                  <th>Проблемный блок</th>
+                  <th>Бизнес&#8209;эффект</th>
+                  <th>Решение в редизайне</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="priority-tag p0">P0</span></td>
+                  <td><strong>Навигация и структура экранов</strong></td>
+                  <td>Замедленный вход, ошибки выбора раздела</td>
+                  <td>Перестроить IA и уровни навигации</td>
+                </tr>
+                <tr>
+                  <td><span class="priority-tag p0">P0</span></td>
+                  <td><strong>Паттерн табличных экранов</strong></td>
+                  <td>Высокая когнитивная нагрузка</td>
+                  <td>Единый data&#8209;grid паттерн</td>
+                </tr>
+                <tr>
+                  <td><span class="priority-tag p1">P1</span></td>
+                  <td><strong>Пустые, загрузочные, error&#8209;состояния</strong></td>
+                  <td>Тупики и неуверенность пользователя</td>
+                  <td>Обязательный state&#8209;kit</td>
+                </tr>
+                <tr>
+                  <td><span class="priority-tag p1">P1</span></td>
+                  <td><strong>Типографика и семантика статусов</strong></td>
+                  <td>Плохая читаемость, слабая иерархия</td>
+                  <td>Нормировать стили, бейджи, цвета</td>
+                </tr>
+                <tr>
+                  <td><span class="priority-tag p2">P2</span></td>
+                  <td><strong>Главная и обзорные страницы</strong></td>
+                  <td>Сервис не помогает с первым шагом</td>
+                  <td>Task&#8209;oriented dashboard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Ключевой вывод аудита</h3>
+          <div class="note danger" style="margin-bottom:16px">
+            Текущий интерфейс выглядит как рабочая экспертная система для опытного пользователя, но не как продукт с быстрым входом для новых сотрудников. Основная проблема — не нехватка функций, а слабая иерархия, перегруженные табличные сценарии и недостаточная управляемость сложностью.
+          </div>
+          <h3>Сквозные проблемы (7 пунктов)</h3>
+          <table style="font-size:13px">
+            <tbody>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--danger)">3.1</td><td>Избыточное число уровней навигации — иконная панель, дерево, вкладки и фильтры одновременно</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--danger)">3.2</td><td>Перегруженный табличный паттерн — фильтры всегда раскрыты, шапка визуально удваивается</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--danger)">3.3</td><td>Слабая визуальная иерархия — заголовки и данные близки по тону и весу</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--warning)">3.4</td><td>Терминологический порог — СОП, СЖР, ИАЗ без пояснений повышают стоимость онбординга</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--warning)">3.5</td><td>Формально пустые состояния — «Нет строк» без объяснения причины и следующего шага</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--warning)">3.6</td><td>Низкая выразительность статусов — текст без цветовой семантики, иконки без подписей</td></tr>
+              <tr><td style="white-space:nowrap;font-weight:700;color:var(--blue)">3.7</td><td>Главная страница не помогает работать — плиточный вход вместо командного центра</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Этапы редизайна по рекомендациям аудита</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Этап</th><th>Фокус</th><th>Содержание работ</th><th>Ожидаемый результат</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge b-danger"><span class="dot"></span>1</span></td>
+                <td><strong>IA и shell интерфейса</strong></td>
+                <td>Уровни навигации, page header, роль главной страницы, типы обзорных экранов</td>
+                <td>Пользователь понимает, где он и куда идти</td>
+              </tr>
+              <tr>
+                <td><span class="badge b-danger"><span class="dot"></span>2</span></td>
+                <td><strong>Единый паттерн таблиц</strong></td>
+                <td>Data&#8209;grid, фильтры, закреплённые колонки, details&#8209;panel, статусы, массовые действия</td>
+                <td>Основной сценарий предсказуем и быстро сканируется</td>
+              </tr>
+              <tr>
+                <td><span class="badge b-warning"><span class="dot"></span>3</span></td>
+                <td><strong>State&#8209;kit</strong></td>
+                <td>Empty, loading, error, no&#8209;result, no&#8209;access состояния для всех ключевых страниц</td>
+                <td>Интерфейс не ведёт пользователя в тупик</td>
+              </tr>
+              <tr>
+                <td><span class="badge b-warning"><span class="dot"></span>4</span></td>
+                <td><strong>Нормирование компонентов</strong></td>
+                <td>Кнопки, инпуты, модалки, табы, карточки, уведомления, бейджи, иконки</td>
+                <td>Макеты переиспользуемы, Figma управляема</td>
+              </tr>
+              <tr>
+                <td><span class="badge b-info"><span class="dot"></span>5</span></td>
+                <td><strong>Онбординг и термины</strong></td>
+                <td>Справка по сокращениям, контекстные подсказки, first&#8209;run hints, быстрый доступ</td>
+                <td>Снижается стоимость входа для нового сотрудника</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DESIGN SYSTEM
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>2. Дизайн&#8209;система</h2>
+          <p>Базовые токены, типографика, отступы и повторно используемые элементы для всех экранов модуля КД.</p>
+        </div>
+        <div class="pill">Foundation — Tokens</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Цветовая палитра</h3>
+          <div class="tokens">
+            <div class="token"><div class="swatch" style="background:#2563EB"></div><div class="meta"><strong>Primary</strong><span>#2563EB</span></div></div>
+            <div class="token"><div class="swatch" style="background:#DBEAFE"></div><div class="meta"><strong>Primary Light</strong><span>#DBEAFE</span></div></div>
+            <div class="token"><div class="swatch" style="background:#111827"></div><div class="meta"><strong>Text / Ink</strong><span>#111827</span></div></div>
+            <div class="token"><div class="swatch" style="background:#6B7280"></div><div class="meta"><strong>Muted</strong><span>#6B7280</span></div></div>
+            <div class="token"><div class="swatch" style="background:#059669"></div><div class="meta"><strong>Success</strong><span>#059669</span></div></div>
+            <div class="token"><div class="swatch" style="background:#D97706"></div><div class="meta"><strong>Warning</strong><span>#D97706</span></div></div>
+            <div class="token"><div class="swatch" style="background:#DC2626"></div><div class="meta"><strong>Danger</strong><span>#DC2626</span></div></div>
+            <div class="token"><div class="swatch" style="background:#D5DDEB"></div><div class="meta"><strong>Border</strong><span>#D5DDEB</span></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Типографика — Inter</h3>
+          <div class="type-row"><div class="type-label">Display / 34</div><div style="font-size:34px;font-weight:800;line-height:1.15;letter-spacing:-.01em">Заголовок раздела</div></div>
+          <div class="type-row"><div class="type-label">H1 / 22</div><div style="font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em">Ключевая страница</div></div>
+          <div class="type-row"><div class="type-label">H2 / 17</div><div style="font-size:17px;font-weight:700;line-height:1.3">Блок аналитики</div></div>
+          <div class="type-row"><div class="type-label">Body / 15</div><div style="font-size:15px;line-height:1.5">Основной текст интерфейса и описания. Оптимален для инженерной аудитории.</div></div>
+          <div class="type-row"><div class="type-label">Small / 13</div><div style="font-size:13px;color:var(--muted)">Подписи, вторичные пояснения, статусные сообщения, метки колонок.</div></div>
+          <div class="type-row"><div class="type-label">Micro / 11</div><div style="font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Метка группы · uppercase · 700</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>Система отступов — 4px grid</h3>
+          <div class="spacing-row"><div class="spacing-label">4px</div><div class="spacing-bar" style="width:16px"></div><div class="spacing-val">xs — внутри компактных элементов</div></div>
+          <div class="spacing-row"><div class="spacing-label">8px</div><div class="spacing-bar" style="width:32px"></div><div class="spacing-val">sm — gap между badge, chip</div></div>
+          <div class="spacing-row"><div class="spacing-label">12px</div><div class="spacing-bar" style="width:48px"></div><div class="spacing-val">md — padding ячеек таблицы</div></div>
+          <div class="spacing-row"><div class="spacing-label">16px</div><div class="spacing-bar" style="width:64px"></div><div class="spacing-val">lg — gap между карточками, padding panel</div></div>
+          <div class="spacing-row"><div class="spacing-label">24px</div><div class="spacing-bar" style="width:96px"></div><div class="spacing-val">xl — padding карточек, content area</div></div>
+          <div class="spacing-row"><div class="spacing-label">32px</div><div class="spacing-bar" style="width:128px"></div><div class="spacing-val">2xl — отступ между секциями</div></div>
+          <div class="spacing-row"><div class="spacing-label">40px</div><div class="spacing-bar" style="width:160px"></div><div class="spacing-val">3xl — hero padding, section gap</div></div>
+        </div>
+        <div class="card">
+          <h3>Тени и скругления</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:16px;align-items:center"><div style="width:80px;height:48px;background:#fff;border-radius:8px;box-shadow:var(--shadow-xs);border:1px solid var(--line-3)"></div><div><strong style="font-size:13px">shadow-xs</strong><div class="caption">Кнопки, chips, toolbar</div></div></div>
+            <div style="display:flex;gap:16px;align-items:center"><div style="width:80px;height:48px;background:#fff;border-radius:10px;box-shadow:var(--shadow-sm)"></div><div><strong style="font-size:13px">shadow-sm</strong><div class="caption">Карточки, панели</div></div></div>
+            <div style="display:flex;gap:16px;align-items:center"><div style="width:80px;height:48px;background:#fff;border-radius:14px;box-shadow:var(--shadow-md)"></div><div><strong style="font-size:13px">shadow-md</strong><div class="caption">Layout shell, модалки</div></div></div>
+            <div style="display:flex;gap:16px;align-items:center"><div style="width:80px;height:48px;background:#fff;border-radius:20px;box-shadow:var(--shadow-lg)"></div><div><strong style="font-size:13px">shadow-lg</strong><div class="caption">Hero, overlay</div></div></div>
+          </div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line-3)">
+            <strong style="font-size:13px;display:block;margin-bottom:10px">Радиусы скругления</strong>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <div style="text-align:center"><div style="width:48px;height:48px;background:var(--blue-light);border-radius:8px;margin-bottom:4px"></div><div class="caption">8px</div></div>
+              <div style="text-align:center"><div style="width:48px;height:48px;background:var(--blue-light);border-radius:10px;margin-bottom:4px"></div><div class="caption">10px</div></div>
+              <div style="text-align:center"><div style="width:48px;height:48px;background:var(--blue-light);border-radius:14px;margin-bottom:4px"></div><div class="caption">14px</div></div>
+              <div style="text-align:center"><div style="width:48px;height:48px;background:var(--blue-light);border-radius:20px;margin-bottom:4px"></div><div class="caption">20px</div></div>
+              <div style="text-align:center"><div style="width:48px;height:48px;background:var(--blue-light);border-radius:24px;margin-bottom:4px"></div><div class="caption">24px</div></div>
+              <div style="text-align:center"><div style="width:48px;height:28px;background:var(--blue-light);border-radius:999px;margin-bottom:4px;margin-top:10px"></div><div class="caption">full</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3>Кнопки</h3>
+          <div class="btn-row" style="margin-bottom:12px">
+            <div class="btn primary">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+              Создать процесс
+            </div>
+            <div class="btn secondary">Вторичное</div>
+          </div>
+          <div class="btn-row" style="margin-bottom:12px">
+            <div class="btn ghost">Текстовая</div>
+            <div class="btn danger">Удалить</div>
+            <div class="btn disabled">Неактивно</div>
+          </div>
+          <div class="caption">Высота 40px, radius 8px, font-weight 600</div>
+        </div>
+        <div class="card">
+          <h3>Поля ввода</h3>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="field">Поиск по номеру документа</div>
+            <div class="field active">Активное поле</div>
+            <div class="field error">Ошибка валидации</div>
+            <div class="field disabled">Недоступно</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Статусы и бейджи</h3>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="badge-row">
+              <div class="badge b-info"><span class="dot"></span>В работе</div>
+              <div class="badge b-success"><span class="dot"></span>Согласовано</div>
+            </div>
+            <div class="badge-row">
+              <div class="badge b-warning"><span class="dot"></span>Требует внимания</div>
+              <div class="badge b-danger"><span class="dot"></span>Ошибка / отклонено</div>
+            </div>
+            <div class="badge-row">
+              <div class="badge b-neutral"><span class="dot"></span>Черновик</div>
+            </div>
+            <div class="caption" style="margin-top:4px">Dot + текст — семантическая палитра по рекомендации аудита (п. 3.6)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Принципы компоновки экрана</h3>
+        <div class="note">
+          Каждый экран строится по единому шаблону: <strong>breadcrumb → topbar</strong> (название + primary action) → <strong>KPI&#8209;карточки</strong> (контекст и точки входа) → <strong>toolbar</strong> (фильтры, экспорт, настройки) → <strong>tabs</strong> (логические группы) → <strong>data&#8209;panel</strong> (таблица или аналитика). Это снижает число уникальных паттернов и ускоряет обучение пользователя. Рекомендация аудита: «не делать редизайн только через замену цветов — без пересборки навигации и data&#8209;grid сценариев результат будет поверхностным».
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         APP SHELL
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>3. Общий каркас приложения</h2>
+          <p>Единая структура: rail с подписями для модулей, контекстная навигация, breadcrumb и рабочая область.</p>
+        </div>
+        <div class="pill">Устраняет проблему 3.1 аудита</div>
+      </div>
+
+      <div class="layout">
+        <div class="layout-shell">
+          <aside class="rail">
+            <div class="rail-logo">КД</div>
+
+            <div class="rail-btn active">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>
+              <span class="rail-label">Обзор</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 6h12M4 10h12M4 14h12"/></svg>
+              <span class="rail-label">Реестры</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l3 3-9 9H5v-3z"/></svg>
+              <span class="rail-label">Выпуск</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 10l4 4 10-10"/></svg>
+              <span class="rail-label">Согл.</span>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 7v2m0 4h.01"/></svg>
+              <span class="rail-label">Справка</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3"/><path d="M10 3v1m0 12v1m-7-7h1m12 0h1M5.05 5.05l.7.7m8.5 8.5l.7.7M5.05 14.95l.7-.7m8.5-8.5l.7-.7"/></svg>
+              <span class="rail-label">Настр.</span>
+            </div>
+          </aside>
+
+          <aside class="subnav">
+            <h3>Модуль КД</h3>
+            <div class="nav-group">
+              <div class="label">Основные разделы</div>
+              <div class="nav-item active"><span>Мои процессы</span><span class="badge b-info"><span class="dot"></span>12</span></div>
+              <div class="nav-item"><span>Выпуск документов</span><span class="caption">4 очереди</span></div>
+              <div class="nav-item"><span>Согласование</span><span class="caption">8 на проверке</span></div>
+              <div class="nav-item"><span>Аналитика</span><span class="caption">дашборд</span></div>
+              <div class="nav-item"><span>Наблюдение</span><span class="caption">мониторинг</span></div>
+            </div>
+            <div class="nav-group">
+              <div class="label">Сервис</div>
+              <div class="nav-item"><span>Сохранённые виды</span><span class="badge b-neutral"><span class="dot"></span>6</span></div>
+              <div class="nav-item"><span>Справка по терминам</span><span>↗</span></div>
+            </div>
+          </aside>
+
+          <main class="content">
+            <div class="breadcrumb">
+              <a href="#">АССКД</a><span class="sep">/</span>
+              <a href="#">Модуль КД</a><span class="sep">/</span>
+              <span class="current">Мои процессы</span>
+            </div>
+
+            <div class="topbar">
+              <div class="title-wrap">
+                <h4>Мои процессы</h4>
+                <div class="sub">Единая точка входа: процессы, задачи, согласования и выпуск документов</div>
+              </div>
+              <div class="top-actions">
+                <div class="search">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+                  Поиск по документам, статусам
+                </div>
+                <div class="btn secondary">Сохранить вид</div>
+                <div class="btn primary">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+                  Создать процесс
+                </div>
+              </div>
+            </div>
+
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="k">Активные процессы</div>
+                <div class="v">24</div>
+                <div class="t up">↑ +3 за неделю</div>
+                <div class="kpi-bar blue"></div>
+              </div>
+              <div class="kpi">
+                <div class="k">Ожидают решения</div>
+                <div class="v">8</div>
+                <div class="t down">узкое место: оформление</div>
+                <div class="kpi-bar warn"></div>
+              </div>
+              <div class="kpi">
+                <div class="k">Срочные задачи</div>
+                <div class="v">5</div>
+                <div class="t down">приоритет высокий</div>
+                <div class="kpi-bar red"></div>
+              </div>
+              <div class="kpi">
+                <div class="k">Ошибки / возвраты</div>
+                <div class="v">2</div>
+                <div class="t neutral">требуют анализа</div>
+                <div class="kpi-bar green"></div>
+              </div>
+            </div>
+
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <div class="chip active">Статус: все</div>
+                <div class="chip">Приоритет: высокий</div>
+                <div class="chip">Ответственный: я</div>
+                <div class="chip">Период: 30 дней</div>
+              </div>
+              <div class="toolbar-right">
+                <div class="btn secondary">Экспорт</div>
+                <div class="btn secondary">Столбцы</div>
+                <div class="btn secondary">Фильтры</div>
+              </div>
+            </div>
+
+            <div class="tabs">
+              <div class="tab active">Управление вопросами</div>
+              <div class="tab">Оформление решений</div>
+              <div class="tab">Выпуск документов</div>
+              <div class="tab">История действий</div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-h">
+                <h5>Активные процессы</h5>
+                <div class="caption">Показано 5 из 24</div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Процесс</th>
+                      <th>Объект</th>
+                      <th>Статус</th>
+                      <th>Приоритет</th>
+                      <th>Ответственный</th>
+                      <th>Срок</th>
+                      <th style="width:100px">Действия</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="stack"><strong>СЖР-МС-21-0001-07-77</strong><span class="col-muted">журнал / изменение</span></td>
+                      <td>Боковая обтекательная платформа</td>
+                      <td><span class="badge b-warning"><span class="dot"></span>Ожидает решения</span></td>
+                      <td><strong style="color:var(--danger)">Высокий</strong></td>
+                      <td>Урыва А.</td>
+                      <td style="white-space:nowrap">08.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Открыть</span></td>
+                    </tr>
+                    <tr>
+                      <td class="stack"><strong>КД-21-52-10-0428</strong><span class="col-muted">выпуск документа</span></td>
+                      <td>Двери для пассажиров и экипажа</td>
+                      <td><span class="badge b-info"><span class="dot"></span>В работе</span></td>
+                      <td>Средний</td>
+                      <td>Петров П.</td>
+                      <td style="white-space:nowrap">11.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Открыть</span></td>
+                    </tr>
+                    <tr>
+                      <td class="stack"><strong>СОГЛ-21-30-42-0164</strong><span class="col-muted">согласование</span></td>
+                      <td>Система очистки стёкол</td>
+                      <td><span class="badge b-success"><span class="dot"></span>На согласовании</span></td>
+                      <td><strong style="color:var(--danger)">Высокий</strong></td>
+                      <td>Николаев В.</td>
+                      <td style="white-space:nowrap">09.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Открыть</span></td>
+                    </tr>
+                    <tr>
+                      <td class="stack"><strong>АН-21-71-00-0169</strong><span class="col-muted">инженерный анализ</span></td>
+                      <td>Силовая установка</td>
+                      <td><span class="badge b-danger"><span class="dot"></span>Требует внимания</span></td>
+                      <td><strong style="color:#991B1B">Критичный</strong></td>
+                      <td>Филиппов А.</td>
+                      <td style="white-space:nowrap">07.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Открыть</span></td>
+                    </tr>
+                    <tr>
+                      <td class="stack"><strong>КД-21-91-00-0228</strong><span class="col-muted">отказобезопасность</span></td>
+                      <td>Бортовая кабельная сеть</td>
+                      <td><span class="badge b-info"><span class="dot"></span>В работе</span></td>
+                      <td>Средний</td>
+                      <td>Косяков И.</td>
+                      <td style="white-space:nowrap">15.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Открыть</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         MY PROCESSES RATIONALE
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>4. Экран «Мои процессы» — обоснование</h3>
+        <span>Главный сценарий входа для нового пользователя</span>
+      </div>
+      <div class="screen-desc">По результатам аудита (п. 4.6): экран «Мои процессы» выглядел слишком пустым, не давал приоритизации и не объяснял, что происходит у пользователя в системе.</div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Что изменено по итогам аудита</h3>
+          <ul style="padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--text-2)">
+            <li>KPI&#8209;карточки сверху вместо мелких цифр сбоку — <strong>пользователь за 5 сек видит, что срочно</strong>.</li>
+            <li>Табличный паттерн единообразен: toolbar → tabs → data&#8209;panel — устраняет проблему 3.2.</li>
+            <li>Фильтры вынесены в chip&#8209;бар и не конкурируют с контентом.</li>
+            <li>Приоритет визуально выделен: цвет + вес шрифта — устраняет проблему 3.3.</li>
+            <li>Статусы с dot&#8209;бейджами вместо простого текста — устраняет проблему 3.6.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>UX&#8209;принцип</h3>
+          <div class="note">Новый пользователь должен за 5–10 секунд понять: где мои задачи, что срочно, куда нажимать дальше. Страница «Мои процессы» проектируется как рабочий дашборд, а не как просто таблица.</div>
+          <div class="note warning" style="margin-top:12px">
+            <strong>Рекомендация аудита:</strong> обзорные страницы проектировать вокруг задач пользователя, а не вокруг списка модулей. Вместо декоративного входа — компактный командный центр.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DOCUMENT RELEASE
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>5. Экран «Выпуск документов»</h3>
+        <span>Приоритет — быстрая проверка очереди, статусов и причин блокировок</span>
+      </div>
+
+      <div class="layout">
+        <div class="layout-shell">
+          <aside class="rail">
+            <div class="rail-logo">КД</div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>
+              <span class="rail-label">Обзор</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 6h12M4 10h12M4 14h12"/></svg>
+              <span class="rail-label">Реестры</span>
+            </div>
+            <div class="rail-btn active">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l3 3-9 9H5v-3z"/></svg>
+              <span class="rail-label">Выпуск</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 10l4 4 10-10"/></svg>
+              <span class="rail-label">Согл.</span>
+            </div>
+            <div class="spacer"></div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 7v2m0 4h.01"/></svg>
+              <span class="rail-label">Справка</span>
+            </div>
+            <div class="rail-btn">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3"/><path d="M10 3v1m0 12v1m-7-7h1m12 0h1M5.05 5.05l.7.7m8.5 8.5l.7.7M5.05 14.95l.7-.7m8.5-8.5l.7-.7"/></svg>
+              <span class="rail-label">Настр.</span>
+            </div>
+          </aside>
+          <aside class="subnav">
+            <h3>Выпуск документов</h3>
+            <div class="nav-group">
+              <div class="label">Очереди</div>
+              <div class="nav-item active"><span>Моя очередь</span><span class="badge b-warning"><span class="dot"></span>6</span></div>
+              <div class="nav-item"><span>Все документы</span><span class="caption">128</span></div>
+              <div class="nav-item"><span>Заблокированные</span><span class="badge b-danger"><span class="dot"></span>3</span></div>
+              <div class="nav-item"><span>История выпуска</span><span>↗</span></div>
+            </div>
+          </aside>
+          <main class="content">
+            <div class="breadcrumb">
+              <a href="#">АССКД</a><span class="sep">/</span>
+              <a href="#">Модуль КД</a><span class="sep">/</span>
+              <span class="current">Выпуск документов</span>
+            </div>
+            <div class="topbar">
+              <div class="title-wrap">
+                <h4>Выпуск документов</h4>
+                <div class="sub">Контроль очереди выпуска, проверка причин задержек и быстрый переход к документу</div>
+              </div>
+              <div class="top-actions">
+                <div class="search">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+                  Поиск по номеру, объекту
+                </div>
+                <div class="btn secondary">Скачать реестр</div>
+                <div class="btn primary">Запустить выпуск</div>
+              </div>
+            </div>
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <div class="chip active">Статус: ожидает</div>
+                <div class="chip">Блокировка: есть</div>
+                <div class="chip">Исполнитель: я</div>
+              </div>
+              <div class="toolbar-right">
+                <div class="btn secondary">Пакетные действия</div>
+                <div class="btn secondary">Настроить колонки</div>
+              </div>
+            </div>
+            <div class="panel" style="margin-top:14px">
+              <div class="panel-h">
+                <h5>Очередь выпуска</h5>
+                <div class="caption">Документы с блокирующими причинами показываются первыми</div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Документ</th>
+                      <th>Наименование</th>
+                      <th>Статус</th>
+                      <th>Причина блокировки</th>
+                      <th>Ответственный</th>
+                      <th>Изменение</th>
+                      <th style="width:100px">Действия</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>21-91-00-0228-RPA</strong></td>
+                      <td>Бортовая кабельная сеть. Описание и анализ отказобезопасности</td>
+                      <td><span class="badge b-warning"><span class="dot"></span>Ожидает выпуска</span></td>
+                      <td class="stack"><strong>Нет обязательного согласования</strong><span class="col-muted">Требуется подтверждение от отдела 91</span></td>
+                      <td>Косяков И.К.</td>
+                      <td style="white-space:nowrap">02.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Проверить</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>21-71-00-0169-RPA</strong></td>
+                      <td>Силовая установка. Инженерный анализ</td>
+                      <td><span class="badge b-danger"><span class="dot"></span>Заблокирован</span></td>
+                      <td class="stack"><strong>Ошибка данных</strong><span class="col-muted">Не заполнен обязательный атрибут проекта</span></td>
+                      <td>Ильин М.А.</td>
+                      <td style="white-space:nowrap">01.04.2026</td>
+                      <td><span class="btn secondary" style="height:32px;padding:0 12px;font-size:13px">Исправить</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>21-52-10-0428-RPD</strong></td>
+                      <td>Двери для пассажиров и экипажа</td>
+                      <td><span class="badge b-success"><span class="dot"></span>Готов к выпуску</span></td>
+                      <td class="col-muted">—</td>
+                      <td>Крамаренко Е.В.</td>
+                      <td style="white-space:nowrap">03.04.2026</td>
+                      <td><span class="btn primary" style="height:32px;padding:0 12px;font-size:13px">Выпустить</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DOCUMENT APPROVAL
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>6. Экран «Согласование документов»</h3>
+        <span>Маршруты согласования, узкие места и быстрые решения</span>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 style="margin-bottom:0">Список документов на согласовании</h3>
+            <div class="caption">Плоский и читаемый список</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Документ</th>
+                  <th>Этап</th>
+                  <th>Маршрут</th>
+                  <th>Ожидание</th>
+                  <th>Риск срока</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>21-30-42-0164-RPA</strong></td>
+                  <td><span class="badge b-info"><span class="dot"></span>Этап 2 из 4</span></td>
+                  <td class="caption">Конструктор → Технолог → Нормоконтроль → Руководитель</td>
+                  <td>Петрова Н.Н.</td>
+                  <td><span class="badge b-warning"><span class="dot"></span>Средний</span></td>
+                </tr>
+                <tr>
+                  <td><strong>21-30-41-0163-RPA</strong></td>
+                  <td><span class="badge b-warning"><span class="dot"></span>Этап 3 из 4</span></td>
+                  <td class="caption">Конструктор → Технолог → Нормоконтроль → Руководитель</td>
+                  <td>Николаев В.С.</td>
+                  <td><span class="badge b-danger"><span class="dot"></span>Высокий</span></td>
+                </tr>
+                <tr>
+                  <td><strong>21-52-00-0294-RPT</strong></td>
+                  <td><span class="badge b-success"><span class="dot"></span>Финальная проверка</span></td>
+                  <td class="caption">Конструктор → Руководитель</td>
+                  <td>Крамаренко Е.В.</td>
+                  <td><span class="badge b-info"><span class="dot"></span>Низкий</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Правая панель документа</h3>
+          <div class="stack" style="margin-bottom:12px">
+            <strong style="font-size:15px">21-30-41-0163-RPA</strong>
+            <span class="caption">Электрообогрев стекла и анализ отказобезопасности</span>
+          </div>
+          <div class="badge-row" style="margin-bottom:14px">
+            <div class="badge b-warning"><span class="dot"></span>Этап 3 из 4</div>
+            <div class="badge b-danger"><span class="dot"></span>Риск просрочки</div>
+          </div>
+          <div class="note" style="margin-bottom:14px">
+            Блок быстрых действий всегда доступен: согласовать, вернуть, история, вложения, маршрут. Этот подход заменяет необходимость переходить на отдельный экран.
+          </div>
+          <div class="btn-row">
+            <div class="btn primary">Согласовать</div>
+            <div class="btn secondary">Вернуть</div>
+            <div class="btn ghost">История</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ANALYTICS
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>7. Экран «Аналитика»</h3>
+        <span>Сводка по процессам, срокам и узким местам вместо перегруженных таблиц</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 style="margin-bottom:0">Динамика выпуска документов</h3>
+            <div class="legend"><i class="l-blue"></i> Выпуск <i class="l-green" style="margin-left:8px"></i> Согласование</div>
+          </div>
+          <div class="chart-box">
+            <div class="bars">
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:42%;flex:1"></div>
+                <div class="bar b2" style="height:30%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:56%;flex:1"></div>
+                <div class="bar b2" style="height:44%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:48%;flex:1"></div>
+                <div class="bar b2" style="height:38%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:72%;flex:1"></div>
+                <div class="bar b2" style="height:60%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:66%;flex:1"></div>
+                <div class="bar b2" style="height:52%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:84%;flex:1"></div>
+                <div class="bar b2" style="height:70%;flex:1"></div>
+              </div>
+              <div style="flex:1;display:flex;gap:3px;align-items:flex-end;height:100%">
+                <div class="bar b1" style="height:76%;flex:1"></div>
+                <div class="bar b2" style="height:66%;flex:1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Панель показателей</h3>
+          <div class="kpi-grid" style="grid-template-columns:1fr 1fr;margin-top:0">
+            <div class="kpi"><div class="k">Средний цикл согласования</div><div class="v">4.8 <span style="font-size:16px;font-weight:600">дн</span></div><div class="t up">цель: ≤ 5 дней</div><div class="kpi-bar green"></div></div>
+            <div class="kpi"><div class="k">Документы с возвратом</div><div class="v">12<span style="font-size:16px;font-weight:600">%</span></div><div class="t down">нужно снижать</div><div class="kpi-bar warn"></div></div>
+            <div class="kpi"><div class="k">Просроченные задачи</div><div class="v">7</div><div class="t down">основной риск</div><div class="kpi-bar red"></div></div>
+            <div class="kpi"><div class="k">Эффективность отдела</div><div class="v">91<span style="font-size:16px;font-weight:600">%</span></div><div class="t up">в рамках нормы</div><div class="kpi-bar green"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-cols" style="margin-top:16px">
+        <div class="card">
+          <h3>Топ причин задержек</h3>
+          <table>
+            <thead><tr><th>Причина</th><th style="width:60px">Доля</th><th>Рекомендация</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Неполные атрибуты документа</strong></td><td><strong style="color:var(--danger)">31%</strong></td><td>Валидация до запуска процесса</td></tr>
+              <tr><td><strong>Задержка согласования</strong></td><td><strong style="color:var(--warning)">27%</strong></td><td>Напоминания и эскалации</td></tr>
+              <tr><td><strong>Ошибки вложений</strong></td><td><strong style="color:var(--warning)">19%</strong></td><td>Проверка состава пакета</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Рекомендации для аналитических экранов</h3>
+          <ul style="padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--text-2)">
+            <li>По умолчанию 3–5 KPI и один основной график.</li>
+            <li>Подробные таблицы — ниже, не смешивать с обзором.</li>
+            <li>Каждый график: фильтр периода + экспорт.</li>
+            <li>Быстрый переход из аналитики к документу или процессу.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         MONITORING
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>8. Экран «Наблюдение»</h3>
+        <span>Оперативная обстановка: счётчики, лента событий, быстрый переход к проблеме</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Панель наблюдения</h3>
+          <div class="kpi-grid" style="grid-template-columns:1fr 1fr;margin-top:0">
+            <div class="kpi"><div class="k">Ошибки интеграций</div><div class="v" style="color:var(--danger)">2</div><div class="t neutral">последний час</div><div class="kpi-bar red"></div></div>
+            <div class="kpi"><div class="k">Зависшие процессы</div><div class="v" style="color:var(--warning)">4</div><div class="t neutral">требуют проверки</div><div class="kpi-bar warn"></div></div>
+            <div class="kpi"><div class="k">Нет ответственного</div><div class="v" style="color:var(--warning)">1</div><div class="t neutral">нужно назначение</div><div class="kpi-bar warn"></div></div>
+            <div class="kpi"><div class="k">Уведомления</div><div class="v">18</div><div class="t neutral">новые события</div><div class="kpi-bar blue"></div></div>
+          </div>
+          <div class="panel" style="margin-top:16px">
+            <div class="panel-h"><h5>Лента событий</h5><div class="caption">Последние критичные изменения</div></div>
+            <table>
+              <thead><tr><th>Время</th><th>Событие</th><th>Объект</th><th>Критичность</th></tr></thead>
+              <tbody>
+                <tr><td style="white-space:nowrap;font-weight:600">10:42</td><td>Ошибка выгрузки в систему</td><td><strong>КД-21-52-10-0428</strong></td><td><span class="badge b-danger"><span class="dot"></span>Высокая</span></td></tr>
+                <tr><td style="white-space:nowrap;font-weight:600">10:31</td><td>Не назначен ответственный</td><td><strong>СЖР-МС-21-0001-07-77</strong></td><td><span class="badge b-warning"><span class="dot"></span>Средняя</span></td></tr>
+                <tr><td style="white-space:nowrap;font-weight:600">10:09</td><td>Документ выпущен</td><td><strong>21-91-00-0228-RPA</strong></td><td><span class="badge b-success"><span class="dot"></span>Низкая</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3>UX&#8209;подход</h3>
+          <div class="note" style="margin-bottom:14px">
+            «Наблюдение» — не ещё одна таблица. Это экран оперативной обстановки: ключевые счётчики, лента событий, фильтр по критичности и быстрый переход к проблемному объекту.
+          </div>
+          <div class="note warning">
+            <strong>Из аудита (п. 3.7):</strong> главный экран не должен быть плиточным входом по модулям. Экран наблюдения вместе с «Мои процессы» формирует реальную стартовую панель, ориентированную на задачи.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         INTERFACE STATES
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>9. Состояния интерфейса</h3>
+        <span>Пустое состояние, загрузка, ошибка и нет доступа — стандартизированные паттерны</span>
+      </div>
+      <div class="screen-desc">По аудиту (п. 3.5, оценка 1/5 — критическая зона): пустые экраны показывали «Нет строк» без объяснения причины и следующего шага. В редизайне каждое состояние обязано содержать: причину, рекомендуемое действие и дополнительные сценарии.</div>
+
+      <div class="grid-4">
+        <div class="card empty">
+          <div>
+            <div class="state-ill info">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </div>
+            <div class="state-title">Нет данных</div>
+            <div class="state-desc">По текущим фильтрам ничего не найдено. Измените условия или очистите фильтры.</div>
+            <div class="btn-row" style="justify-content:center;margin-top:16px">
+              <div class="btn secondary">Сбросить фильтры</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card loading-state">
+          <div>
+            <div class="loader"></div>
+            <div class="state-title">Загрузка данных</div>
+            <div class="state-desc">Подготавливаем список документов и статусов.</div>
+          </div>
+        </div>
+
+        <div class="card error-state">
+          <div>
+            <div class="state-ill err">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+            </div>
+            <div class="state-title">Ошибка загрузки</div>
+            <div class="state-desc">Не удалось получить данные. Попробуйте повторить или откройте журнал событий.</div>
+            <div class="btn-row" style="justify-content:center;margin-top:16px">
+              <div class="btn primary">Повторить</div>
+              <div class="btn ghost">Журнал</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card empty">
+          <div>
+            <div class="state-ill" style="background:var(--warning-lighter);color:var(--warning);border-color:var(--warning-light)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div class="state-title">Нет доступа</div>
+            <div class="state-desc">У вас недостаточно прав для просмотра этого раздела. Обратитесь к администратору.</div>
+            <div class="btn-row" style="justify-content:center;margin-top:16px">
+              <div class="btn secondary">Запросить доступ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         MODAL PATTERNS
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>10. Паттерны модальных окон</h3>
+        <span>По аудиту (п. 4.3): модалки нуждаются в собственной иерархии и типизации</span>
+      </div>
+      <div class="screen-desc">В аудите отмечено: текущие модалки «читаются как простой белый прямоугольник с текстом». Для дизайн&#8209;системы определены отдельные шаблоны: информационная, подтверждение действия, история изменений, просмотр вложения, ошибка.</div>
+
+      <div class="grid-2">
+        <div class="modal-preview">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div>
+                <h5>Подтверждение действия</h5>
+                <div class="caption" style="margin-top:4px">Выпуск документа 21-52-10-0428-RPD</div>
+              </div>
+              <div class="modal-close">✕</div>
+            </div>
+            <div class="modal-body">
+              <div class="note warning" style="margin-bottom:14px">
+                После выпуска документ станет доступен для внешних систем. Это действие нельзя отменить без процедуры отзыва.
+              </div>
+              <table style="font-size:13px">
+                <tbody>
+                  <tr><td style="font-weight:700;width:140px;color:var(--muted)">Документ</td><td>21-52-10-0428-RPD</td></tr>
+                  <tr><td style="font-weight:700;color:var(--muted)">Наименование</td><td>Двери для пассажиров и экипажа</td></tr>
+                  <tr><td style="font-weight:700;color:var(--muted)">Статус</td><td><span class="badge b-success"><span class="dot"></span>Готов к выпуску</span></td></tr>
+                  <tr><td style="font-weight:700;color:var(--muted)">Ответственный</td><td>Крамаренко Е.В.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <div class="btn secondary">Отмена</div>
+              <div class="btn primary">Подтвердить выпуск</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-preview">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div>
+                <h5>История документа</h5>
+                <div class="caption" style="margin-top:4px">21-30-41-0163-RPA — Электрообогрев стекла</div>
+              </div>
+              <div class="modal-close">✕</div>
+            </div>
+            <div class="modal-body" style="max-height:240px;overflow-y:auto">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;gap:14px">
+                  <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px"></div>
+                    <div style="width:2px;flex:1;background:var(--line-2);margin-top:4px"></div>
+                  </div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px">Отправлен на нормоконтроль</div>
+                    <div class="caption">05.04.2026, 14:32 — Николаев В.С.</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:14px">
+                  <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="width:10px;height:10px;border-radius:50%;background:var(--success);flex-shrink:0;margin-top:4px"></div>
+                    <div style="width:2px;flex:1;background:var(--line-2);margin-top:4px"></div>
+                  </div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px">Согласован технологом</div>
+                    <div class="caption">03.04.2026, 10:15 — Петрова Н.Н.</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:14px">
+                  <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="width:10px;height:10px;border-radius:50%;background:var(--warning);flex-shrink:0;margin-top:4px"></div>
+                    <div style="width:2px;flex:1;background:var(--line-2);margin-top:4px"></div>
+                  </div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px">Возвращён с замечанием</div>
+                    <div class="caption">01.04.2026, 16:48 — Петрова Н.Н.</div>
+                    <div style="margin-top:6px;padding:8px 12px;background:var(--warning-lighter);border-radius:8px;font-size:13px;color:var(--text-2)">Замечание: не хватает ссылки на расчётную модель в п. 3.2.</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:14px">
+                  <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="width:10px;height:10px;border-radius:50%;background:var(--muted-2);flex-shrink:0;margin-top:4px"></div>
+                  </div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px">Документ создан</div>
+                    <div class="caption">28.03.2026, 09:00 — Николаев В.С.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="btn secondary">Закрыть</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         AUDIT DETAIL
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="screen-title">
+        <h3>11. Детальные выводы аудита по экранам</h3>
+        <span>Из отчёта UX/UI-аудита — привязка к конкретным экранам и решениям</span>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3>Что нужно зафиксировать в дизайн-системе</h3>
+        <p class="caption" style="margin-bottom:16px">По аудиту: «редизайн нельзя делать только на уровне отдельных макетов — нужна полноценная дизайн-система, иначе после 2-3 новых экранов продукт снова вернётся к фрагментарности».</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Блок системы</th><th>Что определить</th><th>Зачем нужно проекту</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Foundation</strong></td><td>Сетка, отступы, радиусы, тени, токены цвета и типографики</td><td>Единый визуальный ритм и предсказуемость</td></tr>
+              <tr><td><strong>Навигация</strong></td><td>Глобальная навигация, локальная навигация, табы, breadcrumb, page header</td><td>Снимает путаницу между уровнями разделов</td></tr>
+              <tr><td><strong>Data&#8209;grid</strong></td><td>Шапка, фильтры, сортировка, закреплённые колонки, массовые действия, раскрытие строки</td><td>Основной рабочий паттерн — нормируется первым</td></tr>
+              <tr><td><strong>Статусы</strong></td><td>Бейджи, severity&#8209;color, правила текста, состояния процесса</td><td>Приоритеты считываются без вдумчивого чтения</td></tr>
+              <tr><td><strong>Состояния</strong></td><td>Empty, loading, no&#8209;results, no&#8209;access, error, success, maintenance</td><td>Понятность в нештатных сценариях</td></tr>
+              <tr><td><strong>Модалки и панели</strong></td><td>Типы окон, размеры, иерархия заголовка, действия, содержимое</td><td>Сложность переносится с таблиц в управляемые контейнеры</td></tr>
+              <tr><td><strong>Компоненты ввода</strong></td><td>Input, select, multiselect, datepicker, search, chips, quick&nbsp;filters</td><td>Снижает разнобой фильтров, ускоряет формы</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Выводы по ключевым экранам</h3>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p0">4.1</span>
+                <strong style="font-size:14px">Главная страница</strong>
+              </div>
+              <div class="caption">Плиточный вход с фоновыми фотографиями не помогает начать работу. Нужна стартовая рабочая панель: задачи, документы, изменения, проблемные процессы.</div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p0">4.2</span>
+                <strong style="font-size:14px">Реестр сертификационных документов</strong>
+              </div>
+              <div class="caption">Шапка и фильтры сливаются, статусы поданы текстом, таблица требует горизонтального скролла. Нужен единый data&#8209;grid с фильтрами в отдельной области и бейджами.</div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p1">4.3</span>
+                <strong style="font-size:14px">История документа и модалки</strong>
+              </div>
+              <div class="caption">Модалки не имеют собственной иерархии. Таймлайн не визуализирован. Нужны типизированные шаблоны модальных окон.</div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p1">4.4</span>
+                <strong style="font-size:14px">Пустые состояния (СОП)</strong>
+              </div>
+              <div class="caption">«Нет строк» без причины и рекомендации. Пустое состояние должно стать частью продуктовой логики.</div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p0">4.5</span>
+                <strong style="font-size:14px">Плотные реестры СЖР</strong>
+              </div>
+              <div class="caption">Слишком разные сущности в одной строке. Длинные описания в details&#8209;panel, критичные реквизиты — в реестре.</div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <span class="priority-tag p2">4.6</span>
+                <strong style="font-size:14px">Мои процессы — обзорный экран</strong>
+              </div>
+              <div class="caption">Слишком пустой, цифры мелкие, нет приоритизации. Нужен компактный командный центр пользователя.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Практические рекомендации</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="note danger">
+              <strong>Не делать редизайн только через замену цветов и отступов.</strong> Без пересборки навигации и data&#8209;grid сценариев результат будет поверхностным.
+            </div>
+            <div class="note warning">
+              <strong>Не оставлять все фильтры всегда раскрытыми.</strong> Нужна управляемая прогрессивная детализация.
+            </div>
+            <div class="note">
+              <strong>Страница — не контейнер таблицы, а структура:</strong> заголовок, контекст, primary action, быстрые фильтры, рабочая область, боковая детализация.
+            </div>
+            <div class="note success">
+              <strong>Единые статусные бейджи:</strong> успех, предупреждение, ошибка, информация, черновик, в работе, требуется действие — с семантической палитрой.
+            </div>
+          </div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line-3)">
+            <h3>Итоговое заключение аудита</h3>
+            <p style="font-size:14px;line-height:1.6;color:var(--text-2)">
+              Текущий интерфейс АССКД функционально зрелый и покрывает сложные процессные сценарии. Проблема — интерфейс накопился вокруг функциональности и плохо управляет сложностью. Редизайн должен быть <strong>архитектурным, а не декоративным</strong>. Критичный фокус: структура навигации, единый паттерн таблиц, качественные состояния и фиксация правил в дизайн&#8209;системе.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         COMPLIANCE SUMMARY
+    ════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>12. Итог по соответствию ТЗ и аудиту</h2>
+          <p>Как данный концепт закрывает требования проекта и рекомендации UX/UI&#8209;аудита.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Требование / рекомендация</th><th>Статус</th><th>Как реализовано в концепте</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Сохранение 100% функциональности</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Выполнено</span></td>
+                <td>Все сущности, таблицы, фильтры, статусы и действия сохранены, но перегруппированы логичнее</td>
+              </tr>
+              <tr>
+                <td><strong>P0: Навигация и IA</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>Rail с подписями + контекстная навигация + breadcrumb — чёткие уровни вместо параллельных контуров</td>
+              </tr>
+              <tr>
+                <td><strong>P0: Единый паттерн таблиц</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>Topbar → KPI → toolbar → tabs → data&#8209;panel — единый шаблон на всех экранах</td>
+              </tr>
+              <tr>
+                <td><strong>P1: State&#8209;kit</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>4 состояния с причиной, рекомендуемым действием и SVG&#8209;иллюстрациями</td>
+              </tr>
+              <tr>
+                <td><strong>P1: Типографика и статусы</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>6-ступенчатая шкала типографики, dot&#8209;бейджи с семантической палитрой</td>
+              </tr>
+              <tr>
+                <td><strong>P2: Task&#8209;oriented dashboard</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>«Мои процессы» как рабочий дашборд с KPI и приоритизацией</td>
+              </tr>
+              <tr>
+                <td><strong>Модальные окна</strong></td>
+                <td><span class="badge b-success"><span class="dot"></span>Отработано</span></td>
+                <td>Типизированные шаблоны: подтверждение, история с timeline, информационная</td>
+              </tr>
+              <tr>
+                <td><strong>Готовность к Figma</strong></td>
+                <td><span class="badge b-info"><span class="dot"></span>Готово к переносу</span></td>
+                <td>HTML разбит на Foundation → Components → Screens. Прямой перенос в страницы Figma.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="footer-note">
+          Данный файл — демонстрационный концепт v2.0, построенный на основе отчёта UX/UI&#8209;аудита от 06.04.2026. Следующий шаг — перенос структуры в Figma с построением библиотек компонентов, вариантов состояний и интерактивных прототипов. Все рекомендации аудита (разделы 1–7, приложение А) учтены и интегрированы в соответствующие секции концепта.
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
