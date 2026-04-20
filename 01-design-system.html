@@ -1,0 +1,467 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>АССКД · 1. Дизайн-система · Справочники интерфейса</title>
+<meta name="description" content="Палитра, типографика, токены, компоненты, бейджи, поля, кнопки + справочные экраны 7.2.1 / 7.2.2."/>
+<link rel="stylesheet" href="assets/tokens.css"/>
+<link rel="stylesheet" href="assets/base.css"/>
+<link rel="stylesheet" href="assets/components.css"/>
+<link rel="stylesheet" href="assets/shell.css"/>
+<style>
+/* Локальные надстройки страницы — только верхняя навигация и хлебная крошка.
+   Все цвета/токены берутся ТОЛЬКО из общей дизайн-системы. */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
+  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
+  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
+.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
+.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
+.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.page-head .crumbs{font-size:11px;color:var(--muted)}
+.page-head .crumbs a{color:var(--muted);text-decoration:none}
+.page-head .crumbs a:hover{color:var(--yak-blue)}
+.page-head .meta{display:flex;align-items:center;gap:8px}
+.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="pg">
+<nav class="toc">
+  <a href="index.html">← Каталог</a>
+  <a href="01-design-system.html" class="a">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
+  <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
+  <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
+  <a href="05-document-approval.html">6. Раздел «Согласование документов»</a>
+  <a href="06-analytics.html">7. Раздел «Аналитика»</a>
+  <a href="07-process-monitoring.html">8. Раздел «Наблюдение за процессами»</a>
+  <a href="08-logout.html">9. Выход из системы</a>
+  <a href="09-statuses-reference.html">10. Справочник статусов (Прил. 3 / 4 / 5)</a>
+  <a href="design-system.html">DS · v1.0 (канон)</a>
+</nav>
+
+<header class="page-head">
+  <div class="crumbs"><a href="index.html">АССКД · Каталог разделов</a> &nbsp;/&nbsp; <span style="color:var(--txt);font-weight:700">1. Дизайн-система · Справочники интерфейса</span></div>
+  <div class="meta"><span class="pill">Foundation</span></div>
+</header>
+
+<!-- ═══ 1. ДИЗАЙН-СИСТЕМА ═══ -->
+<section class="sec sec-big" id="section-ds">
+<div class="sec-t"><div><h2>1. Дизайн-система</h2><p>Палитра по брендбуку ПАО «Яковлев» (PANTONE 281C, 2728CR). Шрифт Stem + Arial. Компонентные токены, кнопки, поля, бейджи.</p></div><div class="pill">Foundation</div></div>
+
+<div class="g2">
+<div class="cd">
+<h3>Цветовая палитра</h3>
+<div class="tks">
+<div class="tk"><div class="sw" style="background:#002664"></div><div class="m"><strong>Dark Navy</strong><span>PANTONE 281C · RGB 0/38/100</span></div></div>
+<div class="tk"><div class="sw" style="background:#0F4DBC"></div><div class="m"><strong>Primary Blue</strong><span>PANTONE 2728CR · RGB 15/77/188</span></div></div>
+<div class="tk"><div class="sw" style="background:#87C8DC"></div><div class="m"><strong>Sky Blue</strong><span>RGB 135/200/220</span></div></div>
+<div class="tk"><div class="sw" style="background:#808F9A"></div><div class="m"><strong>Cool Gray</strong><span>RGB 128/143/154</span></div></div>
+<div class="tk"><div class="sw" style="background:#CD191E"></div><div class="m"><strong>Red</strong><span>RGB 205/25/30</span></div></div>
+<div class="tk"><div class="sw" style="background:#EB735A"></div><div class="m"><strong>Coral</strong><span>RGB 235/115/90</span></div></div>
+<div class="tk"><div class="sw" style="background:#00AFA5"></div><div class="m"><strong>Teal</strong><span>RGB 0/175/165</span></div></div>
+<div class="tk"><div class="sw" style="background:#465056"></div><div class="m"><strong>Dark Gray</strong><span>RGB 70/80/86</span></div></div>
+</div>
+</div>
+<div class="cd">
+<h3>Типографика — Stem / Arial</h3>
+<div class="tr"><div class="tl">Display/28</div><div style="font-size:28px;font-weight:700;color:var(--yak-dark)">Заголовок</div></div>
+<div class="tr"><div class="tl">H1/18</div><div style="font-size:18px;font-weight:700;color:var(--yak-dark)">Раздел</div></div>
+<div class="tr"><div class="tl">H2/14</div><div style="font-size:14px;font-weight:700;color:var(--yak-dark)">Блок</div></div>
+<div class="tr"><div class="tl">Body/13</div><div style="font-size:13px">Основной текст. Stem Regular.</div></div>
+<div class="tr"><div class="tl">Small/11</div><div style="font-size:11px;color:var(--muted)">Метки, подписи, вторичный текст.</div></div>
+<div class="tr"><div class="tl">Micro/9</div><div style="font-size:9px;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Группа · uppercase</div></div>
+</div>
+</div>
+
+<div class="g3" style="margin-top:14px">
+<div class="cd">
+<h3>Кнопки</h3>
+<div class="btn-r" style="gap:5px">
+<div class="bt p">Запустить</div><div class="bt s">Отмена</div><div class="bt g">Ещё</div>
+</div>
+<div class="btn-r" style="gap:5px;margin-top:8px">
+<div class="bt d">Удалить</div><div class="bt ok">Согласовать</div><div class="bt tl2">Добавить</div><div class="bt dis">Недоступно</div>
+</div>
+<div class="btn-r" style="gap:5px;margin-top:8px">
+<div class="bt p sm">Sm · primary</div><div class="bt s sm">Sm · second</div><div class="bt p xs">Xs</div><div class="bt s xs">Xs s</div>
+</div>
+</div>
+<div class="cd">
+<h3>Поля ввода</h3>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div class="fg"><label>Текст</label><div class="fd">Номер извещения</div></div>
+<div class="fg"><label>В фокусе</label><div class="fd act">ИИ-741-2026-0042</div></div>
+<div class="fg"><label>Ошибка</label><div class="fd err">Обязательное</div></div>
+<div class="fg"><label>Дата</label><div class="fd">14.04.2026</div></div>
+<div class="fg"><label>Список</label><div class="sel"><div class="fd">Извещение</div></div></div>
+<div class="fg"><label>Многострочный</label><textarea class="ta" rows="2" disabled>Тематика...</textarea></div>
+</div>
+</div>
+<div class="cd">
+<h3>Статусные бейджи</h3>
+<div style="display:flex;flex-direction:column;gap:4px">
+<span style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">Процессы</span>
+<span class="bg bi"><span class="dt"></span>Проверяется</span>
+<span class="bg bs"><span class="dt"></span>Завершён</span>
+<span class="bg bd"><span class="dt"></span>Возвращён</span>
+<span class="bg bp"><span class="dt"></span>Остановлен</span>
+<span class="bg bn"><span class="dt"></span>Не запущен</span>
+<span class="bg bc"><span class="dt"></span>Треб. подпись</span>
+<span class="bg bw"><span class="dt"></span>Запрос на откат</span>
+<span style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:4px">Этапы / Задачи</span>
+<span class="bg bt2"><span class="dt"></span>Ожидает проверки</span>
+<span class="bg bw"><span class="dt"></span>С замечаниями</span>
+</div>
+</div>
+
+<div class="cd" style="margin-top:14px">
+<h3>Статусные индикаторы — компоненты</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:12px">Круглый индикатор (si) + текстовый бейдж (bg) — оба вида используются в зависимости от контекста. Полный справочник — в разделе 10.</p>
+<div class="g3">
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Индикаторы процессов</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--blue)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--ok)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><polyline points="3,8 6.5,11.5 13,5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="bg bs"><span class="dt"></span>Завершён</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--yak-red)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em"><path d="M12 4H6a3 3 0 000 6h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5 9l-3 3 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="bg bd"><span class="dt"></span>Возвращён</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:#7C3AED"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em"><rect x="3.5" y="3" width="3" height="10" rx="1" fill="currentColor"/><rect x="9.5" y="3" width="3" height="10" rx="1" fill="currentColor"/></svg></div><span class="bg bp"><span class="dt"></span>Остановлен</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--yak-gray)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" stroke="currentColor" stroke-width="2"/></svg></div><span class="bg bn"><span class="dt"></span>Не запущен</span></div>
+</div>
+</div>
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Индикаторы этапов</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--yak-teal)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em"><path d="M4 2h8M4 14h8M5 2v3l3 3-3 3v3M11 2v3L8 8l3 3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="bg bt2"><span class="dt"></span>Ожидает проверки</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--warn)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M8 2L14.5 13.5H1.5L8 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="8" y1="7" x2="8" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="12" r="0.7" fill="currentColor"/></svg></div><span class="bg bw"><span class="dt"></span>С замечаниями</span></div>
+<div style="display:flex;align-items:center;gap:8px"><div class="si" style="background:var(--yak-coral)"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M9.5 3L13 6.5L5.5 14H2.5V11L9.5 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><line x1="7.5" y1="5" x2="11" y2="8.5" stroke="currentColor" stroke-width="1.6"/></svg></div><span class="bg bc"><span class="dt"></span>Треб. подпись</span></div>
+</div>
+</div>
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Правила применения</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--txt2)">
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>si</strong> — в списках и таблицах, где нужен компактный круглый маркер</div>
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>bg</strong> — в карточках и деталях, где нужен читаемый текстовый бейдж</div>
+<div class="nt w" style="padding:8px 10px;font-size:10px"><strong>Цвет</strong> синхронизирован: один цвет = один статус везде в системе</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="cd" style="margin-top:14px">
+<h3>Граф маршрута согласования</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:14px">Вертикальный и горизонтальный вид этапов процесса. Цвет узла = статус этапа.</p>
+<div class="g2">
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Вертикальный вид</div>
+<div class="graph-flow-v">
+  <div class="gnode gnode-ok"><div class="gnode-dot" style="background:var(--ok)"></div><div class="gnode-label">Тех. контроль<span>Согласован</span></div></div>
+  <div class="garrow-v"></div>
+  <div class="gnode gnode-run"><div class="gnode-dot" style="background:var(--yak-blue)"></div><div class="gnode-label">Нач. отделения<span>Проверяется</span></div></div>
+  <div class="garrow-v"></div>
+  <div class="gnode gnode-req"><div class="gnode-dot" style="background:var(--yak-gray)"></div><div class="gnode-label">Главный конструктор<span>Не запущен</span></div></div>
+  <div class="garrow-v"></div>
+  <div class="gnode gnode-req"><div class="gnode-dot" style="background:var(--yak-gray)"></div><div class="gnode-label">Независимая инспекция<span>Не запущен</span></div></div>
+</div>
+</div>
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Цвета и типы узлов</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:11px">
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:var(--ok-l);border:2px solid var(--ok)"></div><div><strong style="color:var(--ok)">Зелёный</strong> — этап согласован</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:var(--warn-ll);border:2px solid var(--warn)"></div><div><strong style="color:var(--warn)">Оранжевый</strong> — согласован с замечаниями</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:var(--blue-ll);border:2px solid var(--blue)"></div><div><strong style="color:var(--blue)">Синий</strong> — находится в проверке</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:var(--n100);border:2px solid var(--muted2)"></div><div><strong style="color:var(--muted)">Серый</strong> — обязательный, не запущен</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:#fff;border:2px dashed var(--line)"></div><div><strong style="color:var(--muted)">Белый пунктир</strong> — опциональный, не выбран</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="gnode-swatch" style="background:#F0FDF4;border:2px dashed var(--ok)"></div><div><strong style="color:var(--ok)">Зелёный пунктир</strong> — опциональный, выбран</div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="cd" style="margin-top:14px">
+<h3>Иконки управления процессом</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:12px">Применяются в разделе «Выпуск документов» в карточке процесса и строках списка.</p>
+<div class="g2">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<div class="icon-chip"><span style="font-weight:900"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><polygon points="5,3 13,8 5,13" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/></svg></span> Запустить</div>
+<div class="icon-chip"><span style="font-weight:900"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Удалить</div>
+<div class="icon-chip"><span style="font-weight:900"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><rect x="3.5" y="3" width="3" height="10" rx="1" fill="currentColor"/><rect x="9.5" y="3" width="3" height="10" rx="1" fill="currentColor"/></svg></span> Приостановить</div>
+<div class="icon-chip"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 7V5a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Разблокировать ТС</div>
+<div class="icon-chip"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M13 8A5 5 0 113 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><polyline points="11,5 13,8 10,8" fill="currentColor"/></svg> Перезапустить</div>
+<div class="icon-chip" style="font-weight:700;color:var(--err);border-color:var(--err-l)">PDF</div>
+<div class="icon-chip"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M9.5 3L13 6.5L5.5 14H2.5V11L9.5 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><line x1="7.5" y1="5" x2="11" y2="8.5" stroke="currentColor" stroke-width="1.6"/></svg> Подписано</div>
+<div class="icon-chip"><span style="font-weight:900">+</span> Согласующий</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--txt2)">
+<div class="nt" style="padding:8px 10px;font-size:10px">Иконки отображаются в строке процесса при hover. Клик — выполняет действие.</div>
+<div class="nt w" style="padding:8px 10px;font-size:10px"><strong>PDF</strong> — доступна только на этапе физической подписи.</div>
+</div>
+</div>
+</div>
+
+<!-- ── Правила: Графики и диаграммы ── -->
+<div class="cd" style="margin-top:14px">
+<h3>Графики и диаграммы — правила оформления</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:14px">Единая высота, фиксированные цвета по смыслу, обязательные элементы (заголовок панели + легенда). Полный сборник примеров — раздел 7 «Аналитика».</p>
+
+<div style="display:grid;grid-template-columns:1.15fr .85fr;gap:14px">
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Эталонные примеры</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+<div class="panel">
+<div class="panel-h"><div><h5>Гистограмма (стандарт)</h5><p>Эффективность по подразделениям</p></div></div>
+<div class="panel-b"><div class="chb2"><div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div><div class="bars2"><div class="bar2 b1" style="height:75%"></div><div class="bar2 b1" style="height:68%"></div><div class="bar2 b1" style="height:55%"></div><div class="bar2 b1" style="height:70%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b1" style="height:44%"></div></div></div></div>
+</div>
+<div class="panel">
+<div class="panel-h"><div><h5>Круговая диаграмма</h5><p>Распределение по типу документа</p></div></div>
+<div class="panel-b"><div class="pie"></div><div class="legend" style="justify-content:center"><i style="background:var(--yak-blue)"></i> ИИ <i style="background:var(--yak-sky)"></i> РНО <i style="background:var(--yak-teal)"></i> ТР <i style="background:#8a98a5"></i> Прочие</div></div>
+</div>
+</div>
+
+<div class="panel" style="margin-bottom:10px">
+<div class="panel-h"><div><h5>Сравнительная гистограмма (2 серии)</h5><p>Поступившие vs согласованные — два цвета на одном поле</p></div></div>
+<div class="panel-b"><div class="chb2" style="height:180px"><div class="legend"><i style="background:var(--yak-blue)"></i> Поступивших <i style="background:var(--ok)"></i> Согласованных</div><div class="bars2" style="height:110px"><div class="bar2 b1" style="height:60%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b1" style="height:82%"></div><div class="bar2 b2" style="height:78%"></div><div class="bar2 b1" style="height:67%"></div><div class="bar2 b2" style="height:65%"></div><div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:72%"></div></div></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+<div class="metric"><strong>99</strong><span>Всего</span><em>+22% к прошл.</em></div>
+<div class="metric"><strong>72</strong><span>Согласованных</span></div>
+<div class="metric"><strong>19</strong><span>На доработке</span></div>
+<div class="metric"><strong>7</strong><span>Просрочено</span></div>
+</div>
+<div style="font-size:9px;color:var(--muted);margin-top:6px;font-style:italic">KPI-карточка <code style="font-size:9px">.metric</code> — 22/700 значение, 10/700 uppercase лейбл</div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Правила построения</div>
+
+<div style="display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--txt2)">
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>Контейнер</strong> — всегда <code>.panel</code> с <code>.panel-h</code> (заголовок + подзаголовок) и <code>.panel-b</code> (тело). Без заголовка график не используется.</div>
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>Высота</strong> — стандарт 200 px (<code>.chb2</code>), компакт 180 px. Поле баров — 115–120 px от низа, отступ <code>bottom:26px</code> под подписи.</div>
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>Бары</strong> — <code>flex:1</code>, gap 8 px, радиус <code>4 4 0 0</code>. Цвет = смысл (см. ниже).</div>
+<div class="nt w" style="padding:8px 10px;font-size:10px"><strong>Легенда</strong> обязательна. Класс <code>.legend</code>: <code>i</code> 8×8 px + текст 10/600 muted. У круговой — <code>justify-content:center</code>.</div>
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>Круговая</strong> — 150×150 px, не более 4 секторов. Использовать <code>conic-gradient</code> в порядке: blue → sky → teal → gray.</div>
+<div class="nt d" style="padding:8px 10px;font-size:10px"><strong>Нельзя:</strong> 3D-эффекты, тени на барах, повороты круговых, более 4 цветов, цвета вне палитры брендбука.</div>
+</div>
+
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 8px 0">Цвет = смысл (синхронизировано со статусами)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:10px">
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--yak-blue);border-radius:2px"></i> Основной показатель</div>
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--ok);border-radius:2px"></i> Успех / выпущено</div>
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--warn);border-radius:2px"></i> Предупреждение</div>
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--err);border-radius:2px"></i> Ошибка / просрочка</div>
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--yak-sky);border-radius:2px"></i> Доп. серия 2</div>
+<div style="display:flex;align-items:center;gap:6px"><i style="display:inline-block;width:14px;height:10px;background:var(--yak-gray);border-radius:2px"></i> Нейтральный / прочие</div>
+</div>
+
+<div class="kvitem" style="margin-top:10px"><strong>Спецификация</strong><span style="font-size:10.5px">Гистограмма 200×auto · круговая 150×150 · бары gap 8 · KPI 104×86 · легенда font-size 10/600</span></div>
+</div>
+
+</div>
+</div>
+
+<!-- ── Правила: Таблицы ── -->
+<div class="cd" style="margin-top:14px">
+<h3>Таблицы — правила оформления</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:14px">Единый каркас <code>.tablewrap</code> + <code>table</code>. Шапка-toolbar <code>.tlb</code> сверху. Hover на строке, контекстное меню «⋮», выбор через чекбокс. Полные примеры — раздел 4–6.</p>
+
+<div style="display:grid;grid-template-columns:1.25fr .75fr;gap:14px">
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Эталонная таблица — все обязательные элементы</div>
+
+<div class="tlb" style="margin-top:0">
+<div class="tl2"><div class="ch a">1 строка выбрана</div><div class="ch">Столбцы</div><div class="ch">Фильтры</div><div class="ch">Экспорт</div></div>
+<div class="tr2"><div class="bt ok sm">Согласовать</div><div class="bt d sm">Отклонить</div></div>
+</div>
+
+<div class="pn" style="margin-top:0">
+<div class="ph"><h5>Перечень процессов</h5><div></div></div>
+<div style="padding:0">
+<div class="tablewrap" style="border-radius:0;border-left:none;border-right:none">
+<table>
+<thead><tr><th style="width:28px"><input type="checkbox" disabled></th><th>⋮</th><th>Номер извещения ↑</th><th>Статус</th><th>Тип</th><th>Проект</th><th class="nw">Дата</th><th>Прогресс</th></tr></thead>
+<tbody>
+<tr><td><span class="ck-box checked" aria-checked="true"></span></td><td>⋮</td><td><strong>ИИ-741-2026-0042</strong></td><td><span class="bg bi"><span class="dt"></span>В проверке</span></td><td>ИИ</td><td>МС-21</td><td class="nw">08.04.2026</td><td>2/4</td></tr>
+<tr><td><input type="checkbox" disabled></td><td>⋮</td><td><strong>КВ.МС21-47-054975</strong></td><td><span class="bg bs"><span class="dt"></span>Завершён</span></td><td>ТР</td><td>МС-21</td><td class="nw">07.04.2026</td><td>4/4</td></tr>
+<tr><td><input type="checkbox" disabled></td><td>⋮</td><td><strong>КВ.1212-99-00007</strong></td><td><span class="bg bd"><span class="dt"></span>Возвращён</span></td><td>РНО</td><td>SSJ-100</td><td class="nw">05.04.2026</td><td>1/3</td></tr>
+<tr><td><input type="checkbox" disabled></td><td>⋮</td><td><strong>ТЕСТ.0099-26</strong></td><td><span class="bg bn"><span class="dt"></span>Не запущен</span></td><td>ИИ</td><td>МС-21</td><td class="nw">02.04.2026</td><td class="warncell">0/3</td></tr>
+</tbody>
+</table>
+</div>
+<div class="pg-bar"><span class="pg-info">1–4 из 247</span><div style="flex:1"></div><span>Строк на странице</span><span class="pg-sel">25</span><span class="pg-btn">‹</span><span class="pg-count">1 / 10</span><span class="pg-btn">›</span></div>
+</div>
+</div>
+
+<div style="font-size:9px;color:var(--muted);margin-top:8px;font-style:italic">Toolbar (.tlb) → заголовок панели (.ph) → шапка таблицы → строки → пагинация (.pg-bar). Все 5 уровней обязательны для таблиц-списков.</div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Правила колонок и строк</div>
+
+<div style="display:flex;flex-direction:column;gap:7px;font-size:11px">
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>thead</strong> — высота 32 px, фон <code>--n50</code>, текст 10/700 uppercase muted, letter-spacing .04em.</div>
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>tbody td</strong> — высота 32–36 px, padding 8×10/12, border-bottom <code>--line3</code>. Hover строки — <code>--blue-ll</code>.</div>
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>Ключевое поле</strong> (номер, название) — <code>&lt;strong&gt;</code>, без uppercase. Класс <code>.nw</code> на колонках с датой/номером.</div>
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>Статус</strong> — только через <code>.bg .bi/.bs/.bd/...</code> (бейдж + точка). Никогда — голым текстом или цветным td.</div>
+<div class="nt w" style="padding:8px 10px;font-size:10px"><strong>warncell</strong> — для критичных значений (просрочка, 0/N задач): <code>color:var(--err)</code>, фон <code>--err-ll</code>.</div>
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>Сортировка</strong> — стрелка <code>↑/↓</code> прямо в th. Активная — у одного th в таблице.</div>
+<div class="nt d" style="padding:8px 10px;font-size:10px"><strong>Нельзя:</strong> цветной фон ячейки без смысла, более 1 «жирного» поля в строке, иконки вместо бейджа статуса, вертикальные разделители колонок.</div>
+</div>
+
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 6px 0">Состояния строки</div>
+<div style="display:flex;flex-direction:column;gap:5px;font-size:10.5px">
+<div style="display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:14px;height:14px;border:1px solid var(--line2);background:#fff"></span> Обычная</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:14px;height:14px;border:1px solid var(--blue);background:var(--blue-ll)"></span> Hover (--blue-ll)</div>
+<div style="display:flex;align-items:center;gap:8px"><span class="ck-box checked" style="width:14px;height:14px"></span> Выбрана (чекбокс активен)</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:14px;height:14px;border:1px solid var(--err-l);background:var(--err-ll)"></span> Warncell — критичное значение</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ── Правила: Списки ── -->
+<div class="cd" style="margin-top:14px">
+<h3>Списки — правила оформления</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:14px">7 типов списков для разных контекстов. Каждый тип имеет один правильный класс — не смешивать стили между типами.</p>
+
+<div class="g3" style="margin-bottom:14px">
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">1 · Маркированный — в hero и callout</div>
+<div class="hc" style="background:#0F4DBC;color:#fff">
+<ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+<li style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.4"><span style="flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--yak-sky);margin-top:6px"></span>Дизайн-система и токены</li>
+<li style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.4"><span style="flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--yak-sky);margin-top:6px"></span>Общие паттерны</li>
+<li style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.4"><span style="flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--yak-sky);margin-top:6px"></span>11 разделов модуля</li>
+</ul>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:6px"><code>.hc ul</code> — маркер 5×5 px sky, gap 8 px</div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">2 · Нумерованный — справочники действий</div>
+<div class="history-list" style="display:flex;flex-direction:column;gap:6px">
+<div class="history-item" style="padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:var(--n50);font-size:11px"><b style="display:block;font-size:11px;color:var(--yak-dark);margin-bottom:2px">1. Запуск процесса</b>Старт созданного процесса.</div>
+<div class="history-item" style="padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:var(--n50);font-size:11px"><b style="display:block;font-size:11px;color:var(--yak-dark);margin-bottom:2px">2. Приостановка</b>Пауза процесса в работе.</div>
+<div class="history-item" style="padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:var(--n50);font-size:11px"><b style="display:block;font-size:11px;color:var(--yak-dark);margin-bottom:2px">3. Перезапуск</b>С первого этапа шаблона.</div>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:6px"><code>.history-list</code> — для нумерованных шагов</div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">3 · Key-value — карточки данных</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+<div class="kvitem"><strong>Тип</strong><span>ИИ</span></div>
+<div class="kvitem"><strong>Проект</strong><span>МС-21</span></div>
+<div class="kvitem"><strong>Прогресс</strong><span>2/4</span></div>
+<div class="kvitem"><strong>Приоритет</strong><span>Срочно</span></div>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:6px"><code>.kvitem</code> — лейбл 10/700 uppercase, значение 12/500</div>
+</div>
+
+</div>
+
+<div class="g3" style="margin-bottom:14px">
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">4 · Чипы — фильтры и теги</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<div class="icon-chip">+ Согласующий</div>
+<div class="icon-chip">Столбцы</div>
+<div class="icon-chip">Фильтры</div>
+<div class="icon-chip">Экспорт</div>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:8px"><code>.icon-chip</code> · h 24 px · pill-форма · hover blue</div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">5 · Список с индикаторами — proc-list</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--blue);border-radius:var(--rs);background:var(--blue-ll);font-size:11px"><div class="si" style="background:var(--blue);width:14px;height:14px"></div><div style="flex:1"><strong>ИИ-741-2026-0042</strong><span style="display:block;color:var(--muted);font-size:10px">МС-21 · 08.04.2026</span></div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:#fff;font-size:11px"><div class="si" style="background:var(--ok);width:14px;height:14px"></div><div style="flex:1"><strong>КВ.МС21-47-054975</strong><span style="display:block;color:var(--muted);font-size:10px">МС-21 · 07.04.2026</span></div></div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:#fff;font-size:11px"><div class="si" style="background:var(--yak-gray);width:14px;height:14px"></div><div style="flex:1"><strong>ТЕСТ.0099-26</strong><span style="display:block;color:var(--muted);font-size:10px">МС-21 · 02.04.2026</span></div></div>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:6px">Активный — синяя рамка + <code>--blue-ll</code></div>
+</div>
+
+<div>
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">6 · Сетка карточек — screen-list</div>
+<div class="screen-list" style="grid-template-columns:1fr 1fr">
+<div class="card-mini"><strong>Проверка задач</strong><span>Список и контекст. меню</span></div>
+<div class="card-mini"><strong>Выпуск документов</strong><span>Основной список выпускающего</span></div>
+<div class="card-mini"><strong>Согласование</strong><span>Список этапов на роли</span></div>
+<div class="card-mini"><strong>Распределение</strong><span>Таблица распределяющего</span></div>
+</div>
+<div class="nt" style="padding:6px 10px;font-size:10px;margin-top:6px"><code>.screen-list</code> — для перечня экранов и блоков</div>
+</div>
+
+</div>
+
+<div style="display:grid;grid-template-columns:1fr;gap:8px">
+<div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:0">Общие правила применения</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+<div class="nt ok" style="padding:8px 10px;font-size:10px"><strong>Один тип = один контекст.</strong> Маркированный — только в hero/callout, нумерованный — только для последовательных шагов, kv — только для атрибутов.</div>
+<div class="nt" style="padding:8px 10px;font-size:10px"><strong>Gap 6–8 px</strong> между элементами. Padding элемента 8×10 px. Никаких дефолтных <code>list-style</code>, <code>ul</code>/<code>ol</code> markers.</div>
+<div class="nt d" style="padding:8px 10px;font-size:10px"><strong>Нельзя:</strong> смешивать <code>•</code> и нумерацию в одном списке, использовать <code>&lt;br&gt;</code> вместо элементов, дефолтные браузерные маркеры, более 7 элементов без группировки.</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="sec-t" style="margin-top:24px"><div><h2>Справочники интерфейса</h2><p>Перечень кнопок управления статусом и редактирования процессов, вынесен из рабочих экранов.</p></div></div>
+<article class="scr" id="scr-7-08">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>7.2.1 Кнопки управления статусом процессов</h3>
+        <p>Полный справочник статусных действий выпускающего процесса.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="tb">
+      <div class="tw"><h4>Выпуск документов</h4><div class="sb">Функциональная матрица кнопок управления процессом.</div></div>
+      <div class="ta2"></div>
+    </div>
+            <div class="pn"><div class="ph"><h5>7.2.1 Кнопки управления статусом процессов</h5><div></div></div><div style="padding:14px"><div class="icon-grid"><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><polygon points="5,3 13,8 5,13" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Запуск</strong><div class="cap">Запуск созданного процесса в работу.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><strong>Удаление</strong><div class="cap">Полное удаление процесса и его данных.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><rect x="3.5" y="3" width="3" height="10" rx="1" fill="currentColor"/><rect x="9.5" y="3" width="3" height="10" rx="1" fill="currentColor"/></svg></div><div><strong>Приостановка</strong><div class="cap">Пауза процесса в работе.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 7V5a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><strong>Разблокировка в ТС</strong><div class="cap">Редакция документа в Teamcenter.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M13 8A5 5 0 113 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><polyline points="11,5 13,8 10,8" fill="currentColor"/></svg></div><div><strong>Перезапуск</strong><div class="cap">Старт процесса с первого этапа шаблона.</div></div></div><div class="icon-row"><div class="icon-btn">PDF</div><div><strong>PDF на подпись</strong><div class="cap">Доступно на этапе физической подписи.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><path d="M9.5 3L13 6.5L5.5 14H2.5V11L9.5 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><line x1="7.5" y1="5" x2="11" y2="8.5" stroke="currentColor" stroke-width="1.6"/></svg></div><div><strong>Подписано</strong><div class="cap">Перевод процесса на следующий этап после подписи.</div></div></div><div class="icon-row"><div class="icon-btn"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><strong>Добавить согласующего</strong><div class="cap">Создаёт новый параллельный этап.</div></div></div></div></div></div>
+  </div>
+</article>
+<article class="scr" id="scr-7-09">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>7.2.2 Кнопки редактирования процесса</h3>
+        <p>Отдельный экран-справочник по всем редактирующим действиям в карточке выпускаемого процесса.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="tb">
+      <div class="tw"><h4>Выпуск документов</h4><div class="sb">Редактирующие действия по процессу.</div></div>
+      <div class="ta2"></div>
+    </div>
+            <div class="pn"><div class="ph"><h5>7.2.2 Кнопки редактирования процесса</h5><div></div></div><div style="padding:14px"><div class="history-list"><div class="history-item"><b>1. Переназначение выпускающего сотрудника</b>Выбор филиала и ФИО сотрудника.</div><div class="history-item"><b>2. Редактирование процесса</b>Применяемость, тематика, этапы маршрута.</div><div class="history-item"><b>3. История изменений СУДП</b>Отдельное окно истории.</div><div class="history-item"><b>4. История процесса</b>История пользовательских действий по процессу.</div><div class="history-item"><b>5. Скачать историю в XLSX</b>Экспорт табличной истории.</div><div class="history-item"><b>6. Обоснование приоритета</b>Карточка с комментарием и документом-основанием.</div></div></div></div>
+  </div>
+</article>
+</section>
+
+
+<div class="fn">
+  <strong>АССКД — модуль КД.</strong> Этот файл — отдельный документ раздела, использует общую <a href="design-system.html">дизайн-систему&nbsp;v1.0</a> через <code>assets/tokens.css + base.css + components.css + shell.css</code>.
+  Менять оформление компонентов нужно только в общей таблице стилей — изменения автоматически распространяются на все разделы.
+</div>
+
+</div>
+</body>
+</html>
+

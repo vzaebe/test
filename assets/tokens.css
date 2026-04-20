@@ -1,0 +1,17 @@
+/* ============================================================================
+   АССКД design-system — TOKENS
+   CSS custom properties (design tokens) — single source of truth.
+   ============================================================================ */
+:root{
+  --yak-dark:#002664;--yak-blue:#0F4DBC;--yak-sky:#87C8DC;--yak-gray:#808F9A;--yak-dgray:#465056;
+  --yak-red:#CD191E;--yak-coral:#EB735A;--yak-teal:#00AFA5;
+  --bg:#F0F3F8;--panel:#FFF;--panel2:#F7F9FC;--line:#C8D1E0;--line2:#DAE1ED;--line3:#E8EDF5;
+  --txt:#1A1F2B;--txt2:#374151;--muted:#6B7280;--muted2:#9CA3AF;
+  --blue:var(--yak-blue);--blue-h:#0A3D9E;--blue-l:#D6E4F7;--blue-ll:#EBF1FA;
+  --ok:#059669;--ok-l:#D1FAE5;--ok-ll:#ECFDF5;--warn:#D97706;--warn-l:#FDE68A;--warn-ll:#FFFBEB;
+  --err:var(--yak-red);--err-l:#FECACA;--err-ll:#FEF2F2;
+  --n50:#F9FAFB;--n100:#F3F4F6;--n200:#E5E7EB;
+  --r:10px;--rs:6px;--rl:14px;--rxl:18px;
+  --sh:0 4px 12px rgba(0,38,100,.07);--shm:0 8px 24px rgba(0,38,100,.09);
+  --tr:150ms cubic-bezier(.4,0,.2,1);
+}

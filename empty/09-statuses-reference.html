@@ -1,0 +1,128 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>АССКД · 10. Справочник статусов (Прил. 3 / 4 / 5)</title>
+<meta name="description" content="Полный перечень статусов процессов, этапов и задач из Приложений 3, 4, 5 руководства пользователя АССКД."/>
+<link rel="stylesheet" href="assets/asskd-design-system.css"/>
+<style>
+/* Локальные надстройки страницы — только верхняя навигация и хлебная крошка.
+   Все цвета/токены берутся ТОЛЬКО из общей дизайн-системы. */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
+  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
+  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
+.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
+.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
+.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.page-head .crumbs{font-size:11px;color:var(--muted)}
+.page-head .crumbs a{color:var(--muted);text-decoration:none}
+.page-head .crumbs a:hover{color:var(--yak-blue)}
+.page-head .meta{display:flex;align-items:center;gap:8px}
+.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="pg">
+<nav class="toc">
+  <a href="index.html">← Каталог</a>
+  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
+  <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
+  <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
+  <a href="05-document-approval.html">6. Раздел «Согласование документов»</a>
+  <a href="06-analytics.html">7. Раздел «Аналитика»</a>
+  <a href="07-process-monitoring.html">8. Раздел «Наблюдение за процессами»</a>
+  <a href="08-logout.html">9. Выход из системы</a>
+  <a href="09-statuses-reference.html" class="a">10. Справочник статусов (Прил. 3 / 4 / 5)</a>
+  <a href="design-system.html">DS · v1.0 (канон)</a>
+</nav>
+
+<header class="page-head">
+  <div class="crumbs"><a href="index.html">АССКД · Каталог разделов</a> &nbsp;/&nbsp; <span style="color:var(--txt);font-weight:700">10. Справочник статусов (Прил. 3 / 4 / 5)</span></div>
+  <div class="meta"><span class="pill">Reference</span></div>
+</header>
+
+<!-- ═══ 10. СПРАВОЧНИК СТАТУСОВ ═══ -->
+<section class="sec sec-big" id="section-statuses">
+<div class="sec-t"><div><h2>10. Справочник статусов</h2><p>Полный перечень из Приложений 3, 4, 5 руководства пользователя АССКД. Все три категории используют общий компонент <code>.st-row</code> (см. раздел 1 — Дизайн-система). Цвет = смысл; форма строки одинакова по всему модулю.</p></div><div class="pill">Приложения 3–5 · Унифицировано</div></div>
+
+<!-- Лента-подсказка про связку с дизайн-системой -->
+<div class="nt" style="margin-bottom:14px">
+  Каждый статус ниже = пара «индикатор <strong>.si</strong> + бейдж <strong>.bg</strong>». Один цвет — один смысл во всём модуле. См. раздел <a href="#section-ds" style="color:var(--blue);font-weight:700">1. Дизайн-система → Статусные индикаторы</a>.
+</div>
+
+<div class="g3">
+
+<div class="cd">
+<h3>Статусы процессов <span style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-left:6px">Приложение 3</span></h3>
+<div style="margin-top:10px">
+  <div class="st-row"><div class="si" style="background:var(--blue)"></div><div class="st-name">Проверяется</div><div class="st-desc">в процессе согласования</div></div>
+  <div class="st-row"><div class="si" style="background:var(--ok)"></div><div class="st-name">Завершён</div><div class="st-desc">документ согласован</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-red)"></div><div class="st-name">Возвращён</div><div class="st-desc">замечания на активных этапах</div></div>
+  <div class="st-row"><div class="si" style="background:#7C3AED"></div><div class="st-name">Остановлен</div><div class="st-desc">процесс приостановлен</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-gray)"></div><div class="st-name">Не запущен</div><div class="st-desc">ещё не стартовал</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-coral)"></div><div class="st-name">Треб. физ. подпись</div><div class="st-desc">этап физической подписи</div></div>
+  <div class="st-row"><div class="si" style="background:var(--warn)"></div><div class="st-name">Запрос на откат</div><div class="st-desc">запрошен откат на предыдущий этап</div></div>
+</div>
+</div>
+
+<div class="cd">
+<h3>Статусы этапов <span style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-left:6px">Приложение 4</span></h3>
+<div style="margin-top:10px">
+  <div class="st-row"><div class="si" style="background:var(--ok)"></div><div class="st-name">Согласован</div><div class="st-desc">этап одобрен подписантом</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-gray)"></div><div class="st-name">Не запущен</div><div class="st-desc">этап ещё не активирован</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-red)"></div><div class="st-name">Возвращён на доработку</div><div class="st-desc">есть замечания, требуется правка</div></div>
+  <div class="st-row"><div class="si" style="background:var(--blue)"></div><div class="st-name">Проверяется</div><div class="st-desc">этап в работе у согласующего</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-teal)"></div><div class="st-name">Ожидает проверки</div><div class="st-desc">в очереди у согласующего</div></div>
+  <div class="st-row"><div class="si" style="background:var(--warn)"></div><div class="st-name">Согласован с замечаниями</div><div class="st-desc">принят с указанием правок</div></div>
+  <div class="st-row"><div class="si" style="background:#7C3AED"></div><div class="st-name">Остановлен</div><div class="st-desc">этап приостановлен</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-coral)"></div><div class="st-name">На пересогласование</div><div class="st-desc">требуется повторное согласование</div></div>
+  <div class="st-row"><div class="si" style="background:var(--muted)"></div><div class="st-name">Ожидает назначения в ТС</div><div class="st-desc">ждёт назначения в Teamcenter</div></div>
+</div>
+</div>
+
+<div class="cd">
+<h3>Статусы задач <span style="font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-left:6px">Приложение 5</span></h3>
+<div style="margin-top:10px">
+  <div class="st-row"><div class="si" style="background:var(--ok)"></div><div class="st-name">Согласована</div><div class="st-desc">задача выполнена</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-gray)"></div><div class="st-name">Не запущена</div><div class="st-desc">задача ещё не активирована</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-red)"></div><div class="st-name">Возвращена на доработку</div><div class="st-desc">требуется доработка исполнителем</div></div>
+  <div class="st-row"><div class="si" style="background:var(--blue)"></div><div class="st-name">Проверяется</div><div class="st-desc">задача в работе</div></div>
+  <div class="st-row"><div class="si" style="background:var(--yak-teal)"></div><div class="st-name">Ожидает проверки</div><div class="st-desc">в очереди у проверяющего</div></div>
+  <div class="st-row"><div class="si" style="background:var(--err)"></div><div class="st-name">Отклонена</div><div class="st-desc">задача снята из работы</div></div>
+  <div class="st-row"><div class="si" style="background:#7C3AED"></div><div class="st-name">Остановлена</div><div class="st-desc">задача приостановлена</div></div>
+  <div class="st-row"><div class="si" style="background:var(--ok)"></div><div class="st-name">Согласована вышестоящим</div><div class="st-desc">принята руководителем</div></div>
+</div>
+</div>
+
+</div>
+
+<!-- Сводная карта цветов для быстрой памяти -->
+<div class="cd" style="margin-top:14px">
+  <h3>Карта цветов (один цвет = один смысл во всех разделах)</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px">
+    <div class="st-row"><div class="si" style="background:var(--blue)"></div><div class="st-name" style="min-width:auto">Синий</div><div class="st-desc">в работе</div></div>
+    <div class="st-row"><div class="si" style="background:var(--ok)"></div><div class="st-name" style="min-width:auto">Зелёный</div><div class="st-desc">согласовано</div></div>
+    <div class="st-row"><div class="si" style="background:var(--warn)"></div><div class="st-name" style="min-width:auto">Оранжевый</div><div class="st-desc">с замечаниями</div></div>
+    <div class="st-row"><div class="si" style="background:var(--yak-red)"></div><div class="st-name" style="min-width:auto">Красный</div><div class="st-desc">возврат / откат</div></div>
+    <div class="st-row"><div class="si" style="background:var(--yak-teal)"></div><div class="st-name" style="min-width:auto">Бирюзовый</div><div class="st-desc">ожидает</div></div>
+    <div class="st-row"><div class="si" style="background:var(--yak-coral)"></div><div class="st-name" style="min-width:auto">Коралл</div><div class="st-desc">подпись / пересогласов.</div></div>
+    <div class="st-row"><div class="si" style="background:#7C3AED"></div><div class="st-name" style="min-width:auto">Фиолетовый</div><div class="st-desc">остановлено</div></div>
+    <div class="st-row"><div class="si" style="background:var(--yak-gray)"></div><div class="st-name" style="min-width:auto">Серый</div><div class="st-desc">не запущено</div></div>
+  </div>
+</div>
+
+</section>
+
+<div class="fn">
+  <strong>АССКД — модуль КД.</strong> Этот файл — отдельный документ раздела, использует общую <a href="design-system.html">дизайн-систему&nbsp;v1.0</a> через <code>assets/asskd-design-system.css</code>.
+  Менять оформление компонентов нужно только в общей таблице стилей — изменения автоматически распространяются на все разделы.
+</div>
+
+</div>
+</body>
+</html>

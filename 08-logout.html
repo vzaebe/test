@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>АССКД · 9. Выход из системы</title>
+<meta name="description" content="Меню пользователя в нижнем левом углу интерфейса."/>
+<link rel="stylesheet" href="assets/tokens.css"/>
+<link rel="stylesheet" href="assets/base.css"/>
+<link rel="stylesheet" href="assets/components.css"/>
+<link rel="stylesheet" href="assets/shell.css"/>
+<style>
+/* Локальные надстройки страницы — только верхняя навигация и хлебная крошка.
+   Все цвета/токены берутся ТОЛЬКО из общей дизайн-системы. */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
+  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
+  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
+.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
+.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
+.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.page-head .crumbs{font-size:11px;color:var(--muted)}
+.page-head .crumbs a{color:var(--muted);text-decoration:none}
+.page-head .crumbs a:hover{color:var(--yak-blue)}
+.page-head .meta{display:flex;align-items:center;gap:8px}
+.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="pg">
+<nav class="toc">
+  <a href="index.html">← Каталог</a>
+  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
+  <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
+  <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
+  <a href="05-document-approval.html">6. Раздел «Согласование документов»</a>
+  <a href="06-analytics.html">7. Раздел «Аналитика»</a>
+  <a href="07-process-monitoring.html">8. Раздел «Наблюдение за процессами»</a>
+  <a href="08-logout.html" class="a">9. Выход из системы</a>
+  <a href="09-statuses-reference.html">10. Справочник статусов (Прил. 3 / 4 / 5)</a>
+  <a href="design-system.html">DS · v1.0 (канон)</a>
+</nav>
+
+<header class="page-head">
+  <div class="crumbs"><a href="index.html">АССКД · Каталог разделов</a> &nbsp;/&nbsp; <span style="color:var(--txt);font-weight:700">9. Выход из системы</span></div>
+  <div class="meta"><span class="pill">1 экран · Раздел 11</span></div>
+</header>
+
+<section class="sec sec-big" id="section-11">
+  <div class="sec-t">
+    <div>
+      <h2>9. Выход из системы</h2>
+      <p>Меню пользователя в нижнем левом углу интерфейса.</p>
+    </div>
+    <div class="pill">1 экран · Раздел 11</div>
+  </div>
+  
+<article class="scr" id="scr-11-01">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>11. Выход из системы</h3>
+        <p>Выход из системы через меню пользователя в нижнем левом углу интерфейса.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div style="display:grid;grid-template-columns:60px 1fr;gap:0;background:#fff;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;min-height:320px">
+  <!-- Rail sidebar mock -->
+  <div style="background:#FAFBFD;border-right:1px solid var(--line2);padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:2px">
+    <div style="width:36px;height:36px;border-radius:8px;background:var(--yak-dark);display:grid;place-items:center;color:#fff;font-weight:700;font-size:11px;margin-bottom:10px">КД</div>
+    <div class="rb"><span class="ico ico-list"></span><span>Процессы</span></div>
+    <div class="rb"><span class="ico ico-doc"></span><span>Выпуск</span></div>
+    <div class="rb"><span class="ico ico-check"></span><span>Согласов.</span></div>
+    <div class="rb"><span class="ico ico-chart"></span><span>Аналитика</span></div>
+    <div class="rb"><span class="ico ico-eye"></span><span>Набл-ние</span></div>
+    <div style="flex:1"></div>
+    <!-- User avatar with popup -->
+    <div style="position:relative">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--yak-blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;cursor:pointer;border:2px solid var(--blue-l)">КА</div>
+      <!-- Dropdown menu -->
+      <div style="position:absolute;bottom:44px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line2);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,38,100,.15);overflow:hidden;min-width:220px;z-index:10">
+        <div style="padding:12px 14px;border-bottom:1px solid var(--line2);background:var(--panel2)">
+          <div style="font-size:12px;font-weight:700;color:var(--yak-dark)">Корчагин Александр А.</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">korchagina@yakovlev.ru</div>
+        </div>
+        <div style="padding:4px">
+          <div style="padding:8px 10px;border-radius:var(--rs);font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:8px;cursor:pointer" onmouseover="this.style.background='var(--n50)'" onmouseout="this.style.background=''">
+            <div style="width:20px;height:20px;border-radius:4px;background:var(--n100);display:grid;place-items:center;font-size:10px">КА</div>
+            Мой профиль
+          </div>
+          <div style="padding:8px 10px;border-radius:var(--rs);font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:8px;cursor:pointer" onmouseover="this.style.background='var(--n50)'" onmouseout="this.style.background=''">
+            <div style="width:20px;height:20px;border-radius:4px;background:var(--n100);display:grid;place-items:center;font-size:10px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.1 3.1l1.4 1.4M11.5 11.5l1.4 1.4M3.1 12.9l1.4-1.4M11.5 4.5l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            Настройки
+          </div>
+          <div style="height:1px;background:var(--line2);margin:4px 0"></div>
+          <div style="padding:8px 10px;border-radius:var(--rs);font-size:11px;color:var(--err);display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:700" onmouseover="this.style.background='var(--err-ll)'" onmouseout="this.style.background=''">
+            <div style="width:20px;height:20px;border-radius:4px;background:var(--err-ll);display:grid;place-items:center;font-size:10px;color:var(--err)">→</div>
+            Выйти из системы
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Content area placeholder -->
+  <div style="padding:20px;display:flex;align-items:center;justify-content:center;background:var(--bg)">
+    <div style="text-align:center;color:var(--muted)">
+      <div style="margin-bottom:8px;opacity:.3"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="5" fill="currentColor" opacity=".4"/></svg></div>
+      <div style="font-size:12px">Рабочая область системы</div>
+      <div style="font-size:10px;margin-top:4px">Меню выхода открывается кликом по аватару (КА) в левом нижнем углу</div>
+    </div>
+  </div>
+</div>
+  </div>
+</article>
+
+</section>
+
+
+
+<div class="fn">
+  <strong>АССКД — модуль КД.</strong> Этот файл — отдельный документ раздела, использует общую <a href="design-system.html">дизайн-систему&nbsp;v1.0</a> через <code>assets/tokens.css + base.css + components.css + shell.css</code>.
+  Менять оформление компонентов нужно только в общей таблице стилей — изменения автоматически распространяются на все разделы.
+</div>
+
+</div>
+</body>
+</html>
+

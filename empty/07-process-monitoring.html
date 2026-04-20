@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>АССКД · 8. Раздел «Наблюдение за процессами»</title>
+<meta name="description" content="Раздел для наблюдающих пользователей: процессы подразделения, приоритетные, ВП, все процессы."/>
+<link rel="stylesheet" href="assets/asskd-design-system.css"/>
+<style>
+/* Локальные надстройки страницы — только верхняя навигация и хлебная крошка.
+   Все цвета/токены берутся ТОЛЬКО из общей дизайн-системы. */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
+  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
+  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
+.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
+.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
+.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.page-head .crumbs{font-size:11px;color:var(--muted)}
+.page-head .crumbs a{color:var(--muted);text-decoration:none}
+.page-head .crumbs a:hover{color:var(--yak-blue)}
+.page-head .meta{display:flex;align-items:center;gap:8px}
+.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="pg">
+<nav class="toc">
+  <a href="index.html">← Каталог</a>
+  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
+  <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
+  <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
+  <a href="05-document-approval.html">6. Раздел «Согласование документов»</a>
+  <a href="06-analytics.html">7. Раздел «Аналитика»</a>
+  <a href="07-process-monitoring.html" class="a">8. Раздел «Наблюдение за процессами»</a>
+  <a href="08-logout.html">9. Выход из системы</a>
+  <a href="09-statuses-reference.html">10. Справочник статусов (Прил. 3 / 4 / 5)</a>
+  <a href="design-system.html">DS · v1.0 (канон)</a>
+</nav>
+
+<header class="page-head">
+  <div class="crumbs"><a href="index.html">АССКД · Каталог разделов</a> &nbsp;/&nbsp; <span style="color:var(--txt);font-weight:700">8. Раздел «Наблюдение за процессами»</span></div>
+  <div class="meta"><span class="pill">17 экранов · Раздел 10</span></div>
+</header>
+
+<section class="sec sec-big" id="section-10">
+  <div class="sec-t">
+    <div>
+      <h2>8. Раздел «Наблюдение за процессами»</h2>
+      <p>4 вкладки (процессы подразделения, приоритетные, все процессы ВП, все процессы) с подвкладками и сценариями управления приоритетом.</p>
+    </div>
+    <div class="pill">17 экранов · Раздел 10</div>
+  </div>
+  
+<article class="scr" id="scr-10-01">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10. Раздел «Наблюдение за процессами»</h3>
+        <p>Точка входа в раздел наблюдения и набор основных вкладок.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub active">Общая информация</div><div class="sub">Выпускаемые</div><div class="sub">Процессы в проверке</div><div class="sub">Курируемые задачи</div></div><div class="content-grid"><div class="callout"><h6>Структура раздела</h6><p>Раздел открывается по пиктограмме глаза на левом меню и содержит четыре вкладки: «Процессы подразделения», «Приоритетные процессы», «Все процессы ВП» и «Все процессы».</p></div></div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-02">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.1 Вкладка «Процессы подразделения»</h3>
+        <p>Общий экран вкладки процессов подразделения и состав её подвкладок.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub active">Общая информация</div><div class="sub">Выпускаемые</div><div class="sub">Процессы в проверке</div><div class="sub">Курируемые задачи</div></div><div class="content-grid">
+<div class="split3">
+<div class="panel"><div class="panel-h"><div><h5>Проверка документов</h5><p>Состояние документов</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Документов ожидающих проверки</strong><span>32</span></div><div class="kvitem"><strong>Документов в процессе проверки</strong><span>11</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Проверка задач</h5><p>Состояние задач</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Задач ожидающих проверки</strong><span>18</span></div><div class="kvitem"><strong>Задач в процессе проверки</strong><span>3</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Выпуск документов</h5><p>Общая сводка</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Выпускаемых документов</strong><span>95</span></div></div></div></div>
+</div>
+<div class="panel" style="margin-top:12px">
+<div class="panel-h"><div><h5>Сотрудники подразделения</h5><p>Документы в процессе выпуска и задачи в процессе проверки</p></div></div>
+<div class="panel-b"><div class="tablewrap"><table><thead><tr><th>Сотрудник</th><th>Документы в процессе выпуска</th><th>Задачи в процессе проверки</th></tr></thead><tbody><tr><td>Хлыстова Мария Антоновна</td><td>2</td><td>0</td></tr><tr><td>Иван Вячеслав Евгеньевич</td><td>0</td><td>0</td></tr><tr><td>Маслак Александр Евгеньевич</td><td>44</td><td>0</td></tr></tbody></table></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-03">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.1.1 Вкладка «Общая информация»</h3>
+        <p>Сводные показатели по документам, задачам и выпускаемым документам.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub active">Общая информация</div><div class="sub">Выпускаемые</div><div class="sub">Процессы в проверке</div><div class="sub">Курируемые задачи</div></div><div class="content-grid">
+<div class="split3">
+<div class="panel"><div class="panel-h"><div><h5>Проверка документов</h5><p>Состояние документов</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Документов ожидающих проверки</strong><span>32</span></div><div class="kvitem"><strong>Документов в процессе проверки</strong><span>11</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Проверка задач</h5><p>Состояние задач</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Задач ожидающих проверки</strong><span>18</span></div><div class="kvitem"><strong>Задач в процессе проверки</strong><span>3</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Выпуск документов</h5><p>Общая сводка</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Выпускаемых документов</strong><span>95</span></div></div></div></div>
+</div>
+<div class="panel" style="margin-top:12px">
+<div class="panel-h"><div><h5>Сотрудники подразделения</h5><p>Документы в процессе выпуска и задачи в процессе проверки</p></div></div>
+<div class="panel-b"><div class="tablewrap"><table><thead><tr><th>Сотрудник</th><th>Документы в процессе выпуска</th><th>Задачи в процессе проверки</th></tr></thead><tbody><tr><td>Хлыстова Мария Антоновна</td><td>2</td><td>0</td></tr><tr><td>Иван Вячеслав Евгеньевич</td><td>0</td><td>0</td></tr><tr><td>Маслак Александр Евгеньевич</td><td>44</td><td>0</td></tr></tbody></table></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-04">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.1.2 Вкладка «Выпускаемые»</h3>
+        <p>Просмотр выпускаемых процессов подразделения, переназначение выпускающего и удаление задачи.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub">Общая информация</div><div class="sub active">Выпускаемые</div><div class="sub">Процессы в проверке</div><div class="sub">Курируемые задачи</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Выпускаемые процессы подразделения</h5><p>Контекстные действия по строке</p></div></div><div class="panel-b">
+<div class="tablewrap"><table><thead><tr><th></th><th>Выпускающий</th><th>Номер извещения</th><th>Тип документа</th><th>Проект</th><th>Дата начала</th></tr></thead><tbody><tr><td>⋮</td><td>Маслак А.А.</td><td>KB.1212-00-000076-26.CN</td><td>ИИ</td><td>МС-21</td><td>2026-03-10</td></tr><tr><td>⋮</td><td>Маслак А.А.</td><td>KB.1212-01-000223.RNO</td><td>РНО</td><td>МС-21</td><td>2026-03-12</td></tr></tbody></table></div>
+<div class="info-menu" style="margin-top:10px"><div>Переназначить выпускающего</div><div>Удалить задачу</div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Переназначение выпускающего сотрудника</h5><p>Выбор филиала и сотрудника</p></div></div><div class="panel-b"><div class="field"><label>Филиал</label><div class="input">ИАЗ</div></div><div class="field" style="margin-top:10px"><label>Сотрудник</label><div class="input">Введите ФИО</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Выбрать</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-05">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.1.3 Вкладка «Процессы в проверке»</h3>
+        <p>Добавление задач по выделенным документам или через контекстное меню строки.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub">Общая информация</div><div class="sub">Выпускаемые</div><div class="sub active">Процессы в проверке</div><div class="sub">Курируемые задачи</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Процессы в проверке</h5><p>Добавление задач по чекбоксам или по строке</p></div></div><div class="panel-b">
+<div class="module-actions" style="margin-bottom:10px"><div class="bt tl2 sm">Добавить задачу</div></div>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>Номер извещения</th><th>Название этапа</th><th>Применяемость</th><th>Курирующее подразделение</th></tr></thead><tbody><tr><td><input checked="" disabled="" type="checkbox"/></td><td>⋮</td><td>1345</td><td>1</td><td>23</td><td>Отдел эффективности проект...</td></tr><tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>IZ.1231-57-014417-33.CN</td><td>Технологический контроль</td><td>0012UP</td><td>Бригада управления изменен...</td></tr></tbody></table></div>
+</div></div>
+<div class="panel"><div class="panel-h"><div><h5>Добавление задачи</h5><p>Форма создания задачи</p></div></div><div class="panel-b"><div class="field"><label>Название задачи</label><div class="input">Название задачи</div></div><div class="field" style="margin-top:10px"><label>Сотрудник</label><div class="input">ФИО сотрудника</div></div><div class="field" style="margin-top:10px"><label>Планируемая дата окончания</label><div class="input">DD-MM-YYYY</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Добавить</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-06">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.1.4 Вкладка «Курируемые задачи»</h3>
+        <p>Управление курируемыми задачами, назначение проверяющего и удаление задачи.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2 active">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="analytics-subtabs"><div class="sub">Общая информация</div><div class="sub">Выпускаемые</div><div class="sub">Процессы в проверке</div><div class="sub active">Курируемые задачи</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Курируемые задачи</h5><p>Назначение проверяющего и удаление задачи</p></div></div><div class="panel-b">
+<div class="module-actions" style="margin-bottom:10px"><div class="bt s sm">Назначить проверяющего</div></div>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>Задание</th><th>Статус задачи</th><th>Номер извещения</th><th>Проект</th></tr></thead><tbody><tr><td><input checked="" disabled="" type="checkbox"/></td><td>⋮</td><td>Бригада контроля и администриров...</td><td>Ожидает проверки</td><td>KB.3434-33-43343-30.CN</td><td>MC-21</td></tr></tbody></table></div>
+<div class="info-menu" style="margin-top:10px"><div>Назначить проверяющего</div><div>Удалить задачу</div></div>
+</div></div>
+<div class="panel"><div class="panel-h"><div><h5>Переназначение выпускающего сотрудника</h5><p>Используется при назначении проверяющего</p></div></div><div class="panel-b"><div class="field"><label>Филиал</label><div class="input">Филиал</div></div><div class="field" style="margin-top:10px"><label>Сотрудник</label><div class="input">Сотрудник</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Выбрать</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-07">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2 Вкладка «Приоритетные процессы»</h3>
+        <p>Добавление, изменение, удаление и просмотр информации о приоритетных процессах.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="panel">
+<div class="panel-h"><div><h5>Список приоритетных процессов</h5><p>Просмотр, назначение, изменение и удаление приоритетов</p></div>{badge('warn','priority')}</div>
+<div class="panel-b">
+<div class="module-actions" style="margin-bottom:10px"><div class="bt tl2 sm">Добавить приоритетные процессы</div><div class="bt s sm">Изменить приоритет</div><div class="bt d sm">Удалить приоритет</div></div>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>Заведен в АССКД</th><th>Согласован</th><th>Номер извещения</th><th>Тип документа</th><th>Проект</th><th>Приоритет</th><th>Выпускающее подразделение</th></tr></thead><tbody>
+<tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>Да</td><td>Нет</td><td>FK.MC21-000930.RNO</td><td>ИИ — Схема электрическая</td><td>MC-21</td><td>Срочно</td><td>Отдел эффективности проектирования</td></tr>
+<tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>Нет</td><td>Нет</td><td>FK.MC21-000420.RNO</td><td>ИИ — Копия 22</td><td>MC-21</td><td>Срочно</td><td>Отдел эффективности проектирования</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="callout" style="margin-top:12px"><h6>Контекстное меню строки</h6><p>Через три точки доступны: просмотр информации по приоритетности процесса, изменение обоснования приоритетности, изменение приоритета и удаление приоритета. Массовые действия доступны по чекбоксам.</p></div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-08">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.1 Окно добавления приоритетного процесса</h3>
+        <p>Окно добавления приоритетных процессов и сортировка по столбцам.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Приоритетные процессы</h5><p>Кнопка редактирования столбцов в заголовке</p></div></div><div class="panel-b">
+<div class="panel">
+<div class="panel-h"><div><h5>Список приоритетных процессов</h5><p>Просмотр, назначение, изменение и удаление приоритетов</p></div>{badge('warn','priority')}</div>
+<div class="panel-b">
+<div class="module-actions" style="margin-bottom:10px"><div class="bt tl2 sm">Добавить приоритетные процессы</div><div class="bt s sm">Изменить приоритет</div><div class="bt d sm">Удалить приоритет</div></div>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>Заведен в АССКД</th><th>Согласован</th><th>Номер извещения</th><th>Тип документа</th><th>Проект</th><th>Приоритет</th><th>Выпускающее подразделение</th></tr></thead><tbody>
+<tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>Да</td><td>Нет</td><td>FK.MC21-000930.RNO</td><td>ИИ — Схема электрическая</td><td>MC-21</td><td>Срочно</td><td>Отдел эффективности проектирования</td></tr>
+<tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>Нет</td><td>Нет</td><td>FK.MC21-000420.RNO</td><td>ИИ — Копия 22</td><td>MC-21</td><td>Срочно</td><td>Отдел эффективности проектирования</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</div></div>
+<div class="panel"><div class="panel-h"><div><h5>Добавление приоритетных процессов</h5><p>Окно добавления процесса с файлами и комментарием</p></div></div><div class="panel-b"><div class="split2" style="grid-template-columns:1fr 1fr"><div class="tablewrap"><table><thead><tr><th>Идентификатор документа</th><th>Приоритет</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:var(--muted)">Нет строк</td></tr></tbody></table></div><div class="stack"><div class="callout"><h6>Обоснование приоритетности</h6><p>Добавление документа(-ов)</p><div class="input" style="margin-top:8px">Файлы не выбраны</div></div><div class="field"><label>Комментарий</label><div class="input" style="height:72px;align-items:flex-start;padding-top:10px">Комментарий / обоснование…</div></div></div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-09">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.1.1 Добавление приоритетного процесса</h3>
+        <p>Единичное добавление через плюс и массовая загрузка через CSV.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Добавление приоритетного процесса</h5><p>Единичное добавление и загрузка CSV</p></div></div><div class="panel-b"><div class="module-actions" style="margin-bottom:10px"><div class="bt tl2 sm"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="bt s sm">CSV</div><div class="bt s sm">Шаблон</div></div><div class="split2"><div class="callout"><h6>Добавление приоритетного процесса</h6><div class="input" style="margin-top:8px">Идентификатор процесса</div><div class="module-actions" style="margin-top:8px"><div class="bt p sm">Добавить</div><div class="bt s sm">Отмена</div></div></div><div class="callout"><h6>Открытие файла CSV</h6><p>Выбор CSV-файла из файловой системы. Пользователь открывает нужный документ и подтверждает выбор через кнопку «Открыть».</p></div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-10">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.1.2 Выбор приоритета для процесса</h3>
+        <p>Выбор категории приоритета после выделения процессов.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Список приоритетных процессов</h5><p>Выбор процессов по чекбоксам</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th>Идентификатор документа</th><th>Приоритет</th></tr></thead><tbody><tr><td><input checked="" disabled="" type="checkbox"/></td><td>KB.1211-56-445059-25.CN</td><td></td></tr></tbody></table></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Выбор приоритета</h5><p>Назначение категории приоритета</p></div></div><div class="panel-b"><div class="field"><label>Приоритет</label><div class="input">Срочно / Очень срочно / —</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Выбрать</div><div class="bt s sm">Отмена</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-11">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.1.3 Удаление приоритета</h3>
+        <p>Удаление приоритета через контекстное меню или массовым действием.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Удаление приоритета</h5><p>Два пути удаления: контекстное меню и массовое действие</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th></th><th>Идентификатор документа</th><th>Приоритет</th></tr></thead><tbody><tr><td><input checked="" disabled="" type="checkbox"/></td><td>⋮</td><td>KB.1211-56-346555-09.CN</td><td>Срочно</td></tr></tbody></table></div><div class="info-menu" style="margin-top:10px"><div>Удалить</div></div><div class="module-actions" style="margin-top:10px"><div class="bt d sm">Удалить приоритет</div></div></div></div>
+<div class="callout"><h6>Логика удаления</h6><p>Приоритет можно удалить либо по одному процессу через выпадающее меню строки, либо массово через выбор нескольких чекбоксами и нажатие пиктограммы удаления.</p></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-12">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.1.4 Сохранение приоритета</h3>
+        <p>Прикрепление файла-обоснования, комментарий и сохранение приоритета.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Список приоритетных процессов</h5><p>Подготовка к сохранению</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th>Идентификатор документа</th><th>Приоритет</th></tr></thead><tbody><tr><td><input disabled="" type="checkbox"/></td><td>KB.1217-56-346555-09.CN</td><td>Срочно</td></tr></tbody></table></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Обоснование приоритетности</h5><p>Файл-обоснование и комментарий</p></div></div><div class="panel-b"><div class="field"><label>Файл-обоснование</label><div class="input">1. report (17).xlsx</div></div><div class="module-actions" style="margin-top:8px"><div class="bt tl2 sm">Выбрать файлы</div><div class="bt d sm">Удалить файл</div></div><div class="field" style="margin-top:10px"><label>Комментарий / обоснование</label><div class="input" style="height:90px;align-items:flex-start;padding-top:10px">Текст</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Сохранить</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-13">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.2 Изменение приоритета</h3>
+        <p>Изменение приоритета через чекбоксы или контекстное меню строки.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Изменение приоритета</h5><p>Выбор одного или нескольких процессов</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th></th><th>Номер извещения</th><th>Проект</th><th>Приоритет</th></tr></thead><tbody><tr><td><input checked="" disabled="" type="checkbox"/></td><td>⋮</td><td>FK.MC21-000420.RNO</td><td>MC-21</td><td>Срочно</td></tr></tbody></table></div><div class="info-menu" style="margin-top:10px"><div>Просмотреть информацию по приоритетности процесса</div><div>Изменить обоснование приоритетности</div><div>Изменить приоритет</div><div>Удалить приоритет</div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Выбор приоритета</h5><p>Изменение значения</p></div></div><div class="panel-b"><div class="field"><label>Приоритет</label><div class="input">Новый приоритет</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Выбрать</div><div class="bt s sm">Отмена</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-14">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.3 Изменение обоснования приоритета</h3>
+        <p>Редактирование комментария-обоснования для выбранного процесса.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Контекстное меню</h5><p>Выбор процесса и переход к изменению обоснования</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th></th><th>Номер извещения</th></tr></thead><tbody><tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>FK.MC21-000420.RNO</td></tr></tbody></table></div><div class="info-menu" style="margin-top:10px"><div>Просмотреть информацию по приоритетности процесса</div><div>Изменить обоснование приоритетности</div><div>Изменить приоритет</div><div>Удалить приоритет</div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Обоснование приоритетности списка процессов</h5><p>Редактирование текста комментария</p></div></div><div class="panel-b"><div class="field"><label>Комментарий / обоснование</label><div class="input" style="height:90px;align-items:flex-start;padding-top:10px">Новое обоснование</div></div><div class="module-actions" style="margin-top:12px"><div class="bt p sm">Изменить</div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-15">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.2.4 Просмотр информации по приоритетности</h3>
+        <p>Просмотр сотрудника, комментария и приложенных документов к обоснованию приоритета.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2 active">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Список приоритетных процессов</h5><p>Просмотр информации по приоритетности</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th></th><th></th><th>Номер извещения</th></tr></thead><tbody><tr><td><input disabled="" type="checkbox"/></td><td>⋮</td><td>FK.MC21-000420.RNO</td></tr></tbody></table></div><div class="info-menu" style="margin-top:10px"><div>Просмотреть информацию по приоритетности процесса</div><div>Изменить обоснование приоритетности</div><div>Изменить приоритет</div><div>Удалить приоритет</div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Обоснование приоритетности процесса</h5><p>Карточка назначенного приоритета</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>Назначил приоритет</strong><span>Русаков Георгий Сергеевич · конструктор</span></div><div class="kvitem"><strong>Комментарий-обоснование</strong><span>Отсутствует</span></div><div class="kvitem"><strong>Документы-основания</strong><span>Отсутствуют</span></div></div></div></div>
+</div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-16">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.3 Вкладка «Все процессы ВП»</h3>
+        <p>Просмотр всех процессов Военного представительства с указанными столбцами.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2 active">Все процессы ВП</div><div class="tab2">Все процессы</div></div><div class="content-grid">
+<div class="panel"><div class="panel-h"><div><h5>Все процессы ВП</h5><p>Процессы, перешедшие на этап согласования Независимой инспекцией</p></div></div><div class="panel-b">
+<div class="tablewrap"><table><thead><tr><th>Выпускающий</th><th>Номер извещения</th><th>Тип документа</th><th>Приоритет</th><th>Проект</th><th>Применяемость</th><th>Выпускающее подразделение</th><th>Курирующее подразделение</th><th>Дата начала согласования</th></tr></thead><tbody>
+<tr><td>Маслак А.Е.</td><td>UZ.1921-0009636.RNO</td><td>РНО — Согласование РНО</td><td>—</td><td>MC-21</td><td>—</td><td>Отдел эффективности проект.</td><td>—</td><td>2026-03-10</td></tr>
+<tr><td>Цой Светлана Вл.</td><td>KB.1211-00-000003-11.CN</td><td>ИИ — Копия 22</td><td>—</td><td>MC-21</td><td>—</td><td>Отдел эффективности проект.</td><td>—</td><td>2026-03-11</td></tr>
+</tbody></table></div>
+</div></div>
+</div>
+  </div>
+</article>
+
+
+<article class="scr" id="scr-10-17">
+  <header class="scr-h">
+    <div class="scr-h-l">
+<div>
+        <h3>10.4 Вкладка «Все процессы»</h3>
+        <p>Просмотр всех процессов в системе, истории процесса, истории СУДП и графового представления.</p>
+      </div>
+    </div>
+</header>
+  <div class="scr-b">
+<div class="module-top">
+<div><h4>Наблюдение за процессами</h4><p>Раздел для наблюдающих пользователей и контроля процессов.</p></div>
+<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 10 · Наблюдение</span></div>
+</div>
+<div class="analytics-tabs"><div class="tab2">Процессы подразделения</div><div class="tab2">Приоритетные процессы</div><div class="tab2">Все процессы ВП</div><div class="tab2 active">Все процессы</div></div><div class="content-grid">
+<div class="split2">
+<div class="panel"><div class="panel-h"><div><h5>Все процессы</h5><p>Полный список процессов системы</p></div></div><div class="panel-b"><div class="tablewrap"><table><thead><tr><th>Действие</th><th>Применяемость</th><th>Тип документа</th><th>Обозначение</th><th>Приоритет</th><th>Статус</th><th>Разработчик</th></tr></thead><tbody>
+<tr><td style="display:flex;gap:6px"><span class="tbl-act">Ист</span><span class="tbl-act">СУДП</span><span class="tbl-act">Граф</span></td><td>Содержит</td><td>ИИ</td><td>KB.0783-99-000003-24.CN</td><td>Без приоритета</td><td>Ожидает назначения</td><td>Маслак А.В.</td></tr>
+<tr><td style="display:flex;gap:6px"><span class="tbl-act">Ист</span><span class="tbl-act">СУДП</span><span class="tbl-act">Граф</span></td><td>13-UP (MC-21)</td><td>ИИ</td><td>KB.0783-99-000003-24.CN</td><td>Без приоритета</td><td>ОУК (Ожидает проверки)</td><td>Маслак А.В.</td></tr>
+</tbody></table></div></div></div>
+<div class="stack">
+<div class="panel"><div class="panel-h"><div><h5>История изменений процесса согласования в АССКД</h5><p>История процесса</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>03.02.2026</strong><span>Процесс поставлен на согласование КД.</span></div><div class="kvitem"><strong>01.02.2026</strong><span>АССКД согласовал этап «Назначение статусов в СУДП».</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>История изменений в СУДП</h5><p>СУДП история</p></div></div><div class="panel-b"><div class="kvlist"><div class="kvitem"><strong>03.02.2026</strong><span>Пользователь Маслак А.Е. изменил объект СУДП.</span></div><div class="kvitem"><strong>03.02.2026</strong><span>Присвоен тип документа ИИ.</span></div></div></div></div>
+<div class="panel"><div class="panel-h"><div><h5>Графовое представление</h5><p>Просмотр маршрута процесса</p></div></div><div class="panel-b"><div class="callout"><h6>Вертикальный граф</h6><p>Отображение маршрута процесса в виде последовательности этапов.</p></div></div></div>
+</div>
+</div>
+</div>
+  </div>
+</article>
+
+</section>
+
+
+<div class="fn">
+  <strong>АССКД — модуль КД.</strong> Этот файл — отдельный документ раздела, использует общую <a href="design-system.html">дизайн-систему&nbsp;v1.0</a> через <code>assets/asskd-design-system.css</code>.
+  Менять оформление компонентов нужно только в общей таблице стилей — изменения автоматически распространяются на все разделы.
+</div>
+
+</div>
+</body>
+</html>

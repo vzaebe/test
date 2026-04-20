@@ -1,0 +1,83 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>АССКД · 3. Вход в систему · Главная страница</title>
+<meta name="description" content="Экран авторизации и плиточный выбор модуля АССКД."/>
+<link rel="stylesheet" href="assets/asskd-design-system.css"/>
+<style>
+/* Локальные надстройки страницы — только верхняя навигация и хлебная крошка.
+   Все цвета/токены берутся ТОЛЬКО из общей дизайн-системы. */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
+  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
+  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
+.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
+.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
+.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.page-head .crumbs{font-size:11px;color:var(--muted)}
+.page-head .crumbs a{color:var(--muted);text-decoration:none}
+.page-head .crumbs a:hover{color:var(--yak-blue)}
+.page-head .meta{display:flex;align-items:center;gap:8px}
+.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="pg">
+<nav class="toc">
+  <a href="index.html">← Каталог</a>
+  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="02-entry-home.html" class="a">3. Вход в систему · Главная страница</a>
+  <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
+  <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
+  <a href="05-document-approval.html">6. Раздел «Согласование документов»</a>
+  <a href="06-analytics.html">7. Раздел «Аналитика»</a>
+  <a href="07-process-monitoring.html">8. Раздел «Наблюдение за процессами»</a>
+  <a href="08-logout.html">9. Выход из системы</a>
+  <a href="09-statuses-reference.html">10. Справочник статусов (Прил. 3 / 4 / 5)</a>
+  <a href="design-system.html">DS · v1.0 (канон)</a>
+</nav>
+
+<header class="page-head">
+  <div class="crumbs"><a href="index.html">АССКД · Каталог разделов</a> &nbsp;/&nbsp; <span style="color:var(--txt);font-weight:700">3. Вход в систему · Главная страница</span></div>
+  <div class="meta"><span class="pill">Экраны 1 · 5</span></div>
+</header>
+
+<!-- ═══ 3. ВХОД + ГЛАВНАЯ ═══ -->
+<section class="sec sec-big" id="section-entry">
+<div class="sec-t"><div><h2>3. Вход в систему · Главная страница</h2><p>Экран авторизации и плиточный выбор модуля системы АССКД.</p></div><div class="pill">Экраны 1 · 5</div></div>
+
+<div class="g2">
+<div class="cd" style="display:flex;justify-content:center;align-items:center;min-height:320px">
+<div style="width:300px;text-align:center">
+<div style="font-size:20px;font-weight:700;color:var(--yak-dark);margin-bottom:4px">АССКД</div>
+<div style="font-size:13px;font-weight:700;color:var(--yak-dark);margin-bottom:20px">Войти</div>
+<div class="fg" style="margin-bottom:10px"><label>Логин</label><div class="fd" style="width:100%">Ivan.Ivanov</div></div>
+<div class="fg" style="margin-bottom:16px"><label>Пароль</label><div class="fd" style="width:100%">••••••••</div></div>
+<div class="bt p" style="width:100%;justify-content:center">ПРОДОЛЖИТЬ</div>
+</div>
+</div>
+<div class="cd">
+<h3>Главная страница — выбор модуля</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+<div class="mod-card mod-kd" tabindex="0"><div class="mod-abbr">КД</div><div class="mod-info"><div class="mod-name">Конструкторские документы</div><div class="mod-sub">Согласование и выпуск КД</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mod-badge">Модуль в разработке</div></div>
+<div class="mod-card mod-szh" tabindex="0"><div class="mod-abbr">СЖ</div><div class="mod-info"><div class="mod-name">Вопросы из Спец. журналов</div><div class="mod-sub">Работа с СЖ и замечаниями</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+<div class="mod-card mod-sp" tabindex="0"><div class="mod-abbr">СП</div><div class="mod-info"><div class="mod-name">Сообщения о проблеме</div><div class="mod-sub">СЖР и проблемные записи</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+<div class="mod-card mod-sd" tabindex="0"><div class="mod-abbr">СД</div><div class="mod-info"><div class="mod-name">Сертификационные документы</div><div class="mod-sub">Опытно-пром. эксплуатация</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+</div>
+<div class="nt" style="margin-top:10px">Навигация главной страницы разделяет модули системы. После выбора модуля «Конструкторские документы» пользователь попадает в раздел «Мои процессы».</div>
+</div>
+</div>
+</section>
+
+<div class="fn">
+  <strong>АССКД — модуль КД.</strong> Этот файл — отдельный документ раздела, использует общую <a href="design-system.html">дизайн-систему&nbsp;v1.0</a> через <code>assets/asskd-design-system.css</code>.
+  Менять оформление компонентов нужно только в общей таблице стилей — изменения автоматически распространяются на все разделы.
+</div>
+
+</div>
+</body>
+</html>
