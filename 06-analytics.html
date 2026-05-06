@@ -31,7 +31,7 @@
 .scr{
   display:grid;
   grid-template-columns:208px minmax(0,1fr);
-  grid-template-rows:auto auto 1fr;
+  grid-template-rows:auto 1fr;
   background:#fff;
   border:1px solid var(--line2);
   border-radius:var(--rxl);
@@ -40,8 +40,7 @@
   margin-top:28px;
 }
 .scr > .app-tb{ grid-column:2; grid-row:1; }
-.scr-h{ grid-column:2; grid-row:2; }
-.scr-b{ grid-column:2; grid-row:3; }
+.scr-b{ grid-column:2; grid-row:2; }
 .scr > .app-tb{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:9px 18px;background:#fff;border-bottom:1px solid var(--line2);
@@ -101,14 +100,16 @@
 .app-back{height:26px;padding:0 10px;border-radius:var(--rs);border:1px solid var(--line);background:#fff;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit}
 .app-back:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--blue)}
 @media(max-width:980px){
-  .scr{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  .scr{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .scr > .app-rail{grid-column:1;grid-row:1;flex-direction:row;overflow-x:auto;align-self:auto}
   .scr > .app-rail .app-rg{flex-direction:row}
   .scr > .app-rail .app-rh,.scr > .app-rail .app-rf{display:none}
   .scr > .app-tb{grid-column:1;grid-row:2}
-  .scr-h{grid-column:1;grid-row:3}
-  .scr-b{grid-column:1;grid-row:4}
+  .scr-b{grid-column:1;grid-row:3}
 }
+.scr-label{margin:28px 0 6px;padding:0}
+.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
+.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
 </style>
 </head>
 <body>
@@ -157,6 +158,10 @@
     </div>
   </div>
   
+<div class="scr-label">
+  <h3>9. Раздел «Аналитика»</h3>
+  <p>Вход в раздел и стартовая вкладка «Генерация отчетов».</p>
+</div>
 <article class="scr" id="scr-9-01">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -184,24 +189,37 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9. Раздел «Аналитика»</h3>
-        <p>Вход в раздел и стартовая вкладка «Генерация отчетов».</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Стартовый дашборд — сводка состояния КД в работе</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid"><div class="split2"><div class="panel"><div class="panel-h"><div><h5>Генерация отчетов</h5><p>Стартовая вкладка раздела аналитики</p></div></div><div class="panel-b"><div class="module-actions"><div class="bt p sm">Сгенерировать отчет</div><div class="bt s sm">Сгенерировать и сохранить отчет</div></div></div></div><div class="callout"><h6>Назначение экрана</h6><p>Переход в раздел происходит через пиктограмму аналитики на левом rail-меню. При открытии пользователь попадает на вкладку «Генерация отчетов», где доступны две основные кнопки формирования отчетности.</p></div></div></div>
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="g4" style="gap:10px;margin:14px 0 12px">
+  <div class="kpi2 kpi2-blue"><strong>247</strong><span>Документов в работе</span></div>
+  <div class="kpi2 kpi2-warn"><strong>18</strong><span>Просроченных</span></div>
+  <div class="kpi2 kpi2-teal"><strong>89</strong><span>На согласовании</span></div>
+  <div class="kpi2 kpi2-ok"><strong>134</strong><span>Согласовано (апрель)</span></div>
+</div>
+<div class="panel">
+  <div class="panel-h"><div><h5>Генерация отчётов по КД</h5><p>Выберите тип отчёта и нажмите кнопку формирования</p></div></div>
+  <div class="panel-b">
+    <div class="module-actions" style="gap:10px">
+      <div class="bt p sm">Сгенерировать отчёт</div>
+      <div class="bt s sm">Сгенерировать и сохранить отчёт</div>
+    </div>
+  </div>
+</div>
+<div class="callout" style="margin-top:12px"><h6>Назначение раздела «Аналитика»</h6><p>Переход осуществляется через пиктограмму аналитики в левом rail-меню. После открытия пользователь попадает на вкладку «Генерация отчётов». Кнопка <b>«Сгенерировать отчёт»</b> формирует актуальный срез данных с прокруткой. Кнопка <b>«Сгенерировать и сохранить»</b> дополнительно фиксирует состояние колонкой с датой и временем выгрузки. KPI-карточки показывают текущее состояние КД без фильтров.</p></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.1 Кнопка «Сгенерировать отчет» — справка по КБ ИЦ</h3>
+  <p>Первый лист отчета по распределению нагрузки документов, которые выпускает КБ ИЦ.</p>
+</div>
 <article class="scr" id="scr-9-02">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -229,45 +247,51 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.1 Кнопка «Сгенерировать отчет» — справка по КБ ИЦ</h3>
-        <p>Первый лист отчета по распределению нагрузки документов, которые выпускает КБ ИЦ.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Лист 1 — Справка по КБ ИЦ (30.03.2026)</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid"><div class="split2">
-<div class="panel">
-<div class="panel-h"><div><h5>Справка по согласованию документов, которые выпускает КБ ИЦ</h5><p>Справка по согласованию КД по согласующим подразделениям</p></div><span class="bg bi"><span class="dt"></span>Лист 1</span></div>
-<div class="panel-b">
-<div class="tablewrap">
-<table>
-<thead><tr><th>Показатель</th><th>30.03.2026</th><th>25.03.2026</th><th>23.03.2026</th></tr></thead>
-<tbody>
-<tr><td><strong>Всего документов</strong></td><td>99</td><td>81</td><td>77</td></tr>
-<tr><td>На доработке</td><td>19</td><td>19</td><td>19</td></tr>
-<tr><td>Направлено на пересогласование</td><td>7</td><td>3</td><td>2</td></tr>
-<tr><td>От согласования в КБ ИЦ, шт.</td><td>72</td><td>58</td><td>55</td></tr>
-<tr><td>ОУК 2</td><td>(12/0)</td><td>(0/0)</td><td>(0/0)</td></tr>
-<tr><td>Технологический контроль</td><td class="warncell">7 (0/0)</td><td>7 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Главный конструктор</td><td>3 (0/0)</td><td>1 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Передача документации в архив</td><td>1</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="panel" style="margin-top:14px">
+  <div class="panel-h"><div><h5>Справка по согласованию КД — КБ ИЦ</h5><p>Распределение нагрузки по согласующим подразделениям · A/B = факт согласовано / возврат</p></div><span class="bg bi">Лист 1</span></div>
+  <div class="panel-b">
+    <div style="margin-bottom:10px">
+      <svg width="100%" height="44" viewBox="0 0 400 44" style="display:block">
+        <polyline points="20,32 100,28 180,18 260,22 340,10 380,8" fill="none" stroke="var(--yak-blue)" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="20" cy="32" r="3" fill="var(--yak-blue)"/><circle cx="100" cy="28" r="3" fill="var(--yak-blue)"/><circle cx="180" cy="18" r="3" fill="var(--yak-blue)"/><circle cx="260" cy="22" r="3" fill="var(--yak-blue)"/><circle cx="340" cy="10" r="3" fill="var(--yak-blue)"/><circle cx="380" cy="8" r="3" fill="var(--yak-blue)"/>
+        <text x="20" y="42" font-size="9" fill="var(--muted)">18.03</text><text x="95" y="42" font-size="9" fill="var(--muted)">23.03</text><text x="175" y="42" font-size="9" fill="var(--muted)">25.03</text><text x="255" y="42" font-size="9" fill="var(--muted)">28.03</text><text x="335" y="42" font-size="9" fill="var(--muted)">30.03</text>
+      </svg>
+      <div class="legend"><i style="background:var(--yak-blue)"></i> Всего документов — тренд по датам</div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Показатель / Подразделение</th><th>18.03.2026</th><th>23.03.2026</th><th>25.03.2026</th><th>30.03.2026</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Всего документов, шт.</strong></td><td>71</td><td>77</td><td>81</td><td>99</td></tr>
+          <tr><td>На доработке</td><td>14</td><td>16</td><td>19</td><td>19</td></tr>
+          <tr><td>Направлено на пересогласование</td><td>2</td><td>2</td><td>3</td><td>7</td></tr>
+          <tr><td>Согласовано из КБ ИЦ, шт.</td><td>48</td><td>55</td><td>58</td><td>72</td></tr>
+          <tr><td>ОУК 2</td><td>4 (2/0)</td><td>5 (0/0)</td><td>6 (0/0)</td><td class="warncell">12 (4/1)</td></tr>
+          <tr><td>Технологический контроль</td><td>3 (1/0)</td><td>4 (0/0)</td><td>7 (0/0)</td><td class="warncell">9 (2/0)</td></tr>
+          <tr><td>Главный конструктор</td><td>0 (0/0)</td><td>1 (0/0)</td><td>1 (0/0)</td><td>3 (0/0)</td></tr>
+          <tr><td>Отдел нагрузок</td><td>1 (0/0)</td><td>1 (0/0)</td><td>2 (0/0)</td><td>2 (0/0)</td></tr>
+          <tr><td>Передача документации в архив</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<div class="callout"><h6>Что показывает лист</h6><p>Дата и время выгрузки, список утвержденных/возвращенных/отправленных на пересогласование документов по датам, перечень подразделений, детальное и суммарное распределение документов по согласующим подразделениям, а также количественный список по срыву сроков.</p></div></div></div>
+<div class="callout" style="margin-top:12px"><h6>Формат данных таблицы</h6><p>Числа в скобках A/B расшифровываются как: <b>A</b> — количество документов, фактически согласованных на этом подразделении за период; <b>B</b> — количество документов, возвращённых на доработку. Красная маркировка ячейки означает, что показатель превышает плановый порог.</p></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.1 Кнопка «Сгенерировать отчет» — расшифровка чисел</h3>
+  <p>Отдельный экран с расшифровкой чисел и количественных обозначений в отчете.</p>
+</div>
 <article class="scr" id="scr-9-03">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -295,38 +319,47 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.1 Кнопка «Сгенерировать отчет» — расшифровка чисел</h3>
-        <p>Отдельный экран с расшифровкой чисел и количественных обозначений в отчете.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Расшифровка числовых обозначений отчёта</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid">
-<div class="number-sheet">
-<div class="sheet-title">Расшифровка чисел, описанных в таблице, и всех количественных значений</div>
-<div class="tablewrap"><table><thead><tr><th>Подразделение</th><th>10.12.2025</th><th>09.12.2025</th><th>08.12.2025</th><th>07.12.2025</th></tr></thead><tbody>
-<tr><td><strong>Всего документов, шт.</strong></td><td>XX</td><td>XX</td><td>XX</td><td>XX</td></tr>
-<tr><td>На доработке</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>
-<tr><td>Направлено на пересогласование</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>
-<tr><td>Технологический контроль</td><td>X(0/0)</td><td>X(0/0)</td><td>X(0/0)</td><td>X(0/0)</td></tr>
-</tbody></table></div>
-<div class="mini-grid" style="margin-top:10px">
-<div class="num-note">Х — в графе срыва сроков по состоянию на конкретную дату документ находится в просрочке.</div>
-<div class="num-note">Красная маркировка — документ с просроченным прогнозным или плановым сроком.</div>
-</div>
-</div>
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="panel" style="margin-top:14px">
+  <div class="panel-h"><div><h5>Расшифровка числовых значений отчёта КБ ИЦ</h5><p>Пример данных за период 07–10.12.2025 · формат строк: A/B = факт/возврат</p></div><span class="bg bw">Расшифровка</span></div>
+  <div class="panel-b">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Подразделение</th><th>07.12.2025</th><th>08.12.2025</th><th>09.12.2025</th><th>10.12.2025</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Всего документов, шт.</strong></td><td>68</td><td>74</td><td>79</td><td>83</td></tr>
+          <tr><td>На доработке</td><td>11</td><td>13</td><td>15</td><td>17</td></tr>
+          <tr><td>Направлено на пересогласование</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+          <tr><td>ОУК 2</td><td>3 (1/0)</td><td>5 (2/0)</td><td>6 (2/1)</td><td class="warncell">8 (3/1)</td></tr>
+          <tr><td>Технологический контроль</td><td>2 (1/0)</td><td>4 (1/0)</td><td>5 (1/0)</td><td class="warncell">7 (2/0)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+      <div class="callout"><h6>Формат A/B в ячейках таблицы</h6><p><b>A</b> — количество документов, фактически согласованных данным подразделением за отчётный период (нарастающим итогом с начала этапа).<br><b>B</b> — количество документов, возвращённых этим подразделением на доработку. Возврат означает, что конструктор должен устранить замечания и повторно направить документ по маршруту.</p></div>
+      <div class="kv" style="margin-top:4px">
+        <div class="item"><span class="k">Красная ячейка</span><span class="v">Показатель превышает нормативный порог контрольной даты. Требуется эскалация ответственному.</span></div>
+        <div class="item"><span class="k">«На доработке»</span><span class="v">Документ возвращён согласующим — находится у конструктора для устранения замечаний.</span></div>
+        <div class="item"><span class="k">«Пересогласование»</span><span class="v">После устранения замечаний документ вновь направлен по маршруту согласования.</span></div>
+        <div class="item"><span class="k">Дата в заголовке</span><span class="v">Состояние на начало рабочего дня указанной даты (срез БД в 08:00).</span></div>
+      </div>
+    </div>
+  </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.1 Кнопка «Сгенерировать отчет» — отчет по конкретному подразделению</h3>
+  <p>Вторая справка по согласованию документов конкретного подразделения КБ ИЦ.</p>
+</div>
 <article class="scr" id="scr-9-04">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -354,45 +387,60 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.1 Кнопка «Сгенерировать отчет» — отчет по конкретному подразделению</h3>
-        <p>Вторая справка по согласованию документов конкретного подразделения КБ ИЦ.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Отчёт по КБ-1 — сравнение с предыдущей неделей</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid"><div class="split2">
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="g4" style="gap:8px;margin:14px 0 12px">
+  <div class="kv" style="background:#fff;border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px">
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Неделю назад · 24.04.2026</span><span class="v" style="font-size:18px;font-weight:700;color:var(--yak-dark)">54</span></div>
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Всего в работе</span><span class="v" style="font-size:10px;color:var(--muted)">документов</span></div>
+  </div>
+  <div class="kv" style="background:#fff;border:1px solid var(--blue-l);border-radius:var(--r);padding:10px 12px">
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Сейчас · 01.05.2026</span><span class="v" style="font-size:18px;font-weight:700;color:var(--yak-blue)">61</span></div>
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Всего в работе</span><span class="v" style="font-size:10px;color:var(--ok)">▲ +7 (+13%)</span></div>
+  </div>
+  <div class="kv" style="background:#fff;border:1px solid var(--warn-l,#fde68a);border-radius:var(--r);padding:10px 12px">
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Просрочено</span><span class="v" style="font-size:18px;font-weight:700;color:var(--warn)">5</span></div>
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Было 3</span><span class="v" style="font-size:10px;color:var(--warn)">▲ +2</span></div>
+  </div>
+  <div class="kv" style="background:#fff;border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px">
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">Согласовано</span><span class="v" style="font-size:18px;font-weight:700;color:var(--ok)">38</span></div>
+    <div class="item"><span class="k" style="font-size:10px;color:var(--muted)">За апрель 2026</span><span class="v" style="font-size:10px;color:var(--muted)">КБ-1</span></div>
+  </div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Справка по согласованию документов конкретного подразделения КБ ИЦ</h5><p>Справка по согласованию КД по согласующим подразделениям</p></div><span class="bg bi"><span class="dt"></span>Лист 1</span></div>
-<div class="panel-b">
-<div class="tablewrap">
-<table>
-<thead><tr><th>Показатель</th><th>30.03.2026</th><th>25.03.2026</th><th>23.03.2026</th></tr></thead>
-<tbody>
-<tr><td><strong>Всего документов</strong></td><td>99</td><td>81</td><td>77</td></tr>
-<tr><td>На доработке</td><td>19</td><td>19</td><td>19</td></tr>
-<tr><td>Направлено на пересогласование</td><td>7</td><td>3</td><td>2</td></tr>
-<tr><td>От согласования в КБ ИЦ, шт.</td><td>72</td><td>58</td><td>55</td></tr>
-<tr><td>ОУК 2</td><td>(12/0)</td><td>(0/0)</td><td>(0/0)</td></tr>
-<tr><td>Технологический контроль</td><td class="warncell">7 (0/0)</td><td>7 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Главный конструктор</td><td>3 (0/0)</td><td>1 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Передача документации в архив</td><td>1</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
+  <div class="panel-h"><div><h5>Справка по согласованию КД — КБ-1</h5><p>По согласующим подразделениям · апрель 2026</p></div><span class="bg bi">Лист 1</span></div>
+  <div class="panel-b">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Показатель / Подразделение</th><th>14.04.2026</th><th>21.04.2026</th><th>24.04.2026</th><th>01.05.2026</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Всего документов, шт.</strong></td><td>43</td><td>49</td><td>54</td><td>61</td></tr>
+          <tr><td>На доработке</td><td>7</td><td>9</td><td>11</td><td>13</td></tr>
+          <tr><td>Направлено на пересогласование</td><td>1</td><td>2</td><td>2</td><td>4</td></tr>
+          <tr><td>Согласовано из КБ-1, шт.</td><td>31</td><td>35</td><td>38</td><td>43</td></tr>
+          <tr><td>ОУК 2</td><td>5 (2/0)</td><td>7 (3/0)</td><td>8 (3/0)</td><td>10 (4/1)</td></tr>
+          <tr><td>Технологический контроль</td><td>3 (1/0)</td><td>4 (1/0)</td><td>5 (2/0)</td><td class="warncell">7 (2/1)</td></tr>
+          <tr><td>Отдел нагрузок</td><td>2 (0/0)</td><td>2 (0/0)</td><td>3 (0/0)</td><td>3 (1/0)</td></tr>
+          <tr><td>Бригада управления изделиями</td><td>1 (0/0)</td><td>2 (0/0)</td><td>2 (0/0)</td><td class="warncell">4 (1/0)</td></tr>
+          <tr><td>Передача документации в архив</td><td>0</td><td>1</td><td>1</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<div class="callout"><h6>Смысл второго отчета</h6><p>Экран показывает ту же структуру аналитики, но уже в разрезе конкретного выпускающего подразделения. Расшифровка чисел берется с предыдущего слайда.</p></div></div></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.1 Кнопка «Сгенерировать отчет» — лист «Детали по документам»</h3>
+  <p>Отчет со встроенными фильтрами и красной маркировкой просроченных документов.</p>
+</div>
 <article class="scr" id="scr-9-05">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -420,33 +468,28 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.1 Кнопка «Сгенерировать отчет» — лист «Детали по документам»</h3>
-        <p>Отчет со встроенными фильтрами и красной маркировкой просроченных документов.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Лист 2 — Детали по документам с маркировкой просрочки</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid">
-<div class="panel">
-<div class="panel-h"><div><h5>Детали по документам</h5><p>Второй лист отчёта со встроенными фильтрами и выделением просрочки</p></div><span class="bg bw"><span class="dt"></span>Детали</span></div>
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="panel" style="margin-top:14px">
+<div class="panel-h"><div><h5>Детали по документам</h5><p>Лист 2 отчёта — индивидуальный срез по каждому документу с выделением просрочки</p></div><span class="bg bw">Детали</span></div>
 <div class="panel-b">
 <div class="tablewrap">
 <table>
-<thead><tr><th>Документ</th><th>Тип</th><th>Ответственный</th><th>Текущий этап</th><th>Дата начала</th><th>Плановый срок</th><th>Прогнозный срок</th><th>Дней просрочки</th></tr></thead>
+<thead><tr><th>Документ</th><th>Проект</th><th>Тип</th><th>Ответственный</th><th>Текущий этап</th><th>Дата начала</th><th>Плановый срок</th><th>Прогнозный срок</th><th>Просрочка, дн.</th></tr></thead>
 <tbody>
-<tr><td>32.1219-00-000016-36.CN</td><td>ИИ</td><td>Маслак А.В.</td><td>Технологич. контроль</td><td>05.02.2026</td><td>20.03.2026</td><td>20.03.2026</td><td>0</td></tr>
-<tr><td>32.1219-22-000020-38.CN</td><td>ИИ</td><td>Маслак А.В.</td><td>ОУК 2</td><td>02.04.2026</td><td>05.04.2026</td><td class="warncell">01.04.2026</td><td class="warncell">4</td></tr>
-<tr><td>32.1219-33-111111-91.CN</td><td>РНО</td><td>Алексеева Е.В.</td><td>Проверяется</td><td>13.03.2026</td><td>30.03.2026</td><td class="warncell">26.03.2026</td><td class="warncell">7</td></tr>
+<tr><td>32.1219-00-000016-36.CN</td><td>МС-21</td><td>ИИ</td><td>Маслак А.В.</td><td>Технол. контроль</td><td>05.02.2026</td><td>20.03.2026</td><td>20.03.2026</td><td>0</td></tr>
+<tr><td>IZ.MC21-97-075011.CN</td><td>МС-21</td><td>ИИ</td><td>Маслак А.В.</td><td>ОУК 2</td><td>02.04.2026</td><td>05.04.2026</td><td class="warncell">01.04.2026</td><td class="warncell">4</td></tr>
+<tr><td>32.1219-33-111111-91.RN</td><td>МС-21</td><td>РНО</td><td>Алексеева Е.В.</td><td>Гл. конструктор</td><td>13.03.2026</td><td>30.03.2026</td><td class="warncell">26.03.2026</td><td class="warncell">7</td></tr>
+<tr><td>SJ.100-22-004471-12.TR</td><td>SJ-100</td><td>ТР</td><td>Фролов Д.С.</td><td>Бригада УИ</td><td>10.01.2026</td><td>14.04.2026</td><td class="warncell">01.04.2026</td><td class="warncell">14</td></tr>
+<tr><td>IZ.MC21-89-075010.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Орлов П.Г.</td><td>Архив</td><td>15.02.2026</td><td>15.04.2026</td><td>16.04.2026</td><td>0</td></tr>
+<tr><td>V22-KD-003-88-015.EM</td><td>В-22</td><td>ЭМ</td><td>Кузнецова Н.И.</td><td>Отдел ЭМ</td><td>03.03.2026</td><td>20.04.2026</td><td class="warncell">10.04.2026</td><td class="warncell">22</td></tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -454,6 +497,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>9.2 Кнопка «Сгенерировать и сохранить отчет»</h3>
+  <p>Формирование отчета с новой зафиксированной колонкой состояния.</p>
+</div>
 <article class="scr" id="scr-9-06">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -481,45 +528,42 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.2 Кнопка «Сгенерировать и сохранить отчет»</h3>
-        <p>Формирование отчета с новой зафиксированной колонкой состояния.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Фиксированный отчёт с колонкой состояния на 06.05.2026 14:23</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid"><div class="split2"><div class="callout"><h6>Сгенерировать и сохранить отчет</h6><p>При нажатии на кнопку формируется отчет с новой зафиксированной колонкой по времени и дате, фиксирующей состояние на момент генерации. В остальном отчет идентичен варианту «Сгенерировать отчет».</p></div>
+<div class="analytics-tabs"><div class="tab2 active">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="callout" style="margin:14px 0 10px"><h6>Отличие «Сохранённого» отчёта</h6><p>В отличие от обычной генерации, к таблице добавляется колонка <b>«Состояние на 06.05.2026 14:23»</b>, фиксирующая снимок данных в момент нажатия кнопки. Последующие изменения в АССКД не перезаписывают сохранённые значения — они хранятся как исторический срез.</p></div>
 <div class="panel">
-<div class="panel-h"><div><h5>Справка с новой зафиксированной колонкой</h5><p>Справка по согласованию КД по согласующим подразделениям</p></div><span class="bg bi"><span class="dt"></span>Лист 1</span></div>
+<div class="panel-h"><div><h5>Справка КБ ИЦ — фиксированный срез 06.05.2026 14:23</h5><p>Согласование КД по согласующим подразделениям</p></div><span class="bg bi">Лист 1 · Сохранён</span></div>
 <div class="panel-b">
 <div class="tablewrap">
 <table>
-<thead><tr><th>Показатель</th><th>30.03.2026</th><th>25.03.2026</th><th>23.03.2026</th></tr></thead>
+<thead><tr><th>Показатель / Подразделение</th><th>23.04.2026</th><th>28.04.2026</th><th>02.05.2026</th><th style="background:var(--blue-ll);color:var(--yak-blue);font-weight:700">Состояние на 06.05.2026</th></tr></thead>
 <tbody>
-<tr><td><strong>Всего документов</strong></td><td>99</td><td>81</td><td>77</td></tr>
-<tr><td>На доработке</td><td>19</td><td>19</td><td>19</td></tr>
-<tr><td>Направлено на пересогласование</td><td>7</td><td>3</td><td>2</td></tr>
-<tr><td>От согласования в КБ ИЦ, шт.</td><td>72</td><td>58</td><td>55</td></tr>
-<tr><td>ОУК 2</td><td>(12/0)</td><td>(0/0)</td><td>(0/0)</td></tr>
-<tr><td>Технологический контроль</td><td class="warncell">7 (0/0)</td><td>7 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Главный конструктор</td><td>3 (0/0)</td><td>1 (0/0)</td><td>0 (0/0)</td></tr>
-<tr><td>Передача документации в архив</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td><strong>Всего документов, шт.</strong></td><td>84</td><td>91</td><td>96</td><td style="background:var(--blue-ll);font-weight:700">103</td></tr>
+<tr><td>На доработке</td><td>15</td><td>17</td><td>18</td><td style="background:var(--blue-ll)">20</td></tr>
+<tr><td>Направлено на пересогласование</td><td>3</td><td>5</td><td>6</td><td style="background:var(--blue-ll)">8</td></tr>
+<tr><td>Согласовано из КБ ИЦ, шт.</td><td>63</td><td>68</td><td>74</td><td style="background:var(--blue-ll)">79</td></tr>
+<tr><td>ОУК 2</td><td>6 (2/0)</td><td>8 (3/0)</td><td>10 (4/1)</td><td class="warncell" style="background:var(--err-ll)">14 (5/2)</td></tr>
+<tr><td>Технологический контроль</td><td>4 (1/0)</td><td>6 (2/0)</td><td>8 (2/0)</td><td class="warncell" style="background:var(--err-ll)">11 (3/1)</td></tr>
+<tr><td>Главный конструктор</td><td>2 (0/0)</td><td>3 (1/0)</td><td>3 (1/0)</td><td style="background:var(--blue-ll)">4 (1/0)</td></tr>
+<tr><td>Передача документации в архив</td><td>0</td><td>1</td><td>1</td><td style="background:var(--blue-ll)">2</td></tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-</div></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.3 Вкладка «Количество документов»</h3>
+  <p>Общий экран вкладки статистики по количеству документов.</p>
+</div>
 <article class="scr" id="scr-9-07">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -547,39 +591,94 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.3 Вкладка «Количество документов»</h3>
-        <p>Общий экран вкладки статистики по количеству документов.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>Вкладка «Количество документов» — основной дашборд</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid">
-<div class="split3">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="g4" style="gap:10px;margin:14px 0 12px">
+  <div class="kpi2 kpi2-blue"><strong>381</strong><span>Всего согласовано за год</span></div>
+  <div class="kpi2 kpi2-teal"><strong>124</strong><span>Выпущено КБ ИЦ</span></div>
+  <div class="kpi2 kpi2-ok"><strong>134</strong><span>Согласовано в апреле</span></div>
+  <div class="kpi2 kpi2-warn"><strong>42%</strong><span>Доля ИИ в общем объёме</span></div>
+</div>
+<div class="split3" style="gap:12px">
 <div class="panel">
-<div class="panel-h"><div><h5>Количество выпущенных документов</h5><p>Гистограмма эффективности по подразделениям</p></div></div>
-<div class="panel-b"><div class="chb2"><div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div><div class="bars2"><div class="bar2 b1" style="height:75%"></div><div class="bar2 b1" style="height:68%"></div><div class="bar2 b1" style="height:55%"></div><div class="bar2 b1" style="height:70%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b1" style="height:8%"></div></div></div></div>
+  <div class="panel-h"><div><h5>Выпущено по КБ</h5><p>Апрель 2026 · документов</p></div></div>
+  <div class="panel-b">
+    <div class="chb2" style="height:200px">
+      <div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div>
+      <div class="bars2" style="height:130px">
+        <div class="bar2 b1" style="height:100%"></div>
+        <div class="bar2 b1" style="height:70%"></div>
+        <div class="bar2 b1" style="height:49%"></div>
+        <div class="bar2 b1" style="height:35%"></div>
+        <div class="bar2 b1" style="height:31%"></div>
+        <div class="bar2 b1" style="height:23%"></div>
+        <div class="bar2 b1" style="height:6%"></div>
+      </div>
+      <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+        <span style="flex:1;text-align:center">КБ ИЦ<br>124</span>
+        <span style="flex:1;text-align:center">КБ-1<br>87</span>
+        <span style="flex:1;text-align:center">КБ-2<br>61</span>
+        <span style="flex:1;text-align:center">КБ-3<br>43</span>
+        <span style="flex:1;text-align:center">КБ-4<br>38</span>
+        <span style="flex:1;text-align:center">КБ-5<br>21</span>
+        <span style="flex:1;text-align:center">КБ-6<br>7</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="panel">
-<div class="panel-h"><div><h5>Сравнение по типу документа</h5><p>Круговая диаграмма согласованных документов</p></div></div>
-<div class="panel-b"><div class="pie"></div><div class="legend" style="justify-content:center"><i style="background:var(--yak-blue)"></i> ИИ <i style="background:var(--yak-sky)"></i> РНО <i style="background:var(--yak-teal)"></i> ТР <i style="background:#8a98a5"></i> Прочие</div></div>
+  <div class="panel-h"><div><h5>Структура по типу</h5><p>Доля типов в согласованных КД</p></div></div>
+  <div class="panel-b">
+    <svg viewBox="0 0 140 140" width="120" height="120" style="display:block;margin:0 auto">
+      <circle cx="70" cy="70" r="54" fill="none" stroke="var(--yak-blue)" stroke-width="28" stroke-dasharray="142 213" stroke-dashoffset="0"/>
+      <circle cx="70" cy="70" r="54" fill="none" stroke="var(--yak-sky)" stroke-width="28" stroke-dasharray="95 260" stroke-dashoffset="-142"/>
+      <circle cx="70" cy="70" r="54" fill="none" stroke="var(--yak-teal)" stroke-width="28" stroke-dasharray="61 294" stroke-dashoffset="-237"/>
+      <circle cx="70" cy="70" r="54" fill="none" stroke="#8a98a5" stroke-width="28" stroke-dasharray="57 298" stroke-dashoffset="-298"/>
+    </svg>
+    <div class="legend" style="justify-content:center;flex-wrap:wrap;gap:6px;margin-top:8px">
+      <span><i style="background:var(--yak-blue)"></i> ИИ 42%</span>
+      <span><i style="background:var(--yak-sky)"></i> РНО 28%</span>
+      <span><i style="background:var(--yak-teal)"></i> ТР 18%</span>
+      <span><i style="background:#8a98a5"></i> Прочие 12%</span>
+    </div>
+  </div>
 </div>
 </div>
 <div class="panel" style="margin-top:12px">
-<div class="panel-h"><div><h5>Количество поступивших / согласованных документов</h5><p>Сравнение входящей нагрузки и фактического выпуска</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:180px"><div class="legend"><i style="background:var(--yak-blue)"></i> Поступивших <i style="background:var(--ok)"></i> Согласованных</div><div class="bars2" style="height:110px"><div class="bar2 b1" style="height:60%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b1" style="height:82%"></div><div class="bar2 b2" style="height:78%"></div><div class="bar2 b1" style="height:67%"></div><div class="bar2 b2" style="height:65%"></div><div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:72%"></div><div class="bar2 b1" style="height:9%"></div><div class="bar2 b2" style="height:7%"></div></div></div></div>
-</div>
+  <div class="panel-h"><div><h5>Поступило / Согласовано по месяцам</h5><p>Январь — май 2026 · сравнение входящей нагрузки и результата</p></div></div>
+  <div class="panel-b">
+    <div class="chb2" style="height:200px">
+      <div class="legend"><i style="background:var(--yak-blue)"></i> Поступило <i style="background:var(--ok)"></i> Согласовано</div>
+      <div class="bars2" style="height:130px">
+        <div class="bar2 b1" style="height:72%"></div><div class="bar2 b2" style="height:68%"></div>
+        <div class="bar2 b1" style="height:80%"></div><div class="bar2 b2" style="height:74%"></div>
+        <div class="bar2 b1" style="height:91%"></div><div class="bar2 b2" style="height:84%"></div>
+        <div class="bar2 b1" style="height:85%"></div><div class="bar2 b2" style="height:100%"></div>
+        <div class="bar2 b1" style="height:63%"></div><div class="bar2 b2" style="height:57%"></div>
+      </div>
+      <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+        <span style="flex:2;text-align:center">Январь<br>↑144 / ✓135</span>
+        <span style="flex:2;text-align:center">Февраль<br>↑158 / ✓147</span>
+        <span style="flex:2;text-align:center">Март<br>↑181 / ✓166</span>
+        <span style="flex:2;text-align:center">Апрель<br>↑169 / ✓198</span>
+        <span style="flex:2;text-align:center">Май<br>↑124 / ✓113</span>
+      </div>
+    </div>
+  </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.3 Вкладка «Количество документов» — расшифровка графиков</h3>
+  <p>Отдельный экран с пояснением по трём аналитическим визуализациям.</p>
+</div>
 <article class="scr" id="scr-9-08">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -607,39 +706,88 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.3 Вкладка «Количество документов» — расшифровка графиков</h3>
-        <p>Отдельный экран с пояснением по трём аналитическим визуализациям.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>«Количество документов» — расшифровка визуализаций</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid"><div class="split2"><div>
-<div class="split3">
-<div class="panel">
-<div class="panel-h"><div><h5>Количество выпущенных документов</h5><p>Гистограмма эффективности по подразделениям</p></div></div>
-<div class="panel-b"><div class="chb2"><div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div><div class="bars2"><div class="bar2 b1" style="height:75%"></div><div class="bar2 b1" style="height:68%"></div><div class="bar2 b1" style="height:55%"></div><div class="bar2 b1" style="height:70%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b1" style="height:8%"></div></div></div></div>
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="split2" style="gap:14px;margin-top:14px">
+<div>
+  <div class="split3" style="gap:10px">
+    <div class="panel">
+      <div class="panel-h"><div><h5>Выпущено по КБ</h5><p>Апрель 2026</p></div></div>
+      <div class="panel-b">
+        <div class="chb2" style="height:160px">
+          <div class="bars2" style="height:100px">
+            <div class="bar2 b1" style="height:100%"></div><div class="bar2 b1" style="height:70%"></div>
+            <div class="bar2 b1" style="height:49%"></div><div class="bar2 b1" style="height:35%"></div>
+            <div class="bar2 b1" style="height:31%"></div><div class="bar2 b1" style="height:23%"></div>
+            <div class="bar2 b1" style="height:6%"></div>
+          </div>
+          <div style="display:flex;gap:2px;font-size:8px;color:var(--muted);padding-top:2px">
+            <span style="flex:1;text-align:center">ИЦ</span><span style="flex:1;text-align:center">КБ-1</span>
+            <span style="flex:1;text-align:center">КБ-2</span><span style="flex:1;text-align:center">КБ-3</span>
+            <span style="flex:1;text-align:center">КБ-4</span><span style="flex:1;text-align:center">КБ-5</span>
+            <span style="flex:1;text-align:center">КБ-6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-h"><div><h5>Структура по типу</h5></div></div>
+      <div class="panel-b">
+        <svg viewBox="0 0 100 100" width="90" height="90" style="display:block;margin:0 auto">
+          <circle cx="50" cy="50" r="38" fill="none" stroke="var(--yak-blue)" stroke-width="20" stroke-dasharray="100 151" stroke-dashoffset="0"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="var(--yak-sky)" stroke-width="20" stroke-dasharray="67 184" stroke-dashoffset="-100"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="var(--yak-teal)" stroke-width="20" stroke-dasharray="43 208" stroke-dashoffset="-167"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#8a98a5" stroke-width="20" stroke-dasharray="40 211" stroke-dashoffset="-210"/>
+        </svg>
+        <div class="legend" style="flex-direction:column;gap:3px;font-size:10px;margin-top:6px">
+          <span><i style="background:var(--yak-blue)"></i> ИИ — 42%</span>
+          <span><i style="background:var(--yak-sky)"></i> РНО — 28%</span>
+          <span><i style="background:var(--yak-teal)"></i> ТР — 18%</span>
+          <span><i style="background:#8a98a5"></i> Прочие — 12%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:10px">
+    <div class="panel-h"><div><h5>Поступило / Согласовано по месяцам</h5></div></div>
+    <div class="panel-b">
+      <div class="chb2" style="height:160px">
+        <div class="legend"><i style="background:var(--yak-blue)"></i> Поступило <i style="background:var(--ok)"></i> Согласовано</div>
+        <div class="bars2" style="height:100px">
+          <div class="bar2 b1" style="height:72%"></div><div class="bar2 b2" style="height:68%"></div>
+          <div class="bar2 b1" style="height:80%"></div><div class="bar2 b2" style="height:74%"></div>
+          <div class="bar2 b1" style="height:91%"></div><div class="bar2 b2" style="height:84%"></div>
+          <div class="bar2 b1" style="height:85%"></div><div class="bar2 b2" style="height:100%"></div>
+          <div class="bar2 b1" style="height:63%"></div><div class="bar2 b2" style="height:57%"></div>
+        </div>
+        <div style="display:flex;font-size:8px;color:var(--muted);padding-top:2px">
+          <span style="flex:2;text-align:center">Янв</span><span style="flex:2;text-align:center">Фев</span>
+          <span style="flex:2;text-align:center">Март</span><span style="flex:2;text-align:center">Апр</span>
+          <span style="flex:2;text-align:center">Май</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="panel">
-<div class="panel-h"><div><h5>Сравнение по типу документа</h5><p>Круговая диаграмма согласованных документов</p></div></div>
-<div class="panel-b"><div class="pie"></div><div class="legend" style="justify-content:center"><i style="background:var(--yak-blue)"></i> ИИ <i style="background:var(--yak-sky)"></i> РНО <i style="background:var(--yak-teal)"></i> ТР <i style="background:#8a98a5"></i> Прочие</div></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+  <div class="callout"><h6>Гистограмма «Выпущено по КБ»</h6><p>Показывает результативность каждого конструкторского бюро за выбранный период. Высота столбца пропорциональна количеству документов, прошедших все этапы согласования. КБ ИЦ традиционно лидирует по объёму — это головное КБ проекта МС-21.</p></div>
+  <div class="callout"><h6>Круговая диаграмма «Структура по типу»</h6><p>Изменение извещения (ИИ) составляют наибольшую долю — это рабочий поток корректировки серийных чертежей. Технические регламенты (ТР) проходят удлинённый маршрут с согласованием Главного конструктора.</p></div>
+  <div class="callout"><h6>Гистограмма «Поступило / Согласовано»</h6><p>Пары столбцов сравнивают входящую нагрузку с фактическим результатом. В апреле согласовано <b>больше</b>, чем поступило — КБ «отработало» накопленный задел предыдущих месяцев.</p></div>
 </div>
 </div>
-<div class="panel" style="margin-top:12px">
-<div class="panel-h"><div><h5>Количество поступивших / согласованных документов</h5><p>Сравнение входящей нагрузки и фактического выпуска</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:180px"><div class="legend"><i style="background:var(--yak-blue)"></i> Поступивших <i style="background:var(--ok)"></i> Согласованных</div><div class="bars2" style="height:110px"><div class="bar2 b1" style="height:60%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b1" style="height:82%"></div><div class="bar2 b2" style="height:78%"></div><div class="bar2 b1" style="height:67%"></div><div class="bar2 b2" style="height:65%"></div><div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:72%"></div><div class="bar2 b1" style="height:9%"></div><div class="bar2 b2" style="height:7%"></div></div></div></div>
-</div>
-</div><div class="callout"><h6>Что показывают графики</h6><p>Гистограмма количества выпущенных документов оценивает результативность подразделений и КБ в целом. Круговая диаграмма показывает структуру согласованных документов по типу. Нижняя гистограмма с линией тренда сопоставляет количество поступивших и фактически согласованных документов.</p></div></div></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.3 Вкладка «Количество документов» — фильтры, часть 1</h3>
+  <p>Тумблер показа таблиц, тип документа и диапазон дат.</p>
+</div>
 <article class="scr" id="scr-9-09">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -667,39 +815,87 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.3 Вкладка «Количество документов» — фильтры, часть 1</h3>
-        <p>Тумблер показа таблиц, тип документа и диапазон дат.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>«Количество документов» — фильтр: тип=ИИ, период 01.01–30.04.2026</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="toolbar"><div class="field"><label>Показ таблицы</label><div class="input"><span class="ck-box checked" aria-checked="true"></span> Показывать таблицы</div></div><div class="field"><label>Тип документа</label><div class="input">Все</div></div><div class="field"><label>Начальная дата</label><div class="input">19.11.2023</div></div><div class="field"><label>Конечная дата</label><div class="input">16.01.2025</div></div></div><div class="content-grid">
-<div class="split3">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar">
+  <div class="field"><label>Показывать таблицы</label><div class="input"><span class="ck-box checked"></span> Включено</div></div>
+  <div class="field"><label>Тип документа</label><div class="input" style="color:var(--yak-blue);font-weight:600">ИИ</div></div>
+  <div class="field"><label>Начальная дата</label><div class="input">01.01.2026</div></div>
+  <div class="field"><label>Конечная дата</label><div class="input">30.04.2026</div></div>
+</div>
+<div class="split3" style="gap:12px;margin-top:10px">
 <div class="panel">
-<div class="panel-h"><div><h5>Количество выпущенных документов</h5><p>Гистограмма эффективности по подразделениям</p></div></div>
-<div class="panel-b"><div class="chb2"><div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div><div class="bars2"><div class="bar2 b1" style="height:75%"></div><div class="bar2 b1" style="height:68%"></div><div class="bar2 b1" style="height:55%"></div><div class="bar2 b1" style="height:70%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b1" style="height:8%"></div></div></div></div>
+  <div class="panel-h"><div><h5>Выпущено ИИ по КБ</h5><p>Только изменения-извещения</p></div></div>
+  <div class="panel-b">
+    <div class="chb2" style="height:180px">
+      <div class="legend"><i style="background:var(--yak-blue)"></i> ИИ выпущено</div>
+      <div class="bars2" style="height:110px">
+        <div class="bar2 b1" style="height:100%"></div>
+        <div class="bar2 b1" style="height:62%"></div>
+        <div class="bar2 b1" style="height:38%"></div>
+        <div class="bar2 b1" style="height:27%"></div>
+        <div class="bar2 b1" style="height:22%"></div>
+        <div class="bar2 b1" style="height:14%"></div>
+        <div class="bar2 b1" style="height:4%"></div>
+      </div>
+      <div style="display:flex;gap:2px;font-size:8px;color:var(--muted);padding-top:2px">
+        <span style="flex:1;text-align:center">ИЦ 52</span><span style="flex:1;text-align:center">КБ-1 32</span>
+        <span style="flex:1;text-align:center">КБ-2 20</span><span style="flex:1;text-align:center">КБ-3 14</span>
+        <span style="flex:1;text-align:center">КБ-4 11</span><span style="flex:1;text-align:center">КБ-5 7</span>
+        <span style="flex:1;text-align:center">КБ-6 2</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="panel">
-<div class="panel-h"><div><h5>Сравнение по типу документа</h5><p>Круговая диаграмма согласованных документов</p></div></div>
-<div class="panel-b"><div class="pie"></div><div class="legend" style="justify-content:center"><i style="background:var(--yak-blue)"></i> ИИ <i style="background:var(--yak-sky)"></i> РНО <i style="background:var(--yak-teal)"></i> ТР <i style="background:#8a98a5"></i> Прочие</div></div>
+  <div class="panel-h"><div><h5>Поступило / Согласовано ИИ</h5><p>Янв–Апр 2026</p></div></div>
+  <div class="panel-b">
+    <div class="chb2" style="height:180px">
+      <div class="legend"><i style="background:var(--yak-blue)"></i> Поступило <i style="background:var(--ok)"></i> Согласовано</div>
+      <div class="bars2" style="height:110px">
+        <div class="bar2 b1" style="height:62%"></div><div class="bar2 b2" style="height:57%"></div>
+        <div class="bar2 b1" style="height:68%"></div><div class="bar2 b2" style="height:61%"></div>
+        <div class="bar2 b1" style="height:78%"></div><div class="bar2 b2" style="height:71%"></div>
+        <div class="bar2 b1" style="height:71%"></div><div class="bar2 b2" style="height:100%"></div>
+      </div>
+      <div style="display:flex;font-size:8px;color:var(--muted);padding-top:2px">
+        <span style="flex:2;text-align:center">Январь</span><span style="flex:2;text-align:center">Февраль</span>
+        <span style="flex:2;text-align:center">Март</span><span style="flex:2;text-align:center">Апрель</span>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 <div class="panel" style="margin-top:12px">
-<div class="panel-h"><div><h5>Количество поступивших / согласованных документов</h5><p>Сравнение входящей нагрузки и фактического выпуска</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:180px"><div class="legend"><i style="background:var(--yak-blue)"></i> Поступивших <i style="background:var(--ok)"></i> Согласованных</div><div class="bars2" style="height:110px"><div class="bar2 b1" style="height:60%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b1" style="height:82%"></div><div class="bar2 b2" style="height:78%"></div><div class="bar2 b1" style="height:67%"></div><div class="bar2 b2" style="height:65%"></div><div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:72%"></div><div class="bar2 b1" style="height:9%"></div><div class="bar2 b2" style="height:7%"></div></div></div></div>
-</div>
+  <div class="panel-h"><div><h5>Детальная таблица по ИИ — апрель 2026</h5><p>Разбивка по КБ и этапам согласования</p></div></div>
+  <div class="panel-b">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>КБ</th><th>Поступило</th><th>Согласовано</th><th>На доработке</th><th>Просрочено</th><th>Ср. время, дн.</th></tr></thead>
+        <tbody>
+          <tr><td>КБ ИЦ</td><td>58</td><td>52</td><td>4</td><td>2</td><td>7.2</td></tr>
+          <tr><td>КБ-1</td><td>36</td><td>32</td><td>3</td><td>1</td><td>8.4</td></tr>
+          <tr><td>КБ-2</td><td>22</td><td>20</td><td>2</td><td>0</td><td>6.8</td></tr>
+          <tr><td>КБ-3</td><td>15</td><td>14</td><td>1</td><td>0</td><td>9.1</td></tr>
+          <tr><td>Итого</td><td><strong>131</strong></td><td><strong>118</strong></td><td><strong>10</strong></td><td><strong>3</strong></td><td><strong>7.9</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.3 Вкладка «Количество документов» — фильтры, часть 2</h3>
+  <p>Фильтр по выпускающему подразделению, этапу согласования и экспорт в Excel.</p>
+</div>
 <article class="scr" id="scr-9-10">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -727,39 +923,70 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.3 Вкладка «Количество документов» — фильтры, часть 2</h3>
-        <p>Фильтр по выпускающему подразделению, этапу согласования и экспорт в Excel.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Раздел «Аналитика»</h4><p>«Количество документов» — фильтр: КБ=КБ ИЦ, этап=Технол. контроль</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="toolbar"><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="field"><label>Этап согласования</label><div class="input">Все</div></div><div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div></div><div class="content-grid">
-<div class="split3">
-<div class="panel">
-<div class="panel-h"><div><h5>Количество выпущенных документов</h5><p>Гистограмма эффективности по подразделениям</p></div></div>
-<div class="panel-b"><div class="chb2"><div class="legend"><i style="background:var(--yak-blue)"></i> Выпущено</div><div class="bars2"><div class="bar2 b1" style="height:75%"></div><div class="bar2 b1" style="height:68%"></div><div class="bar2 b1" style="height:55%"></div><div class="bar2 b1" style="height:70%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b1" style="height:8%"></div></div></div></div>
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2 active">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar">
+  <div class="field"><label>Выпускающее подразделение</label><div class="input" style="color:var(--yak-blue);font-weight:600">КБ ИЦ</div></div>
+  <div class="field"><label>Этап согласования</label><div class="input" style="color:var(--yak-blue);font-weight:600">Технологический контроль</div></div>
+  <div class="bt s sm">Пояснение</div>
+  <div class="bt s sm">Сохранить в Excel</div>
 </div>
-<div class="panel">
-<div class="panel-h"><div><h5>Сравнение по типу документа</h5><p>Круговая диаграмма согласованных документов</p></div></div>
-<div class="panel-b"><div class="pie"></div><div class="legend" style="justify-content:center"><i style="background:var(--yak-blue)"></i> ИИ <i style="background:var(--yak-sky)"></i> РНО <i style="background:var(--yak-teal)"></i> ТР <i style="background:#8a98a5"></i> Прочие</div></div>
+<div class="split2" style="gap:12px;margin-top:10px">
+<div>
+  <div class="panel">
+    <div class="panel-h"><div><h5>Документы КБ ИЦ на этапе «Технологический контроль»</h5><p>Янв–Апр 2026 · поступило vs. согласовано</p></div></div>
+    <div class="panel-b">
+      <div class="chb2" style="height:190px">
+        <div class="legend"><i style="background:var(--yak-blue)"></i> Поступило <i style="background:var(--ok)"></i> Пройдено <i style="background:var(--err)"></i> Возвращено</div>
+        <div class="bars2" style="height:120px">
+          <div class="bar2 b1" style="height:66%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b3" style="height:12%"></div>
+          <div class="bar2 b1" style="height:72%"></div><div class="bar2 b2" style="height:63%"></div><div class="bar2 b3" style="height:14%"></div>
+          <div class="bar2 b1" style="height:84%"></div><div class="bar2 b2" style="height:73%"></div><div class="bar2 b3" style="height:16%"></div>
+          <div class="bar2 b1" style="height:79%"></div><div class="bar2 b2" style="height:100%"></div><div class="bar2 b3" style="height:10%"></div>
+        </div>
+        <div style="display:flex;font-size:8px;color:var(--muted);padding-top:2px">
+          <span style="flex:3;text-align:center">Январь</span><span style="flex:3;text-align:center">Февраль</span>
+          <span style="flex:3;text-align:center">Март</span><span style="flex:3;text-align:center">Апрель</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:10px">
+    <div class="panel-h"><div><h5>Среднее время на этапе ТК по типам документов</h5><p>КБ ИЦ · в рабочих днях</p></div></div>
+    <div class="panel-b">
+      <div class="chb2" style="height:180px">
+        <div class="legend"><i style="background:var(--yak-blue)"></i> Факт, дн. <i style="background:var(--ok)"></i> Норматив, дн.</div>
+        <div class="bars2" style="height:110px">
+          <div class="bar2 b1" style="height:32%"></div><div class="bar2 b2" style="height:25%"></div>
+          <div class="bar2 b1" style="height:52%"></div><div class="bar2 b2" style="height:36%"></div>
+          <div class="bar2 b1" style="height:79%"></div><div class="bar2 b2" style="height:57%"></div>
+          <div class="bar2 b1" style="height:100%"></div><div class="bar2 b2" style="height:71%"></div>
+        </div>
+        <div style="display:flex;font-size:8px;color:var(--muted);padding-top:2px">
+          <span style="flex:2;text-align:center">ИИ 2.6д</span>
+          <span style="flex:2;text-align:center">РНО 4.3д</span>
+          <span style="flex:2;text-align:center">ТР 6.5д</span>
+          <span style="flex:2;text-align:center">ТСЗ 8.2д</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-<div class="panel" style="margin-top:12px">
-<div class="panel-h"><div><h5>Количество поступивших / согласованных документов</h5><p>Сравнение входящей нагрузки и фактического выпуска</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:180px"><div class="legend"><i style="background:var(--yak-blue)"></i> Поступивших <i style="background:var(--ok)"></i> Согласованных</div><div class="bars2" style="height:110px"><div class="bar2 b1" style="height:60%"></div><div class="bar2 b2" style="height:58%"></div><div class="bar2 b1" style="height:82%"></div><div class="bar2 b2" style="height:78%"></div><div class="bar2 b1" style="height:67%"></div><div class="bar2 b2" style="height:65%"></div><div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:72%"></div><div class="bar2 b1" style="height:9%"></div><div class="bar2 b2" style="height:7%"></div></div></div></div>
-</div>
+<div class="callout"><h6>Интерпретация фильтра</h6><p>Фильтр <b>«КБ ИЦ»</b> ограничивает выборку документами, выпущенными этим КБ. Фильтр <b>«Технологический контроль»</b> показывает только те документы, которые находятся или прошли данный этап маршрута. Сочетание фильтров позволяет руководителю КБ ИЦ видеть узкое место технологического контроля и сравнивать фактическое время с нормативным.</p></div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.4 Вкладка «Время согласования»</h3>
+  <p>Первый график по времени согласования документа определенного типа.</p>
+</div>
 <article class="scr" id="scr-9-11">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -787,29 +1014,57 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.4 Вкладка «Время согласования»</h3>
-        <p>Первый график по времени согласования документа определенного типа.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Время согласования КД</h4><p>Медиана фактического времени vs нормативного — по типам документов</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">ТСЭ</div></div><div class="field"><label>Начальная дата</label><div class="input">19.11.2023</div></div><div class="field"><label>Конечная дата</label><div class="input">16.01.2025</div></div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все типы</div></div><div class="field"><label>Период</label><div class="input">01.01.2024 — 31.03.2025</div></div><div class="bt s sm">Пояснение</div><div class="bt p sm">Применить</div></div>
+<div class="g4" style="gap:10px;margin:12px 0">
+  <div class="kpi2 kpi2-warn"><strong>31 д</strong><span>Медиана (ТСЗ)</span></div>
+  <div class="kpi2 kpi2-blue"><strong>8 д</strong><span>Медиана (ИИ)</span></div>
+  <div class="kpi2" style="background:var(--bg2)"><strong>45 д</strong><span>Медиана (ЭМ)</span></div>
+  <div class="kpi2 kpi2-ok"><strong>187</strong><span>Документов в выборке</span></div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Время, затраченное на согласование документа определенного типа</h5><p>Гистограмма с линией тренда и легендой</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:210px"><div class="legend"><i style="background:var(--yak-blue)"></i> Медиана по времени <i style="background:#2563eb"></i> Ожидаемое время</div><div class="bars2" style="height:120px"><div class="bar2 b1" style="height:42%"></div><div class="bar2 b3" style="height:24%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b3" style="height:22%"></div><div class="bar2 b1" style="height:58%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:75%"></div><div class="bar2 b3" style="height:22%"></div></div></div></div>
+<div class="panel-h"><div><h5>Медиана фактического времени согласования vs нормативного — по типам КД</h5><p>Все подразделения · 01.01.2024 — 31.03.2025</p></div></div>
+<div class="panel-b">
+<div class="chb2" style="height:240px">
+  <div class="legend"><i style="background:var(--yak-blue)"></i> Медиана факт&nbsp;&nbsp;<i style="background:var(--ok)"></i> Норматив</div>
+  <div class="bars2" style="height:140px">
+    <div class="bar2 b1" style="height:53%"></div><div class="bar2 b2" style="height:33%"></div>
+    <div class="bar2 b1" style="height:57%"></div><div class="bar2 b2" style="height:47%"></div>
+    <div class="bar2 b1" style="height:75%"></div><div class="bar2 b2" style="height:67%"></div>
+    <div class="bar2 b1" style="height:100%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:90%"></div><div class="bar2 b2" style="height:60%"></div>
+  </div>
+  <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+    <span style="flex:2;text-align:center">ИИ<br>8 / 5 д</span>
+    <span style="flex:2;text-align:center">РНО<br>12 / 7 д</span>
+    <span style="flex:2;text-align:center">ТР<br>21 / 14 д</span>
+    <span style="flex:2;text-align:center">ТСЗ<br>31 / 20 д</span>
+    <span style="flex:2;text-align:center">ЭМ<br>45 / 30 д</span>
+  </div>
+</div>
+<div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>Тип КД</th><th>Медиана, дн</th><th>Мин, дн</th><th>Макс, дн</th><th>Норматив, дн</th><th>Кол-во</th></tr></thead><tbody>
+<tr><td>ИИ</td><td>8</td><td>2</td><td>34</td><td>5</td><td>74</td></tr>
+<tr><td>РНО</td><td>12</td><td>3</td><td>51</td><td>7</td><td>43</td></tr>
+<tr><td>ТР</td><td>21</td><td>7</td><td>88</td><td>14</td><td>31</td></tr>
+<tr><td>ТСЗ</td><td class="warncell">31</td><td>12</td><td>97</td><td>20</td><td>27</td></tr>
+<tr><td>ЭМ</td><td class="warncell">45</td><td>18</td><td>120</td><td>30</td><td>12</td></tr>
+</tbody></table></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.4 Вкладка «Время согласования» — график по этапам</h3>
+  <p>Гистограмма с линией тренда по этапам согласования и легендой min/median/max.</p>
+</div>
 <article class="scr" id="scr-9-12">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -837,28 +1092,57 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.4 Вкладка «Время согласования» — график по этапам</h3>
-        <p>Гистограмма с линией тренда по этапам согласования и легендой min/median/max.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Время согласования КД</h4><p>Сравнительный вид: по типам документов и по этапам маршрута</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все типы</div></div><div class="field"><label>Период</label><div class="input">01.01.2024 — 31.03.2025</div></div><div class="bt p sm">Применить</div></div>
+<div class="content-grid">
 <div class="stack">
 <div class="panel">
-<div class="panel-h"><div><h5>Время, затраченное на согласование документа определенного типа</h5><p>Верхний график вкладки</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:190px"><div class="legend"><i style="background:var(--yak-blue)"></i> Медиана по времени <i style="background:#2563eb"></i> Ожидаемое время</div><div class="bars2" style="height:105px"><div class="bar2 b1" style="height:42%"></div><div class="bar2 b3" style="height:24%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b3" style="height:22%"></div><div class="bar2 b1" style="height:58%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:75%"></div><div class="bar2 b3" style="height:22%"></div></div></div></div>
+<div class="panel-h"><div><h5>Медиана vs норматив — по типам КД</h5><p>Отклонение факта от нормы</p></div></div>
+<div class="panel-b">
+<div class="chb2" style="height:175px">
+  <div class="legend"><i style="background:var(--yak-blue)"></i> Медиана факт&nbsp;&nbsp;<i style="background:var(--ok)"></i> Норматив</div>
+  <div class="bars2" style="height:100px">
+    <div class="bar2 b1" style="height:53%"></div><div class="bar2 b2" style="height:33%"></div>
+    <div class="bar2 b1" style="height:57%"></div><div class="bar2 b2" style="height:47%"></div>
+    <div class="bar2 b1" style="height:75%"></div><div class="bar2 b2" style="height:67%"></div>
+    <div class="bar2 b1" style="height:100%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:90%"></div><div class="bar2 b2" style="height:60%"></div>
+  </div>
+  <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+    <span style="flex:2;text-align:center">ИИ<br>8 д</span>
+    <span style="flex:2;text-align:center">РНО<br>12 д</span>
+    <span style="flex:2;text-align:center">ТР<br>21 д</span>
+    <span style="flex:2;text-align:center">ТСЗ<br>31 д</span>
+    <span style="flex:2;text-align:center">ЭМ<br>45 д</span>
+  </div>
+</div>
+</div>
 </div>
 <div class="panel">
-<div class="panel-h"><div><h5>Время, затраченное на согласование документа по этапам</h5><p>Медиана / максимум / минимум по согласованным</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:190px"><div class="legend"><i style="background:var(--yak-blue)"></i> Медиана <i style="background:var(--ok)"></i> Мин <i style="background:var(--yak-red)"></i> Макс</div><div class="bars2" style="height:105px"><div class="bar2 b1" style="height:66%"></div><div class="bar2 b2" style="height:14%"></div><div class="bar2 b3" style="height:92%"></div><div class="bar2 b1" style="height:50%"></div><div class="bar2 b2" style="height:12%"></div><div class="bar2 b3" style="height:74%"></div></div></div></div>
+<div class="panel-h"><div><h5>Мин / Медиана / Макс — по этапам маршрута согласования</h5><p>Где накапливаются задержки</p></div></div>
+<div class="panel-b">
+<div class="chb2" style="height:175px">
+  <div class="legend"><i style="background:var(--ok)"></i> Мин&nbsp;&nbsp;<i style="background:var(--yak-blue)"></i> Медиана&nbsp;&nbsp;<i style="background:var(--err)"></i> Макс</div>
+  <div class="bars2" style="height:100px">
+    <div class="bar2 b2" style="height:12%"></div><div class="bar2 b1" style="height:40%"></div><div class="bar2 b3" style="height:58%"></div>
+    <div class="bar2 b2" style="height:8%"></div><div class="bar2 b1" style="height:52%"></div><div class="bar2 b3" style="height:100%"></div>
+    <div class="bar2 b2" style="height:10%"></div><div class="bar2 b1" style="height:62%"></div><div class="bar2 b3" style="height:82%"></div>
+    <div class="bar2 b2" style="height:5%"></div><div class="bar2 b1" style="height:25%"></div><div class="bar2 b3" style="height:42%"></div>
+  </div>
+  <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+    <span style="flex:3;text-align:center">Техконтроль<br>1/6/14 д</span>
+    <span style="flex:3;text-align:center">ОУК 2<br>1/8/24 д</span>
+    <span style="flex:3;text-align:center">Гл. конструктор<br>1/7/20 д</span>
+    <span style="flex:3;text-align:center">Архив<br>1/3/10 д</span>
+  </div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -866,6 +1150,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>9.4 Вкладка «Время согласования» — фильтры, часть 1</h3>
+  <p>Тумблер показа таблиц, тип документа и диапазон дат.</p>
+</div>
 <article class="scr" id="scr-9-13">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -893,29 +1181,57 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.4 Вкладка «Время согласования» — фильтры, часть 1</h3>
-        <p>Тумблер показа таблиц, тип документа и диапазон дат.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Время согласования КД</h4><p>Фильтр: тип ТСЗ — детальный вид с таблицей документов</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="toolbar"><div class="field"><label>Показ таблицы</label><div class="input"><span class="ck-box checked" aria-checked="true"></span> Показывать таблицы</div></div><div class="field"><label>Тип документа</label><div class="input">ТСЭ</div></div><div class="field"><label>Начальная дата</label><div class="input">19.11.2023</div></div><div class="field"><label>Конечная дата</label><div class="input">16.01.2025</div></div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar">
+  <div class="field"><label>Показ таблицы</label><div class="input"><span class="ck-box checked" aria-checked="true"></span> Показывать таблицу</div></div>
+  <div class="field"><label>Тип документа</label><div class="input sel">ТСЗ</div></div>
+  <div class="field"><label>Начало периода</label><div class="input">01.01.2024</div></div>
+  <div class="field"><label>Конец периода</label><div class="input">31.03.2025</div></div>
+  <div class="bt p sm">Применить</div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Время, затраченное на согласование документа определенного типа</h5><p>Гистограмма с линией тренда и легендой</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:210px"><div class="legend"><i style="background:var(--yak-blue)"></i> Медиана по времени <i style="background:#2563eb"></i> Ожидаемое время</div><div class="bars2" style="height:120px"><div class="bar2 b1" style="height:42%"></div><div class="bar2 b3" style="height:24%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b3" style="height:22%"></div><div class="bar2 b1" style="height:58%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:75%"></div><div class="bar2 b3" style="height:22%"></div></div></div></div>
+<div class="panel-h"><div><h5>Медиана vs норматив — ТСЗ (20 дн норматив)</h5><p>Выборка: 27 документов типа ТСЗ</p></div></div>
+<div class="panel-b">
+<div class="chb2" style="height:185px">
+  <div class="legend"><i style="background:var(--yak-blue)"></i> Медиана факт&nbsp;&nbsp;<i style="background:var(--ok)"></i> Норматив 20 дн</div>
+  <div class="bars2" style="height:110px">
+    <div class="bar2 b1" style="height:74%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:80%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:100%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:92%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:77%"></div><div class="bar2 b2" style="height:65%"></div>
+  </div>
+  <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+    <span style="flex:2;text-align:center">КБ ИЦ<br>23 д</span>
+    <span style="flex:2;text-align:center">КБ-1<br>25 д</span>
+    <span style="flex:2;text-align:center">КБ-2<br>31 д</span>
+    <span style="flex:2;text-align:center">КБ-3<br>28 д</span>
+    <span style="flex:2;text-align:center">КБ-4<br>24 д</span>
+  </div>
+</div>
+<div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>Название документа</th><th>КБ</th><th>Маршрут</th><th>Дата выпуска</th><th>Факт, дн</th><th>Норм, дн</th></tr></thead><tbody>
+<tr><td>IZ.MC21-55-040120.TSZ</td><td>КБ-2</td><td>Расширенный</td><td>14.01.2025</td><td class="warncell">38</td><td>20</td></tr>
+<tr><td>IZ.SJ100-40-018844.TSZ</td><td>КБ ИЦ</td><td>Стандартный</td><td>22.01.2025</td><td class="warncell">26</td><td>20</td></tr>
+<tr><td>IZ.MC21-27-031102.TSZ</td><td>КБ-3</td><td>Стандартный</td><td>03.02.2025</td><td class="warncell">31</td><td>20</td></tr>
+<tr><td>IZ.SJ100-53-022741.TSZ</td><td>КБ-1</td><td>Стандартный</td><td>18.02.2025</td><td>22</td><td>20</td></tr>
+<tr><td>IZ.MC21-55-041003.TSZ</td><td>КБ-2</td><td>Ускоренный</td><td>05.03.2025</td><td class="warncell">29</td><td>20</td></tr>
+</tbody></table></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.4 Вкладка «Время согласования» — фильтры, часть 2</h3>
+  <p>Фильтр по выпускающему подразделению, выбор меры времени и экспорт в Excel.</p>
+</div>
 <article class="scr" id="scr-9-14">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -943,29 +1259,50 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.4 Вкладка «Время согласования» — фильтры, часть 2</h3>
-        <p>Фильтр по выпускающему подразделению, выбор меры времени и экспорт в Excel.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Время согласования КД</h4><p>Фильтр по выпускающему подразделению: КБ-2 · мера — дни</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="toolbar"><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="field"><label>Мера времени</label><div class="input">Дни</div></div><div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2 active">Время согласования</div><div class="tab2">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="toolbar">
+  <div class="field"><label>Выпускающее подразделение</label><div class="input sel">КБ-2</div></div>
+  <div class="field"><label>Мера времени</label><div class="input sel">Дни</div></div>
+  <div class="field"><label>Период</label><div class="input">01.01.2024 — 31.03.2025</div></div>
+  <div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Время, затраченное на согласование документа определенного типа</h5><p>Гистограмма с линией тренда и легендой</p></div></div>
-<div class="panel-b"><div class="chb2" style="height:210px"><div class="legend"><i style="background:var(--yak-blue)"></i> Медиана по времени <i style="background:#2563eb"></i> Ожидаемое время</div><div class="bars2" style="height:120px"><div class="bar2 b1" style="height:42%"></div><div class="bar2 b3" style="height:24%"></div><div class="bar2 b1" style="height:44%"></div><div class="bar2 b3" style="height:22%"></div><div class="bar2 b1" style="height:58%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:66%"></div><div class="bar2 b3" style="height:21%"></div><div class="bar2 b1" style="height:75%"></div><div class="bar2 b3" style="height:22%"></div></div></div></div>
+<div class="panel-h"><div><h5>Время согласования по типам КД — КБ-2</h5><p>Медиана факт vs норматив · в рабочих днях</p></div><span class="bg bw">КБ-2 · 42 документа</span></div>
+<div class="panel-b">
+<div class="chb2" style="height:200px">
+  <div class="legend"><i style="background:var(--yak-blue)"></i> Медиана факт&nbsp;&nbsp;<i style="background:var(--ok)"></i> Норматив</div>
+  <div class="bars2" style="height:120px">
+    <div class="bar2 b1" style="height:55%"></div><div class="bar2 b2" style="height:33%"></div>
+    <div class="bar2 b1" style="height:63%"></div><div class="bar2 b2" style="height:47%"></div>
+    <div class="bar2 b1" style="height:78%"></div><div class="bar2 b2" style="height:67%"></div>
+    <div class="bar2 b1" style="height:100%"></div><div class="bar2 b2" style="height:65%"></div>
+    <div class="bar2 b1" style="height:88%"></div><div class="bar2 b2" style="height:60%"></div>
+  </div>
+  <div style="display:flex;gap:3px;padding:3px 0 0;font-size:9px;color:var(--muted)">
+    <span style="flex:2;text-align:center">ИИ<br>9 / 5 д</span>
+    <span style="flex:2;text-align:center">РНО<br>13 / 7 д</span>
+    <span style="flex:2;text-align:center">ТР<br>23 / 14 д</span>
+    <span style="flex:2;text-align:center">ТСЗ<br>31 / 20 д</span>
+    <span style="flex:2;text-align:center">ЭМ<br>44 / 30 д</span>
+  </div>
+</div>
+<div class="callout" style="margin-top:12px"><h6>КБ-2 — анализ отклонений</h6><p>По всем типам документов КБ-2 превышает норматив. Наибольшее относительное отклонение — по ИИ (+80% к норме). Критические задержки концентрируются на этапе ОУК 2 (медиана 10 д при норме 3 д). Рекомендуется провести ревью маршрутов и провести встречу с ответственным за нормирование.</p></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5 Вкладка «Просроченные документы»</h3>
+  <p>Общий экран вкладки просроченных документов с двумя подвкладками.</p>
+</div>
 <article class="scr" id="scr-9-15">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -993,31 +1330,41 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5 Вкладка «Просроченные документы»</h3>
-        <p>Общий экран вкладки просроченных документов с двумя подвкладками.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Просроченные документы</h4><p>Стартовый экран — сводка по просроченным и зависшим КД</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div><div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все</div></div><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="bt s sm">Сохранить в Excel</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div>
+<div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все</div></div><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="bt s sm">Сохранить в Excel</div></div>
+<div class="g4" style="gap:10px;margin:12px 0">
+  <div class="kpi2 kpi2-warn"><strong>23</strong><span>Просрочено (в работе)</span></div>
+  <div class="kpi2" style="background:#fff3cd"><strong>321</strong><span>Зависших &gt;30 дн</span></div>
+  <div class="kpi2 kpi2-blue"><strong>7</strong><span>КБ с просрочками</span></div>
+  <div class="kpi2 kpi2-teal"><strong>52</strong><span>На одном подразделении</span></div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Просроченные документы по выпускающим подразделениям</h5><p>Все типы КД · на сегодня</p></div><span class="bg bw">Таблица</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Отдел нагрузок и аэроупругости</td><td>1</td></tr><tr><td>Отдел сопровождения серийной постройки</td><td>1</td></tr></tbody></table></div>
-</div>
+<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Просрочено, шт</th><th>Медиана превышения, дн</th><th>Макс превышение, дн</th></tr></thead><tbody>
+<tr><td>КБ ИЦ</td><td class="warncell">8</td><td>14</td><td>47</td></tr>
+<tr><td>КБ-2</td><td class="warncell">6</td><td>18</td><td>62</td></tr>
+<tr><td>КБ-3</td><td class="warncell">4</td><td>9</td><td>31</td></tr>
+<tr><td>КБ-1</td><td>3</td><td>7</td><td>19</td></tr>
+<tr><td>КБ-4</td><td>2</td><td>5</td><td>12</td></tr>
+</tbody></table></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5 Вкладка «Просроченные документы» — меню столбца</h3>
+  <p>Сценарий сортировки, фильтрации, скрытия и управления колонками.</p>
+</div>
 <article class="scr" id="scr-9-16">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1045,31 +1392,45 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5 Вкладка «Просроченные документы» — меню столбца</h3>
-        <p>Сценарий сортировки, фильтрации, скрытия и управления колонками.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Просроченные документы</h4><p>Меню столбца — сортировка, фильтр, скрытие колонок</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div><div class="content-grid"><div class="split2"><div>
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div>
+<div class="content-grid"><div class="split2"><div>
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Просроченные по выпускающим подразделениям</h5><p>Все типы · сортировка ↓ по «Просрочено»</p></div><span class="bg bw">Таблица</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Отдел нагрузок и аэроупругости</td><td>1</td></tr><tr><td>Отдел сопровождения серийной постройки</td><td>1</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th style="background:var(--yak-sky,#e0f0ff)">Просрочено ↓ <span style="cursor:pointer;opacity:.5">⋯</span></th><th>Медиана, дн</th><th>Макс, дн</th></tr></thead><tbody>
+<tr><td>КБ ИЦ</td><td class="warncell">8</td><td>14</td><td>47</td></tr>
+<tr><td>КБ-2</td><td class="warncell">6</td><td>18</td><td>62</td></tr>
+<tr><td>КБ-3</td><td class="warncell">4</td><td>9</td><td>31</td></tr>
+<tr><td>КБ-1</td><td>3</td><td>7</td><td>19</td></tr>
+<tr><td>КБ-4</td><td>2</td><td>5</td><td>12</td></tr>
+</tbody></table></div>
 </div>
 </div>
-</div><div class="callout"><h6>Меню столбца</h6><p>Через кнопку с тремя точками пользователь может сортировать по возрастанию или убыванию, открыть фильтр, скрыть выбранный столбец или перейти к управлению колонками.</p><div class="info-menu" style="margin-top:12px"><div>↓ Сортировать по убыванию</div><div>× Отменить сортировку</div><div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><path d="M3 3h4v4H3zM9 3h4v4H9zM3 9h4v4H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 9v4M9 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Фильтр</div><div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><rect x="3" y="3" width="4" height="10" rx="1" fill="currentColor" opacity=".8"/><rect x="9" y="3" width="4" height="10" rx="1" fill="currentColor" opacity=".8"/></svg> Скрыть</div><div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><rect x="2" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/></svg> Управление колонками</div></div></div></div></div>
+</div>
+<div class="callout"><h6>Меню столбца «Просрочено»</h6><p>Нажата кнопка ⋯ в заголовке столбца. Доступные действия:</p><div class="info-menu" style="margin-top:12px">
+<div>↑ Сортировать по возрастанию</div>
+<div style="font-weight:600;color:var(--yak-blue)">↓ Сортировать по убыванию ✓</div>
+<div>× Отменить сортировку</div>
+<div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><path d="M3 3h4v4H3zM9 3h4v4H9zM3 9h4v4H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 9v4M9 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Фильтр по значению</div>
+<div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><rect x="3" y="3" width="4" height="10" rx="1" fill="currentColor" opacity=".8"/><rect x="9" y="3" width="4" height="10" rx="1" fill="currentColor" opacity=".8"/></svg> Скрыть столбец</div>
+<div><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><rect x="2" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="2" width="4" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/></svg> Управление колонками</div>
+</div></div>
+</div></div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — фильтры</h3>
+  <p>Экран настройки фильтров и экспорта для первой подвкладки просроченных документов.</p>
+</div>
 <article class="scr" id="scr-9-17">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1097,31 +1458,38 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — фильтры</h3>
-        <p>Экран настройки фильтров и экспорта для первой подвкладки просроченных документов.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Просроченные — выпущенные КБ ИЦ</h4><p>Фильтр по выпускающему подразделению + экспорт</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div><div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все</div></div><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div>
+<div class="toolbar">
+  <div class="field"><label>Тип документа</label><div class="input">Все</div></div>
+  <div class="field"><label>Выпускающее подразделение</label><div class="input sel">КБ ИЦ</div></div>
+  <div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div><div class="bt p sm">Применить</div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Просроченные документы — КБ ИЦ</h5><p>8 документов с превышением срока согласования</p></div><span class="bg bw">Таблица</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Отдел нагрузок и аэроупругости</td><td>1</td></tr><tr><td>Отдел сопровождения серийной постройки</td><td>1</td></tr></tbody></table></div>
-</div>
+<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Просрочено, шт</th><th>Тип</th><th>Маршрут</th><th>Превышение (мед), дн</th></tr></thead><tbody>
+<tr><td>КБ ИЦ — Бригада крыла</td><td class="warncell">3</td><td>ТСЗ</td><td>Расширенный</td><td class="warncell">18</td></tr>
+<tr><td>КБ ИЦ — Бригада фюзеляжа</td><td class="warncell">2</td><td>ИИ</td><td>Стандартный</td><td>8</td></tr>
+<tr><td>КБ ИЦ — Бригада ОВТ</td><td class="warncell">2</td><td>РНО</td><td>Стандартный</td><td>11</td></tr>
+<tr><td>КБ ИЦ — Бригада шасси</td><td>1</td><td>ТР</td><td>Ускоренный</td><td>5</td></tr>
+</tbody></table></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — сводная таблица</h3>
+  <p>Сводная таблица по количеству просроченных документов и документов с превышенным временем согласования.</p>
+</div>
 <article class="scr" id="scr-9-18">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1149,24 +1517,26 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — сводная таблица</h3>
-        <p>Сводная таблица по количеству просроченных документов и документов с превышенным временем согласования.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Просроченные — выпущенные по подразделениям</h4><p>Сводная таблица: все КБ, все типы документов</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div>
+<div class="content-grid">
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Просроченные документы по выпускающим подразделениям</h5><p>Все типы · на сегодня</p></div><span class="bg bw">Таблица · 23 документа</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Отдел нагрузок и аэроупругости</td><td>1</td></tr><tr><td>Отдел сопровождения серийной постройки</td><td>1</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Выпускающее подразделение</th><th>Просрочено, шт</th><th>Маршрутов стандарт</th><th>Маршрутов расширен</th><th>Маршрутов ускорен</th><th>Превыш. мед, дн</th></tr></thead><tbody>
+<tr><td>КБ ИЦ</td><td class="warncell">8</td><td>5</td><td>2</td><td>1</td><td class="warncell">14</td></tr>
+<tr><td>КБ-2</td><td class="warncell">6</td><td>3</td><td>3</td><td>0</td><td class="warncell">18</td></tr>
+<tr><td>КБ-3</td><td class="warncell">4</td><td>3</td><td>1</td><td>0</td><td>9</td></tr>
+<tr><td>КБ-1</td><td>3</td><td>2</td><td>1</td><td>0</td><td>7</td></tr>
+<tr><td>КБ-4</td><td>2</td><td>2</td><td>0</td><td>0</td><td>5</td></tr>
+<tr style="font-weight:600"><td>Итого</td><td class="warncell">23</td><td>15</td><td>7</td><td>1</td><td>—</td></tr>
+</tbody></table></div>
 </div>
 </div>
 </div>
@@ -1174,6 +1544,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — подробная таблица</h3>
+  <p>Детальная выгрузка по названию документа, проекту, маршруту и превышению по дням.</p>
+</div>
 <article class="scr" id="scr-9-19">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1201,30 +1575,28 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.1 Вкладка «Выпущенные выбранным подразделением» — подробная таблица</h3>
-        <p>Детальная выгрузка по названию документа, проекту, маршруту и превышению по дням.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Просроченные — детальная выгрузка</h4><p>Перечень конкретных документов с превышением срока</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub active">Выпущенные выбранным подразделением</div><div class="sub">Зависшие на выбранном подразделении</div></div>
+<div class="content-grid">
 <div class="panel">
-<div class="panel-h"><div><h5>Подробная выгрузка просроченных документов, зависших на выбранном подразделении</h5><p>Детальный контроль документов</p></div><span class="bg bd"><span class="dt"></span>control</span></div>
+<div class="panel-h"><div><h5>Подробная выгрузка просроченных документов</h5><p>Все подразделения · все типы</p></div><span class="bg bd">Детальный контроль</span></div>
 <div class="panel-b">
 <div class="tablewrap">
 <table>
-<thead><tr><th>Название документа</th><th>Проект</th><th>Тип документа</th><th>Название маршрута</th><th>Выпускающее подразделение</th><th>Количество возвратов</th><th>Превышение, дни</th><th>Время согласования факт/ожидание, дни</th></tr></thead>
+<thead><tr><th>Название документа</th><th>Проект</th><th>Тип</th><th>Маршрут</th><th>Выпускающее КБ</th><th>Возвратов</th><th>Превышение, дн</th><th>Факт / норм, дн</th></tr></thead>
 <tbody>
-<tr><td>IZ.MC21-97-075011.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
-<tr><td>IZ.MC21-97-074911.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
-<tr><td>IZ.MC21-89-075010.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
+<tr><td>IZ.MC21-55-040120.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Расширенный</td><td>КБ-2</td><td>2</td><td class="warncell">38</td><td>58 / 20</td></tr>
+<tr><td>IZ.SJ100-40-018844.TSZ</td><td>SJ-100</td><td>ТСЗ</td><td>Стандартный</td><td>КБ ИЦ</td><td>1</td><td class="warncell">26</td><td>46 / 20</td></tr>
+<tr><td>IZ.MC21-27-031102.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>КБ-3</td><td>0</td><td class="warncell">21</td><td>41 / 20</td></tr>
+<tr><td>IZ.MC21-31-044801.RNO</td><td>МС-21</td><td>РНО</td><td>Стандартный</td><td>КБ ИЦ</td><td>3</td><td class="warncell">17</td><td>24 / 7</td></tr>
+<tr><td>IZ.SJ100-53-022741.II</td><td>SJ-100</td><td>ИИ</td><td>Стандартный</td><td>КБ-1</td><td>0</td><td>8</td><td>13 / 5</td></tr>
+<tr><td>IZ.MC21-44-039012.TR</td><td>МС-21</td><td>ТР</td><td>Ускоренный</td><td>КБ-4</td><td>1</td><td>5</td><td>19 / 14</td></tr>
 </tbody>
 </table>
 </div>
@@ -1235,6 +1607,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — фильтры</h3>
+  <p>Фильтры по типу документа, выпускающему подразделению и подразделению задержки.</p>
+</div>
 <article class="scr" id="scr-9-20">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1262,31 +1638,46 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — фильтры</h3>
-        <p>Фильтры по типу документа, выпускающему подразделению и подразделению задержки.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Зависшие документы</h4><p>Фильтры: тип КД, выпускающее КБ, подразделение задержки</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div><div class="toolbar"><div class="field"><label>Тип документа</label><div class="input">Все</div></div><div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div><div class="field"><label>Подразделение, где завис процесс</label><div class="input">Все</div></div><div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div>
+<div class="toolbar">
+  <div class="field"><label>Тип документа</label><div class="input">Все</div></div>
+  <div class="field"><label>Выпускающее подразделение</label><div class="input">Все</div></div>
+  <div class="field"><label>Подразделение задержки</label><div class="input">Все</div></div>
+  <div class="bt s sm">Пояснение</div><div class="bt s sm">Сохранить в Excel</div><div class="bt p sm">Применить</div>
+</div>
+<div class="g4" style="gap:10px;margin:12px 0">
+  <div class="kpi2" style="background:#fff3cd"><strong>321</strong><span>Зависших &gt;30 дн</span></div>
+  <div class="kpi2 kpi2-warn"><strong>52</strong><span>На ОУК 2</span></div>
+  <div class="kpi2 kpi2-blue"><strong>28</strong><span>У Гл. конструктора</span></div>
+  <div class="kpi2" style="background:var(--bg2)"><strong>14</strong><span>На Техконтроле</span></div>
+</div>
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов, зависших на выбранном подразделении</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Зависшие документы по подразделениям-задержщикам</h5><p>Документы в маршруте >30 дней без движения</p></div><span class="bg bw">Таблица</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Подразделение, задерживающее согласование</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Бригада управления изделиями</td><td>321</td></tr><tr><td>Отдел электронных макетов</td><td>52</td></tr></tbody></table></div>
-</div>
+<div class="tablewrap"><table><thead><tr><th>Подразделение, задерживающее согласование</th><th>Зависших &gt;30 дн</th><th>Ср. время без движения, дн</th></tr></thead><tbody>
+<tr><td>Бригада управления изделиями (ОУК 2)</td><td class="warncell">52</td><td class="warncell">41</td></tr>
+<tr><td>Технологический контроль</td><td class="warncell">14</td><td>33</td></tr>
+<tr><td>Главный конструктор</td><td>28</td><td>38</td></tr>
+<tr><td>Отдел нагрузок и аэроупругости</td><td>12</td><td>31</td></tr>
+<tr><td>Архив КД</td><td>6</td><td>32</td></tr>
+</tbody></table></div>
 </div>
 </div>
   </div>
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — сводная таблица</h3>
+  <p>Таблица по подразделениям, задерживающим согласование, и количеству просроченных документов.</p>
+</div>
 <article class="scr" id="scr-9-21">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1314,24 +1705,25 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — сводная таблица</h3>
-        <p>Таблица по подразделениям, задерживающим согласование, и количеству просроченных документов.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Зависшие документы — сводная таблица</h4><p>По подразделениям, задерживающим согласование</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div>
+<div class="content-grid">
 <div class="panel">
-<div class="panel-h"><div><h5>Выгрузка по количеству просроченных документов, зависших на выбранном подразделении</h5><p>Сводная статистика</p></div><span class="bg bw"><span class="dt"></span>Таблица</span></div>
+<div class="panel-h"><div><h5>Зависшие документы по подразделениям-задержщикам</h5><p>Все типы КД · все КБ · 321 документ</p></div><span class="bg bw">Сводная таблица</span></div>
 <div class="panel-b">
-<div class="tablewrap"><table><thead><tr><th>Подразделение, задерживающее согласование</th><th>Количество просроченных документов</th></tr></thead><tbody><tr><td>Бригада управления изделиями</td><td>321</td></tr><tr><td>Отдел электронных макетов</td><td>52</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Подразделение, задерживающее согласование</th><th>Зависших &gt;30 дн</th><th>% от общего</th><th>Мин, дн</th><th>Медиана, дн</th><th>Макс, дн</th></tr></thead><tbody>
+<tr><td>Бригада управления изделиями (ОУК 2)</td><td class="warncell">52</td><td class="warncell">16%</td><td>31</td><td>41</td><td>98</td></tr>
+<tr><td>Главный конструктор</td><td>28</td><td>9%</td><td>30</td><td>38</td><td>84</td></tr>
+<tr><td>Технологический контроль</td><td class="warncell">14</td><td>4%</td><td>30</td><td>33</td><td>61</td></tr>
+<tr><td>Отдел нагрузок и аэроупругости</td><td>12</td><td>4%</td><td>31</td><td>34</td><td>72</td></tr>
+<tr><td>Архив КД</td><td>6</td><td>2%</td><td>30</td><td>32</td><td>48</td></tr>
+</tbody></table></div>
 </div>
 </div>
 </div>
@@ -1339,6 +1731,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — подробная таблица</h3>
+  <p>Детальная выгрузка для постановки документов на контроль и форсирования согласования.</p>
+</div>
 <article class="scr" id="scr-9-22">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1366,30 +1762,28 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Аналитика</b></div>
     <div class="right"><span class="pill-mini">Раздел 9</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>9.5.2 Вкладка «Зависшие на выбранном подразделении» — подробная таблица</h3>
-        <p>Детальная выгрузка для постановки документов на контроль и форсирования согласования.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
-<div><h4>Раздел «Аналитика»</h4><p>Вкладка раздела 9 и набор аналитических сценариев.</p></div>
-<div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 9 · Аналитика</span></div>
+<div><h4>Зависшие документы — детальная выгрузка</h4><p>Перечень документов с ответственными согласующими</p></div>
+<div class="module-actions"><span class="bg bi">Раздел 9 · Аналитика</span></div>
 </div>
-<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div><div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div><div class="content-grid">
+<div class="analytics-tabs"><div class="tab2">Генерация отчетов</div><div class="tab2">Количество документов</div><div class="tab2">Время согласования</div><div class="tab2 active">Просроченные документы</div><div class="tab2">Количество доработок</div></div>
+<div class="analytics-subtabs"><div class="sub">Выпущенные выбранным подразделением</div><div class="sub active">Зависшие на выбранном подразделении</div></div>
+<div class="content-grid">
 <div class="panel">
-<div class="panel-h"><div><h5>Подробная выгрузка просроченных документов, зависших на выбранном подразделении</h5><p>Детальный контроль документов</p></div><span class="bg bd"><span class="dt"></span>control</span></div>
+<div class="panel-h"><div><h5>Подробная выгрузка зависших документов</h5><p>Для постановки на контроль и форсирования согласования</p></div><span class="bg bd">Детальный контроль</span></div>
 <div class="panel-b">
 <div class="tablewrap">
 <table>
-<thead><tr><th>Название документа</th><th>Проект</th><th>Тип документа</th><th>Название маршрута</th><th>Выпускающее подразделение</th><th>Количество возвратов</th><th>Превышение, дни</th><th>Время согласования факт/ожидание, дни</th></tr></thead>
+<thead><tr><th>Название документа</th><th>Проект</th><th>Тип</th><th>Маршрут</th><th>Выпускающее КБ</th><th>Подразделение задержки</th><th>Ответственный согласующий</th><th>Без движения, дн</th></tr></thead>
 <tbody>
-<tr><td>IZ.MC21-97-075011.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
-<tr><td>IZ.MC21-97-074911.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
-<tr><td>IZ.MC21-89-075010.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>Отделение оборудования</td><td>0</td><td class="warncell">50</td><td>53/3</td></tr>
+<tr><td>IZ.MC21-55-040120.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Расширенный</td><td>КБ-2</td><td>ОУК 2</td><td>Петров И.С.</td><td class="warncell">98</td></tr>
+<tr><td>IZ.SJ100-40-018844.TSZ</td><td>SJ-100</td><td>ТСЗ</td><td>Стандартный</td><td>КБ ИЦ</td><td>Гл. конструктор</td><td>Козлов А.В.</td><td class="warncell">84</td></tr>
+<tr><td>IZ.MC21-27-031102.RNO</td><td>МС-21</td><td>РНО</td><td>Стандартный</td><td>КБ-3</td><td>ОУК 2</td><td>Петров И.С.</td><td class="warncell">61</td></tr>
+<tr><td>IZ.MC21-31-044801.TSZ</td><td>МС-21</td><td>ТСЗ</td><td>Стандартный</td><td>КБ ИЦ</td><td>Техконтроль</td><td>Никитин Д.Р.</td><td class="warncell">52</td></tr>
+<tr><td>IZ.SJ100-53-022741.II</td><td>SJ-100</td><td>ИИ</td><td>Стандартный</td><td>КБ-1</td><td>Отд. нагрузок</td><td>Смирнов В.Е.</td><td>38</td></tr>
+<tr><td>IZ.MC21-44-039012.TR</td><td>МС-21</td><td>ТР</td><td>Ускоренный</td><td>КБ-4</td><td>Архив КД</td><td>Фомин П.А.</td><td>31</td></tr>
 </tbody>
 </table>
 </div>

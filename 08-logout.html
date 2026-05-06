@@ -31,7 +31,7 @@
 .scr{
   display:grid;
   grid-template-columns:208px minmax(0,1fr);
-  grid-template-rows:auto auto 1fr;
+  grid-template-rows:auto 1fr;
   background:#fff;
   border:1px solid var(--line2);
   border-radius:var(--rxl);
@@ -40,8 +40,7 @@
   margin-top:28px;
 }
 .scr > .app-tb{ grid-column:2; grid-row:1; }
-.scr-h{ grid-column:2; grid-row:2; }
-.scr-b{ grid-column:2; grid-row:3; }
+.scr-b{ grid-column:2; grid-row:2; }
 .scr > .app-tb{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:9px 18px;background:#fff;border-bottom:1px solid var(--line2);
@@ -105,14 +104,16 @@
 /* Стрелка-индикатор «открыто» на аватаре */
 .app-rf-open-hint{margin-left:auto;font-size:9px;color:rgba(255,255,255,.4)}
 @media(max-width:980px){
-  .scr{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  .scr{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .scr > .app-rail{grid-column:1;grid-row:1;flex-direction:row;overflow-x:auto;align-self:auto}
   .scr > .app-rail .app-rg{flex-direction:row}
   .scr > .app-rail .app-rh,.scr > .app-rail .app-rf{display:none}
   .scr > .app-tb{grid-column:1;grid-row:2}
-  .scr-h{grid-column:1;grid-row:3}
-  .scr-b{grid-column:1;grid-row:4}
+  .scr-b{grid-column:1;grid-row:3}
 }
+.scr-label{margin:28px 0 6px;padding:0}
+.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
+.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
 </style>
 </head>
 <body>
@@ -145,6 +146,10 @@
     <div class="pill">1 экран · Раздел 11</div>
   </div>
   
+<div class="scr-label">
+  <h3>11. Выход из системы</h3>
+  <p>Меню пользователя раскрывается кликом по аватару в нижней части левого рейла. Содержит «Мой профиль», «Настройки» и «Выйти из системы».</p>
+</div>
 <article class="scr" id="scr-11-01">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -199,14 +204,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Выход из системы</b></div>
     <div class="right"><span class="pill-mini">Раздел 11</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-      <div>
-        <h3>11. Выход из системы</h3>
-        <p>Меню пользователя раскрывается кликом по аватару в нижней части левого рейла. Содержит «Мой профиль», «Настройки» и «Выйти из системы».</p>
-      </div>
-    </div>
-  </header>
+  
   <div class="scr-b">
     <div style="display:flex;align-items:center;justify-content:center;min-height:300px">
       <div style="text-align:center;color:var(--muted2)">

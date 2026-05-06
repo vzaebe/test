@@ -31,7 +31,7 @@
 .scr{
   display:grid;
   grid-template-columns:208px minmax(0,1fr);
-  grid-template-rows:auto auto 1fr;
+  grid-template-rows:auto 1fr;
   background:#fff;
   border:1px solid var(--line2);
   border-radius:var(--rxl);
@@ -40,8 +40,7 @@
   margin-top:28px;
 }
 .scr > .app-tb{ grid-column:2; grid-row:1; }
-.scr-h{ grid-column:2; grid-row:2; }
-.scr-b{ grid-column:2; grid-row:3; }
+.scr-b{ grid-column:2; grid-row:2; }
 .scr > .app-tb{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:9px 18px;background:#fff;border-bottom:1px solid var(--line2);
@@ -100,14 +99,16 @@
 .app-back{height:26px;padding:0 10px;border-radius:var(--rs);border:1px solid var(--line);background:#fff;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit}
 .app-back:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--blue)}
 @media(max-width:980px){
-  .scr{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  .scr{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .scr > .app-rail{grid-column:1;grid-row:1;flex-direction:row;overflow-x:auto;align-self:auto}
   .scr > .app-rail .app-rg{flex-direction:row}
   .scr > .app-rail .app-rh,.scr > .app-rail .app-rf{display:none}
   .scr > .app-tb{grid-column:1;grid-row:2}
-  .scr-h{grid-column:1;grid-row:3}
-  .scr-b{grid-column:1;grid-row:4}
+  .scr-b{grid-column:1;grid-row:3}
 }
+.scr-label{margin:28px 0 6px;padding:0}
+.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
+.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
 </style>
 </head>
 <body>
@@ -154,6 +155,10 @@
 </article>
 
 <!-- Экран 3.2 — Главная страница выбор модуля (уже в системе, с рейлом) -->
+<div class="scr-label">
+  <h3>3.2 Главная страница — выбор модуля</h3>
+  <p>После авторизации пользователь видит плиточный выбор модуля. После выбора «КД» открывается раздел «Мои процессы».</p>
+</div>
 <article class="scr" id="scr-entry-home">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -181,10 +186,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Выбор модуля</b></div>
     <div class="right"><span class="pill-mini">Экран 3.2</span></div>
   </div>
-  <header class="scr-h">
-    <h3>3.2 Главная страница — выбор модуля</h3>
-    <p>После авторизации пользователь видит плиточный выбор модуля. После выбора «КД» открывается раздел «Мои процессы».</p>
-  </header>
+  
   <div class="scr-b">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px">
       <div class="mod-card mod-kd" tabindex="0"><div class="mod-abbr">КД</div><div class="mod-info"><div class="mod-name">Конструкторские документы</div><div class="mod-sub">Согласование и выпуск КД</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mod-badge">Модуль в разработке</div></div>

@@ -31,7 +31,7 @@
 .scr{
   display:grid;
   grid-template-columns:208px minmax(0,1fr);
-  grid-template-rows:auto auto 1fr;
+  grid-template-rows:auto 1fr;
   background:#fff;
   border:1px solid var(--line2);
   border-radius:var(--rxl);
@@ -40,8 +40,7 @@
   margin-top:28px;
 }
 .scr > .app-tb{ grid-column:2; grid-row:1; }
-.scr-h{ grid-column:2; grid-row:2; }
-.scr-b{ grid-column:2; grid-row:3; }
+.scr-b{ grid-column:2; grid-row:2; }
 .scr > .app-tb{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:9px 18px;background:#fff;border-bottom:1px solid var(--line2);
@@ -101,14 +100,16 @@
 .app-back{height:26px;padding:0 10px;border-radius:var(--rs);border:1px solid var(--line);background:#fff;font-size:11px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit}
 .app-back:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--blue)}
 @media(max-width:980px){
-  .scr{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  .scr{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .scr > .app-rail{grid-column:1;grid-row:1;flex-direction:row;overflow-x:auto;align-self:auto}
   .scr > .app-rail .app-rg{flex-direction:row}
   .scr > .app-rail .app-rh,.scr > .app-rail .app-rf{display:none}
   .scr > .app-tb{grid-column:1;grid-row:2}
-  .scr-h{grid-column:1;grid-row:3}
-  .scr-b{grid-column:1;grid-row:4}
+  .scr-b{grid-column:1;grid-row:3}
 }
+.scr-label{margin:28px 0 6px;padding:0}
+.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
+.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
 </style>
 </head>
 <body>
@@ -143,6 +144,10 @@
   
 
 
+<div class="scr-label">
+  <h3>6.1 Общая информация</h3>
+  <p>Обзорная вкладка по документам и событиям. Уведомления вынесены в отдельную правую зону, как в руководстве, но визуально сделаны чище и системнее.</p>
+</div>
 <article class="scr" id="scr-6-02">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -170,14 +175,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.1 Общая информация</h3>
-        <p>Обзорная вкладка по документам и событиям. Уведомления вынесены в отдельную правую зону, как в руководстве, но визуально сделаны чище и системнее.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Общая информация о документах и уведомлениях пользователя.</div></div>
@@ -218,6 +216,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.2 Проверка задач — основной список</h3>
+  <p>Таблица задач с полным составом рабочих колонок. Внешний вид приведён к тому же table-toolbar паттерну, что используется в v5.</p>
+</div>
 <article class="scr" id="scr-6-03">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -245,14 +247,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.2 Проверка задач — основной список</h3>
-        <p>Таблица задач с полным составом рабочих колонок. Внешний вид приведён к тому же table-toolbar паттерну, что используется в v5.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Задачи, направленные на пользователя как проверяющего.</div></div>
@@ -264,6 +259,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.2 Проверка задач — действия и контекстное меню</h3>
+  <p>Показан второй экран того же сценария: массовые действия сверху таблицы и меню строки через три точки.</p>
+</div>
 <article class="scr" id="scr-6-04">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -291,14 +290,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.2 Проверка задач — действия и контекстное меню</h3>
-        <p>Показан второй экран того же сценария: массовые действия сверху таблицы и меню строки через три точки.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Управление задачами после выбора строки.</div></div>
@@ -310,6 +302,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.2 Проверка задач — окно добавления подзадачи</h3>
+  <p>Модальное окно сохранено как отдельное экранное состояние и приведено к modal-pattern из v5.</p>
+</div>
 <article class="scr" id="scr-6-05">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -337,14 +333,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.2 Проверка задач — окно добавления подзадачи</h3>
-        <p>Модальное окно сохранено как отдельное экранное состояние и приведено к modal-pattern из v5.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Добавление подзадачи без выхода из основной вкладки.</div></div>
@@ -367,6 +356,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.3 Выпуск документов — основной список</h3>
+  <p>Основная таблица выпускающего. Сохраняет структуру, но визуально полностью опирается на UI-patterns из v5.</p>
+</div>
 <article class="scr" id="scr-6-06">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -394,14 +387,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.3 Выпуск документов — основной список</h3>
-        <p>Основная таблица выпускающего. Сохраняет структуру, но визуально полностью опирается на UI-patterns из v5.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Документы, где пользователь является выпускающим.</div></div>
@@ -413,6 +399,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.3 Выпуск документов — действия и контекстное меню</h3>
+  <p>Отдельное состояние экрана для удаления выбранных процессов и переназначения выпускающего через меню строки.</p>
+</div>
 <article class="scr" id="scr-6-07">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -440,14 +430,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.3 Выпуск документов — действия и контекстное меню</h3>
-        <p>Отдельное состояние экрана для удаления выбранных процессов и переназначения выпускающего через меню строки.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Сценарий действий по выбранным документам.</div></div>
@@ -459,6 +442,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.4 Согласование документов — основной список</h3>
+  <p>Список для роли согласующего этапа. Действия сверху соответствуют странице из PDF, но оформлены по визуальным правилам v5.</p>
+</div>
 <article class="scr" id="scr-6-08">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -486,14 +473,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.4 Согласование документов — основной список</h3>
-        <p>Список для роли согласующего этапа. Действия сверху соответствуют странице из PDF, но оформлены по визуальным правилам v5.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Документы, где пользователь согласует этап.</div></div>
@@ -505,6 +485,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.4 Согласование документов — действия и контекстное меню</h3>
+  <p>Экран состояния с выбранной строкой и всеми действиями из контекстного меню.</p>
+</div>
 <article class="scr" id="scr-6-09">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -532,14 +516,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.4 Согласование документов — действия и контекстное меню</h3>
-        <p>Экран состояния с выбранной строкой и всеми действиями из контекстного меню.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Сценарий операций по документам на согласовании.</div></div>
@@ -551,6 +528,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.5 Распределение документов — основной список</h3>
+  <p>Вкладка роли распределяющего, собранная на том же table / toolbar / badge-layer, что и остальной v5 UI.</p>
+</div>
 <article class="scr" id="scr-6-10">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -578,14 +559,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.5 Распределение документов — основной список</h3>
-        <p>Вкладка роли распределяющего, собранная на том же table / toolbar / badge-layer, что и остальной v5 UI.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Документы, доступные пользователю для распределения.</div></div>
@@ -597,6 +571,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.5 Распределение документов — действия и контекстное меню</h3>
+  <p>Состояние управления распределением документов вынесено отдельно, чтобы не смешивать его с базовой таблицей.</p>
+</div>
 <article class="scr" id="scr-6-11">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -624,14 +602,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.5 Распределение документов — действия и контекстное меню</h3>
-        <p>Состояние управления распределением документов вынесено отдельно, чтобы не смешивать его с базовой таблицей.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Сценарий действий по выбранным документам распределения.</div></div>
@@ -643,6 +614,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.6 Документы, ожидающие запуска — основной список</h3>
+  <p>Таблица документов, созданных в Teamcenter и ожидающих старта процесса. Сценарий связан с интеграционным потоком, но оформлен как часть основного модуля.</p>
+</div>
 <article class="scr" id="scr-6-12">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -670,14 +645,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.6 Документы, ожидающие запуска — основной список</h3>
-        <p>Таблица документов, созданных в Teamcenter и ожидающих старта процесса. Сценарий связан с интеграционным потоком, но оформлен как часть основного модуля.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Документы, которые ещё не отправлены в маршрут согласования.</div></div>
@@ -689,6 +657,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>6.6 Документы, ожидающие запуска — действия и контекстное меню</h3>
+  <p>Отдельный экран под запуск процесса и сервисные действия по документу до старта маршрута.</p>
+</div>
 <article class="scr" id="scr-6-13">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -716,14 +688,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Мои процессы</b></div>
     <div class="right"><span class="pill-mini">Раздел 6</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>6.6 Документы, ожидающие запуска — действия и контекстное меню</h3>
-        <p>Отдельный экран под запуск процесса и сервисные действия по документу до старта маршрута.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="tb">
       <div class="tw"><h4>Мои процессы</h4><div class="sb">Контекстное меню и действия по документам до запуска.</div></div>

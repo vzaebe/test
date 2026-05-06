@@ -41,7 +41,7 @@
   /* Три явные строки: app-tb (хлебные крошки) → scr-h (название панели) → scr-b (рабочее окно).
      Явные grid-template-rows нужны, чтобы aside через grid-row:1/-1 растянулся
      на ВСЮ высоту экрана и не было белого разрыва между сайдбаром и контентом. */
-  grid-template-rows:auto auto 1fr;
+  grid-template-rows:auto 1fr;
   background:#fff;
   border:1px solid var(--line2);
   border-radius:var(--rxl);
@@ -50,8 +50,7 @@
   margin-top:28px;
 }
 .scr > .app-tb{ grid-column:2; grid-row:1; }
-.scr-h{ grid-column:2; grid-row:2; }
-.scr-b{ grid-column:2; grid-row:3; }
+.scr-b{ grid-column:2; grid-row:2; }
 
 /* — App-tb (полоса с хлебными крошками сверху, как в 04) — */
 .scr > .app-tb{
@@ -353,14 +352,16 @@
   .overlay-stage > .overlay-modal{grid-column:1}
 }
 @media(max-width:980px){
-  .scr{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr}
+  .scr{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .scr > .app-rail{grid-column:1;grid-row:1;flex-direction:row;overflow-x:auto;align-self:auto}
   .scr > .app-rail .app-rg{flex-direction:row}
   .scr > .app-rail .app-rh,.scr > .app-rail .app-rf{display:none}
   .scr > .app-tb{grid-column:1;grid-row:2}
-  .scr-h{grid-column:1;grid-row:3}
-  .scr-b{grid-column:1;grid-row:4}
+  .scr-b{grid-column:1;grid-row:3}
 }
+.scr-label{margin:28px 0 6px;padding:0}
+.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
+.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
 </style>
 </head>
 <body>
@@ -393,6 +394,10 @@
     <div class="pill">16 экранов · Раздел 8</div>
   </div>
 
+<div class="scr-label">
+  <h3>8. Раздел «Согласование документов»</h3>
+  <p>Точка входа в раздел и общий трёхпанельный layout.</p>
+</div>
 <article class="scr" id="scr-8-01">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -420,14 +425,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Согласование документов</b></div>
     <div class="right"><span class="pill-mini">Раздел 8</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8. Раздел «Согласование документов»</h3>
-        <p>Точка входа в раздел и общий трёхпанельный layout.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Согласование документов</h4><p>Раздел содержит 3 панели: перечень процессов, процесс на согласовании, этап согласования</p></div>
@@ -511,7 +509,6 @@
       </div>
     </div>
 
-
     <div class="stage-panel">
       <div class="panel-head">
         <div><h5>Этап согласования</h5><p>Три блока: информация по этапу, замечания, список задач</p></div>
@@ -557,6 +554,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.1 Панель «Перечень процессов на согласовании»</h3>
+  <p>Отдельный редизайн левой панели со списком процессов.</p>
+</div>
 <article class="scr has-focus" id="scr-8-02">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -584,14 +585,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Перечень процессов на согласовании</b></div>
     <div class="right"><span class="pill-mini">Экран 8.1</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.1 Панель «Перечень процессов на согласовании»</h3>
-        <p>Отдельный редизайн левой панели со списком процессов.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Перечень процессов на согласовании</h4><p>Панель быстрого выбора процесса · фокус экрана выделен синим контуром</p></div>
@@ -652,6 +646,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.2 Панель «Процесс на согласовании» — основная информация</h3>
+  <p>Карточка процесса с ключевыми данными документа и выпускающего.</p>
+</div>
 <article class="scr has-focus" id="scr-8-03">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -679,14 +677,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Процесс на согласовании</b></div>
     <div class="right"><span class="pill-mini">Экран 8.2</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.2 Панель «Процесс на согласовании» — основная информация</h3>
-        <p>Карточка процесса с ключевыми данными документа и выпускающего.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Процесс на согласовании</h4><p>Информационная карточка выбранного процесса</p></div>
@@ -777,6 +768,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.2 Панель «Процесс на согласовании» — документы и действия процесса</h3>
+  <p>Действия уровня процесса отделены от действий этапа: граф маршрута, истории, direct XLSX, обоснование приоритета и файлы процесса.</p>
+</div>
 <article class="scr has-focus" id="scr-8-04">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -804,14 +799,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Процесс</span><span class="sep">/</span><b>Действия и история</b></div>
     <div class="right"><span class="pill-mini">Экран 8.2</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.2 Панель «Процесс на согласовании» — документы и действия процесса</h3>
-        <p>Действия уровня процесса отделены от действий этапа: граф маршрута, истории, direct XLSX, обоснование приоритета и файлы процесса.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Процесс на согласовании</h4><p>Process-level действия собраны рядом с выбранным процессом</p></div>
@@ -957,6 +945,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3 Панель «Этап согласования»</h3>
+  <p>Общий экран этапа с тремя блоками: информация, замечания, список задач.</p>
+</div>
 <article class="scr has-focus" id="scr-8-05">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -984,14 +976,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Этап согласования</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3 Панель «Этап согласования»</h3>
-        <p>Общий экран этапа с тремя блоками: информация, замечания, список задач.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Этап согласования</h4><p>Рабочее место для взаимодействия с конкретным этапом</p></div>
@@ -1075,7 +1060,6 @@
       </div>
     </div>
 
-
     <div class="stage-panel is-focus">
       <div class="panel-head">
         <div><h5>Этап согласования</h5><p>Три блока: информация по этапу, замечания, список задач</p></div>
@@ -1136,6 +1120,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1 Блок «Информация по этапу»</h3>
+  <p>Базовый редизайн блока управления этапом.</p>
+</div>
 <article class="scr" id="scr-8-06">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1163,14 +1151,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Информация по этапу</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1 Блок «Информация по этапу»</h3>
-        <p>Базовый редизайн блока управления этапом.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Информация по этапу</h4><p>Действия уровня этапа закреплены рядом с выбранным этапом</p></div>
@@ -1215,6 +1196,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.1 Кнопка «Откатить»</h3>
+  <p>Окна выбора типа отката и указания причины перезапуска.</p>
+</div>
 <article class="scr" id="scr-8-07">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1242,14 +1227,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Откатить</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.1</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.1 Кнопка «Откатить»</h3>
-        <p>Окна выбора типа отката и указания причины перезапуска.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Кнопка «Откатить»</h4><p>Откатить процесс в начало или обнулить текущий этап</p></div>
@@ -1313,6 +1291,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.2 Редактирование этапа</h3>
+  <p>Модальное окно редактирования подписантов и распределяющих.</p>
+</div>
 <article class="scr" id="scr-8-08">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1340,14 +1322,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Редактирование этапа</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.2</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.2 Редактирование этапа</h3>
-        <p>Модальное окно редактирования подписантов и распределяющих.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Редактирование этапа</h4><p>Состав участников этапа управляется через модальное окно</p></div>
@@ -1426,6 +1401,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.3 Просмотр истории этапа</h3>
+  <p>История изменений этапа с таймлайном.</p>
+</div>
 <article class="scr" id="scr-8-09">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1453,14 +1432,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>История этапа</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.3</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.3 Просмотр истории этапа</h3>
-        <p>История изменений этапа с таймлайном.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Просмотр истории этапа</h4><p>История изменений этапа в хронологическом порядке</p></div>
@@ -1517,6 +1489,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.4 Просмотр файлов этапа</h3>
+  <p>Список файлов текущего этапа и быстрые действия.</p>
+</div>
 <article class="scr" id="scr-8-10">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1544,14 +1520,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Файлы этапа</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.4 Просмотр файлов этапа</h3>
-        <p>Список файлов текущего этапа и быстрые действия.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Просмотр файлов этапа</h4><p>Базовое окно со списком файлов этапа</p></div>
@@ -1616,6 +1585,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.4 Просмотр файлов этапа — комментарий</h3>
+  <p>Просмотр и редактирование комментария к вложенному файлу.</p>
+</div>
 <article class="scr" id="scr-8-11">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1643,14 +1616,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Файлы</span><span class="sep">/</span><b>Комментарий</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.4 Просмотр файлов этапа — комментарий</h3>
-        <p>Просмотр и редактирование комментария к вложенному файлу.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Комментарий к файлу этапа</h4><p>Комментарий открывается в side-sheet рядом со списком файлов этапа</p></div>
@@ -1715,6 +1681,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.1.4 Просмотр файлов этапа — добавление файла</h3>
+  <p>Добавление новых файлов с обязательным описанием.</p>
+</div>
 <article class="scr" id="scr-8-12">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1742,14 +1712,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Файлы</span><span class="sep">/</span><b>Добавление файла</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.1.4 Просмотр файлов этапа — добавление файла</h3>
-        <p>Добавление новых файлов с обязательным описанием.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Добавление файлов этапа</h4><p>Сценарий прикрепления документов к текущему этапу</p></div>
@@ -1813,6 +1776,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.2 Блок «Замечания»</h3>
+  <p>Блок переписки по замечаниям с приложениями.</p>
+</div>
 <article class="scr" id="scr-8-13">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1840,14 +1807,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Замечания</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.2</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.2 Блок «Замечания»</h3>
-        <p>Блок переписки по замечаниям с приложениями.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Блок «Замечания»</h4><p>Текст замечания — главный слой, автор и статус ответа — вторичный слой</p></div>
@@ -1895,6 +1855,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.3 Блок «Список задач»</h3>
+  <p>Карточка задач этапа с действиями и данными проверяющего.</p>
+</div>
 <article class="scr" id="scr-8-14">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1922,14 +1886,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Список задач</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.3</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.3 Блок «Список задач»</h3>
-        <p>Карточка задач этапа с действиями и данными проверяющего.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Блок «Список задач»</h4><p>Карточка задачи повторяет исходный сценарий с набором действий</p></div>
@@ -1967,6 +1924,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.3.1 Кнопки управления задачей — замена проверяющего</h3>
+  <p>Отдельный сценарий переназначения проверяющего сотрудника.</p>
+</div>
 <article class="scr" id="scr-8-15">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -1994,14 +1955,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Задачи</span><span class="sep">/</span><b>Замена проверяющего</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.3.1</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.3.1 Кнопки управления задачей — замена проверяющего</h3>
-        <p>Отдельный сценарий переназначения проверяющего сотрудника.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Кнопки управления задачей — замена проверяющего</h4><p>Отдельный сценарий назначения нового исполнителя</p></div>
@@ -2050,6 +2004,10 @@
 </article>
 
 
+<div class="scr-label">
+  <h3>8.3.3.1 Кнопки управления задачей — добавление задачи</h3>
+  <p>Форма добавления задачи на текущем этапе.</p>
+</div>
 <article class="scr" id="scr-8-16">
   <aside class="app-rail">
     <div class="app-rh"><div class="lg">КД</div><div class="tx"><b>АССКД · КД</b><small>ПАО «Яковлев»</small></div></div>
@@ -2077,14 +2035,7 @@
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Задачи</span><span class="sep">/</span><b>Добавление задачи</b></div>
     <div class="right"><span class="pill-mini">Экран 8.3.3.1</span></div>
   </div>
-  <header class="scr-h">
-    <div class="scr-h-l">
-<div>
-        <h3>8.3.3.1 Кнопки управления задачей — добавление задачи</h3>
-        <p>Форма добавления задачи на текущем этапе.</p>
-      </div>
-    </div>
-</header>
+  
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Кнопки управления задачей — добавление задачи</h4><p>Форма создания новой задачи на этапе</p></div>
