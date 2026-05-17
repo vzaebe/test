@@ -1,0 +1,129 @@
+/* ============================================================================
+   АССКД design-system — PAGES
+   Стили каталога разделов: 01-design-system, 04 flat-ui, 05 approval tweaks.
+   Подключать ПОСЛЕ tokens → base → components → shell.
+   ============================================================================ */
+
+/* — 01-design-system.html: навигация по разделам DS — */
+.ds-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.ds-nav a{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:#fff;font-size:11px;font-weight:700;color:var(--muted);text-decoration:none;transition:all var(--tr)}
+.ds-nav a:hover{border-color:var(--blue);color:var(--yak-blue)}
+.ds-sec{scroll-margin-top:80px;margin-top:40px;padding-top:20px;border-top:2px solid var(--line2)}
+.ds-sec:first-of-type{margin-top:0;border-top:none}
+.ds-sec-h{margin-bottom:16px}
+.ds-sec-h h3{font-size:18px;font-weight:700;color:var(--yak-dark);margin:0 0 4px}
+.ds-sec-h p{font-size:12px;color:var(--muted);margin:0;line-height:1.55;max-width:760px}
+.ds-sub{margin-top:20px}
+.ds-sub-h{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+
+/* — index.html: все разделы в горизонтальную ленту — */
+body.index-gallery{overflow:auto;margin:0}
+body.index-gallery .index-strip{display:flex;flex-direction:row;align-items:flex-start;width:max-content;min-height:100vh}
+body.index-gallery .index-col{flex:0 0 auto;width:clamp(320px,92vw,1440px);max-width:1440px;padding:20px 16px 48px;border-right:1px solid var(--line2);box-sizing:border-box}
+body.index-gallery .index-col:last-child{border-right:0}
+body.index-gallery .index-col .sec-t{display:none}
+
+/* — 04-document-issuance: плоский UI без вложенных карточек — */
+:is(body.flat-ui,.flat-ui) .ws-panel,
+:is(body.flat-ui,.flat-ui) .side-sheet{
+  border:1px solid var(--line2);
+  box-shadow:0 4px 14px rgba(0,38,100,.06);
+}
+:is(body.flat-ui,.flat-ui) .ws-ph{border-bottom:0;background:transparent;padding-bottom:6px}
+:is(body.flat-ui,.flat-ui) .ws-pb{gap:10px}
+:is(body.flat-ui,.flat-ui) .ws-pb :is(
+  .proc-hero,.stage-action-bar,.process-action-bar,.date-stripe,.mini-stages,.graph-canvas,
+  .prio-card,.priority-block,.file-list,.file-row,.comment-card,.person,.nt,.row-chip,.st-row,.coverage-card,
+  .stage-row,.pl-row,.emp-row,.curator-chip,.sb-row,.tl-item,.proc-grid .cell
+){
+  border:0!important;
+  box-shadow:none!important;
+  background:var(--n50)!important;
+}
+:is(body.flat-ui,.flat-ui) .file-list-row,
+:is(body.flat-ui,.flat-ui) .mock-list-row,
+:is(body.flat-ui,.flat-ui) .row-chip{border-bottom:0!important}
+:is(body.flat-ui,.flat-ui) .action-bar .sep,
+:is(body.flat-ui,.flat-ui) .stage-action-bar .sep,
+:is(body.flat-ui,.flat-ui) .process-action-bar .sep{opacity:.45}
+:is(body.flat-ui,.flat-ui) .date-stripe .ds{border-right:0}
+:is(body.flat-ui,.flat-ui) .tl::before{opacity:.6}
+
+/* — 04: coverage / doc actions — */
+.doc-actions{display:flex;gap:6px;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap;min-width:180px}
+.doc-actions .icon-chip{height:30px}
+.review-coverage{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.coverage-card{min-width:0;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs);padding:10px;display:flex;flex-direction:column;gap:8px}
+.coverage-card h6{margin:0;font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.coverage-line{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11px;color:var(--txt2)}
+.coverage-line strong,.coverage-line span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.coverage-count{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:99px;background:#fff;color:var(--yak-blue);font-size:10px;font-weight:800;flex-shrink:0}
+.coverage-stack{display:flex;flex-direction:column;gap:5px;min-width:0}
+.coverage-chip{height:22px;border-radius:99px;background:#fff;padding:0 8px;display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--txt2);min-width:0;max-width:100%}
+.coverage-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.coverage-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* — 05-document-approval: section-block растягивается на все строки overlay-grid — */
+.page-approval .overlay-stage > .section-block{min-height:0;grid-row:1/-1;align-self:stretch}
+
+/* — 05-document-approval: плоский список задач — */
+.page-approval .task-item{background:transparent;border:none;border-bottom:1px solid var(--line3);border-radius:0;padding:12px 0}
+.page-approval .task-item:last-child{border-bottom:none;padding-bottom:0}
+.page-approval .info-row{background:transparent;border:none;border-radius:0;padding:2px 0}
+
+/* — 05-document-approval: унификация с 04 — */
+.page-approval .module-top{flex-wrap:wrap;align-items:center;gap:10px;padding:10px 14px}
+.page-approval .module-top > div:first-child{min-width:200px;flex:1 1 260px}
+.page-approval .module-actions{flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.page-approval .bg{gap:7px;padding:0 11px}
+.page-approval .bg .dt{width:7px!important;height:7px!important;border-radius:50%!important;flex-shrink:0;display:inline-block;align-self:center}
+.page-approval .comment-item{padding:11px 12px 11px 28px;position:relative}
+.page-approval .comment-item::before{content:'';position:absolute;left:11px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--muted2)}
+.page-approval .comment-item.ok::before{background:var(--ok)}
+.page-approval .comment-item.wait::before{background:var(--warn)}
+.page-approval .comment-item strong{display:block;margin-bottom:4px;font-size:12px;color:var(--txt);font-weight:700}
+.page-approval .comment-item span{display:block;font-size:11px;color:var(--muted);line-height:1.45}
+.page-approval .workspace3{align-items:stretch}
+.page-approval .proc-list,.page-approval .process-panel,.page-approval .stage-panel{box-shadow:0 1px 3px rgba(0,38,100,.04);background:#fff}
+.page-approval .proc-list{border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;box-shadow:none}
+.page-approval .proc-list-head{padding:10px 12px;border-bottom:1px solid var(--line2);background:var(--panel2)}
+.page-approval .proc-list-title{font-size:12px;font-weight:700;color:var(--yak-dark);margin-bottom:6px}
+.page-approval .proc-search{display:flex;gap:6px}
+.page-approval .proc-search .fd{min-width:0;flex:1;height:28px;font-size:11px;background:#fff}
+.page-approval .proc-items{padding:10px;display:flex;flex-direction:column;gap:8px;max-height:430px;overflow:auto;background:#fff}
+.page-approval .proc-item{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:#fff;cursor:pointer;transition:all var(--tr)}
+.page-approval .proc-item:hover{background:var(--blue-ll);border-color:var(--blue)}
+.page-approval .proc-item.active{background:var(--blue-ll);border-color:var(--blue);box-shadow:inset 3px 0 0 var(--blue)}
+.page-approval .proc-item .pl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line3)}
+.page-approval .proc-item strong{display:block;font-size:11px!important;color:var(--txt);font-weight:700;font-family:'JetBrains Mono','SFMono-Regular',Consolas,monospace;letter-spacing:-.01em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.page-approval .proc-item small{display:block;margin-top:2px;font-size:9.5px;color:var(--muted)}
+.page-approval .proc-list .avatar-sm{width:26px;height:26px;border-radius:8px;background:var(--yak-dark);color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700;flex-shrink:0}
+.page-approval .stage-action-bar .scope-label,
+.page-approval .stage-action-bar .sep{display:none}
+.page-approval .stage-action-bar{border:none!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+.priority-modal-inline{margin-top:10px;border:1px solid var(--line2);border-radius:10px;background:#fff;box-shadow:0 8px 18px rgba(0,38,100,.10);overflow:hidden}
+.priority-modal-inline .modal-head{padding:10px 12px}
+.priority-modal-inline .modal-head h6{font-size:13px}
+.priority-modal-inline .modal-body{display:grid;gap:10px;padding:12px}
+.priority-modal-inline .prio-card{padding:10px;gap:10px}
+.priority-modal-inline .prio-card .pi{width:34px;height:34px}
+.priority-modal-inline .prio-card .pi svg{width:16px;height:16px}
+.priority-modal-inline .prio-card .pb .pt{font-size:13px;line-height:1.3}
+.priority-modal-inline .prio-card .pb .ps{font-size:12px;color:#37465d}
+.priority-modal-inline .prio-card .pb .meta{font-size:10.5px}
+.priority-modal-inline .priority-level{height:20px;padding:0 8px;font-size:9.5px}
+.priority-modal-inline .file-list-row{grid-template-columns:42px minmax(0,1fr) auto;padding:8px 10px}
+.priority-modal-inline .file-type{width:32px;height:38px;font-size:10px}
+.priority-modal-inline .file-main strong{font-size:12px}
+.priority-modal-inline .file-meta{font-size:10px}
+.priority-modal-inline .file-actions .bt{height:30px;padding:0 12px;font-size:11px}
+.priority-modal-inline .modal-foot{padding:8px 12px}
+.priority-modal-inline .modal-foot .bt{height:30px;font-size:11px;padding:0 12px}
+
+@media(max-width:1100px){
+  .review-coverage{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .doc-actions{justify-content:flex-start;min-width:0}
+}
+@media(max-width:680px){
+  .review-coverage{grid-template-columns:1fr}
+}

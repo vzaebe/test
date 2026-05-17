@@ -316,7 +316,7 @@ table.t tbody tr:last-child td{border-bottom:none}
 
 /* ── IA v2 components: side-sheet, priorities, files, comments, action bars ── */
 .app-back{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:var(--rs);border:1px solid var(--line);background:#fff;color:var(--txt2);font-size:11px;font-weight:700}
-.app-back::before{content:'';width:7px;height:7px;border-left:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg)}
+.app-back::before{display:none}
 .side-layout{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:12px;align-items:start}
 .side-sheet{background:#fff;border:1px solid var(--line2);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,38,100,.10);overflow:hidden}
 .side-head{padding:12px 14px;border-bottom:1px solid var(--line2);background:var(--panel2);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
@@ -1085,7 +1085,7 @@ table.t tbody tr:last-child td{border-bottom:none}
   <div class="side-layout">
     <div class="cd">
       <div class="action-bar">
-        <button class="app-back">Назад к процессу</button>
+        
         <button class="bt ok sm">Согласовать</button>
         <button class="bt w sm">С замечаниями</button>
         <span class="sep"></span>

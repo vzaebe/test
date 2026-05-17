@@ -6,7 +6,8 @@
 
 /* — Reset — */
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:'Stem',Arial,sans-serif;font-size:13px;line-height:1.5}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Stem',Arial,sans-serif;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .pg{max-width:1560px;margin:0 auto;padding:28px 24px 60px}
 
 /* — Hero — */
@@ -55,6 +56,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Stem',Arial,sans-serif;f
 .sw{height:56px}.tk .m{padding:8px 10px}
 .tk strong{display:block;font-size:11px;font-weight:700}
 .tk span{display:block;color:var(--muted);font-size:9px;margin-top:1px}
+.tk .var{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);background:var(--n50);padding:1px 5px;border-radius:3px;margin-top:5px}
 
 /* — Typography display — */
 .tr{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line3)}
@@ -62,14 +64,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Stem',Arial,sans-serif;f
 .tl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 
 /* — Footer — */
-.fn{margin-top:40px;color:var(--muted);font-size:11px;line-height:1.5;padding-top:20px;border-top:1px solid var(--line2)}
+.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
+.fn strong{color:var(--yak-dark);font-weight:700}
 
-/* — TOC nav — */
-.toc{position:sticky;top:0;background:rgba(240,243,248,.95);backdrop-filter:blur(8px);padding:10px 24px;border-bottom:1px solid var(--line2);z-index:100;display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 20px -24px}
+/* — TOC nav (каталог разделов test/*.html) — */
+.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
 .toc a{font-size:11px;font-weight:700;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr)}
 .toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
-.toc a.active{background:var(--yak-blue);color:#fff}
-.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.toc a.active,.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
+.toc-tag{font-size:10px;font-weight:800;color:var(--yak-blue);padding:5px 10px;border:1px solid var(--blue-l);border-radius:999px;background:var(--blue-ll);margin-right:6px;letter-spacing:.06em;text-transform:uppercase}
 
 /* — Page-head — */
 .page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}

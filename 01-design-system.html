@@ -9,38 +9,7 @@
 <link rel="stylesheet" href="assets/base.css"/>
 <link rel="stylesheet" href="assets/components.css"/>
 <link rel="stylesheet" href="assets/shell.css"/>
-<style>
-.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
-  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
-  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
-.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
-.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
-.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
-.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.page-head .crumbs{font-size:11px;color:var(--muted)}
-.page-head .crumbs a{color:var(--muted);text-decoration:none}
-.page-head .crumbs a:hover{color:var(--yak-blue)}
-.page-head .meta{display:flex;align-items:center;gap:8px}
-.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
-.fn strong{color:var(--yak-dark);font-weight:700}
-
-/* Inline-nav для разделов дизайн-системы */
-.ds-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.ds-nav a{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:#fff;font-size:11px;font-weight:700;color:var(--muted);text-decoration:none;transition:all var(--tr)}
-.ds-nav a:hover{border-color:var(--blue);color:var(--yak-blue)}
-
-/* Блок раздела */
-.ds-sec{scroll-margin-top:80px;margin-top:40px;padding-top:20px;border-top:2px solid var(--line2)}
-.ds-sec:first-of-type{margin-top:0;border-top:none}
-.ds-sec-h{margin-bottom:16px}
-.ds-sec-h h3{font-size:18px;font-weight:700;color:var(--yak-dark);margin:0 0 4px}
-.ds-sec-h p{font-size:12px;color:var(--muted);margin:0;line-height:1.55;max-width:760px}
-
-/* Подраздел */
-.ds-sub{margin-top:20px}
-.ds-sub-h{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-</style>
+<link rel="stylesheet" href="assets/pages.css"/>
 </head>
 <body>
 <div class="pg">
@@ -72,6 +41,9 @@
   <a href="#ds-charts">Графики</a>
   <a href="#ds-tables">Таблицы</a>
   <a href="#ds-lists">Списки</a>
+  <a href="#ds-modals">Модалки и Side-sheet</a>
+  <a href="#ds-special">Специальные компоненты</a>
+  <a href="#ds-layout">Layout и Focus-mode</a>
 </nav>
 
 <!-- ═══ 1. ПАЛИТРА ═══ -->
@@ -406,7 +378,7 @@
 <div>
   <div class="ds-sub-h">Эталонная таблица</div>
   <div class="tlb" style="margin-top:0">
-    <div class="tl2"><div class="ch a">1 строка выбрана</div><div class="ch">Столбцы</div><div class="ch">Фильтры</div><div class="ch">Экспорт</div></div>
+    <div class="tl2"><div class="ch a">1 строка выбрана</div><div class="ch ch-col">Столбцы</div><div class="ch ch-flt">Фильтры</div><div class="ch ch-exp">Экспорт</div></div>
     <div class="tr2"><div class="bt ok sm">Согласовать</div><div class="bt d sm">Отклонить</div></div>
   </div>
   <div class="pn" style="margin-top:0">
@@ -504,6 +476,148 @@
     </div>
   </div>
 </div>
+</div>
+</section>
+
+<!-- ═══ 10. МОДАЛЬНЫЕ ОКНА И SIDE-SHEET ═══ -->
+<section class="ds-sec" id="ds-modals">
+<div class="ds-sec-h">
+  <h3>Модальные окна и Side-sheet</h3>
+  <p>Центральные модалки для главных действий (создание, удаление, откат). Side-sheet для вторичного чтения (история, файлы, замечания) внутри текущего app-shell.</p>
+</div>
+<div class="cd">
+  <div class="g2">
+    <div>
+      <div class="ds-sub-h">Модальное окно .mb</div>
+      <div class="desc-frame" style="margin-bottom:10px">Ширина — до 480px. Header / body / footer. Подложка — 32% navy с blur. Footer всегда содержит ровно две кнопки.</div>
+      <div class="modal-demo" style="background:rgba(0,38,100,.05);border-radius:var(--rl);padding:28px;border:1px dashed var(--line2)">
+        <div class="mb">
+          <div class="mh"><h5>Добавление подзадачи</h5><div class="mc"><svg viewBox="0 0 16 16" fill="none" width="12" height="12"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div></div>
+          <div class="mbd">
+            <div class="fg"><label>Название задачи</label><div class="fd" style="width:100%">Проверить корректность спецификации</div></div>
+            <div class="fg" style="margin-top:10px"><label>Сотрудник</label><div class="fd" style="width:100%">Соколов С.С.</div></div>
+            <div class="fg" style="margin-top:10px"><label>Комментарий</label><textarea class="ta" rows="2">Есть замечания по разделу 4.2</textarea></div>
+          </div>
+          <div class="mf">
+            <button class="bt s">Отмена</button>
+            <button class="bt p">Создать подзадачу</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="ds-sub-h">Side-sheet для вторичного чтения .side-sheet</div>
+      <div class="desc-frame" style="margin-bottom:10px">Открывается справа. Центральная модалка остаётся только для отката, отказа и удаления.</div>
+      <div class="side-layout" style="grid-template-columns: 1fr; background:var(--n50); padding:14px; border-radius:var(--r); border:1px dashed var(--line2)">
+        <aside class="side-sheet" style="width:100%">
+          <div class="side-head"><div><h5 style="margin:0;font-size:14px;color:var(--yak-dark);font-weight:700">История этапа</h5><p style="margin:3px 0 0;color:var(--muted);font-size:11px">Согласование должностным лицом технологического отделения</p></div></div>
+          <div class="side-body">
+            <div class="st-row"><div class="si" style="background:var(--blue)"></div><div class="st-name">13.01.2026 · 19:03</div><div class="st-desc">Этап взят в работу</div></div>
+            <div class="st-row"><div class="si" style="background:var(--warn)"></div><div class="st-name">24.01.2026 · 14:20</div><div class="st-desc">Выставлено замечание</div></div>
+          </div>
+          <div class="side-foot"><button class="bt s sm">Назад к этапу</button></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 11. СПЕЦИАЛЬНЫЕ КОМПОНЕНТЫ ═══ -->
+<section class="ds-sec" id="ds-special">
+<div class="ds-sec-h">
+  <h3>Специальные компоненты</h3>
+  <p>Приоритеты, карточки замечаний и другие специфичные для системы блоки.</p>
+</div>
+<div class="cd">
+  <div class="g2">
+    <div>
+      <div class="ds-sub-h">Приоритет отдельно от статуса</div>
+      <div class="desc-frame" style="margin-bottom:10px">Приоритет не использует словарь статусов. Есть уровень приоритета и отдельное «Обоснование приоритета».</div>
+      <div class="priority-block">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><span class="priority-level low">Не срочно</span><span class="priority-level high">Срочно</span><span class="priority-level critical">Очень срочно</span></div>
+        <h5>Обоснование приоритета</h5>
+        <p>Документ влияет на критический график выпуска комплекта КД. Уровень приоритета показывается рядом, но не смешивается со статусом процесса.</p>
+      </div>
+    </div>
+    
+    <div>
+      <div class="ds-sub-h">Карточка замечания .comment-card</div>
+      <div class="desc-frame" style="margin-bottom:10px">Текст замечания — главный визуальный слой. Автор, дата и статус ответа вторичны.</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="comment-card open"><div class="comment-text">Уточнить расчёт прочности панели шп. 42-44 и приложить обновлённый фрагмент.</div><div class="comment-meta">Петров П.П. · 08.04.2026</div><span class="comment-status">Открыто</span></div>
+        <div class="comment-card answered"><div class="comment-text">Исправление внесено, обновлённый Word приложен к этапу.</div><div class="comment-meta">Иванов И.И. · 09.04.2026</div><span class="comment-status">Отвечено</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 12. LAYOUT И FOCUS-MODE ═══ -->
+<section class="ds-sec" id="ds-layout">
+<div class="ds-sec-h">
+  <h3>Layout и Focus-mode</h3>
+  <p>Оболочка приложения (Shell) и режим фокуса для сложных многопанельных интерфейсов.</p>
+</div>
+<div class="cd">
+  <div class="ds-sub-h">Layout Shell — оболочка приложения</div>
+  <div class="desc-frame" style="margin-bottom:10px">Левая панель — тёмная навигация шириной 208px с явными подписями разделов, счётчиками задач и группировкой.</div>
+  <div class="shell-demo" style="margin-bottom:24px; min-height:280px">
+    <aside class="shell-rail">
+      <div class="shell-rail-head">
+        <div class="logo-mini">КД</div>
+        <div class="shell-rail-head-text"><b>КД · Завод</b><small>Москва · Цех 4</small></div>
+      </div>
+      <div class="shell-rail-group">
+        <div class="gh">Работа</div>
+        <button class="shell-rb a">
+          <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.4"/><circle cx="4.5" cy="4.5" r=".6" fill="currentColor"/></svg>
+          Мои процессы<span class="cnt">12</span>
+        </button>
+        <button class="shell-rb">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M4 2h6l3 3v9H4z" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M10 2v3h3" stroke="currentColor" stroke-width="1.4"/></svg>
+          Выпуск документов
+        </button>
+      </div>
+    </aside>
+    <div class="shell-content" style="padding:24px;display:grid;place-items:center;color:var(--muted);background:var(--n50)">
+      <div>Контент-зона выбранного раздела</div>
+    </div>
+  </div>
+
+  <div class="ds-sub-h">Focus-mode — главная UX-фишка системы</div>
+  <div class="desc-frame" style="margin-bottom:10px">Активная панель подсвечена синим контуром и ярлыком «Фокус экрана», неактивные панели приглушены. Позволяет мгновенно понять, на какой части экрана работает пользователь.</div>
+  
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px">
+    <div>
+      <h3 style="margin:0;font-size:13px">Демонстрация · экран 8.2</h3>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:4px">Левая панель — в фокусе. Остальное — приглушено. Включите live-режим — поведение оживёт по mouseover.</p>
+    </div>
+    <label class="toggle" for="focus-toggle" style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;cursor:pointer">
+      <input type="checkbox" id="focus-toggle" onchange="document.getElementById('focusDemo').classList.toggle('live', this.checked)" style="margin:0">
+      Live · реакция на hover
+    </label>
+  </div>
+
+  <div class="ws3 focus-demo scr has-focus" id="focusDemo" style="display:grid;grid-template-columns:300px 1fr;gap:14px;background:var(--n50);padding:14px;border-radius:var(--r);border:1px dashed var(--line2)">
+    <div class="proc-list is-focus" style="background:#fff;border:1px solid var(--line2);border-radius:var(--r);padding:14px">
+      <div class="proc-list-head" style="font-weight:700;margin-bottom:10px;font-size:12px">Перечень процессов</div>
+      <div class="proc-items" style="display:flex;flex-direction:column;gap:6px">
+        <div class="proc-item active" style="padding:8px;border:1px solid var(--blue);background:var(--blue-ll);border-radius:var(--rs)">
+          <div><strong>КВ.МС21-47-054911</strong><small style="display:block;color:var(--muted);font-size:10px">Проверяется</small></div>
+        </div>
+        <div class="proc-item" style="padding:8px;border:1px solid var(--line3);background:#fff;border-radius:var(--rs)">
+          <div><strong>КВ.1211-67-014417</strong><small style="display:block;color:var(--muted);font-size:10px">В очереди</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="process-panel" style="background:#fff;border:1px solid var(--line2);border-radius:var(--r);padding:14px">
+      <h5 style="margin:0 0 10px;font-size:13px">Карточка процесса</h5>
+      <p style="font-size:11px;color:var(--muted);line-height:1.5">Эта панель сейчас вне фокуса — она потускнела. При наведении мыши снова станет яркой (в live-режиме).</p>
+      <div style="margin-top:14px;display:flex;gap:6px"><button class="bt s sm">Действие</button><button class="bt p sm">Главное</button></div>
+    </div>
+  </div>
 </div>
 </section>
 

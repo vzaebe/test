@@ -12,6 +12,7 @@
   --err:var(--yak-red);--err-l:#FECACA;--err-ll:#FEF2F2;
   --n50:#F9FAFB;--n100:#F3F4F6;--n200:#E5E7EB;
   --r:10px;--rs:6px;--rl:14px;--rxl:18px;
-  --sh:0 4px 12px rgba(0,38,100,.07);--shm:0 8px 24px rgba(0,38,100,.09);
-  --tr:150ms cubic-bezier(.4,0,.2,1);
+  --sh:0 4px 12px rgba(0,38,100,.07);--shm:0 8px 24px rgba(0,38,100,.09);--shl:0 16px 40px rgba(0,38,100,.15);
+  --tr:150ms cubic-bezier(.4,0,.2,1);--tr-slow:240ms cubic-bezier(.4,0,.2,1);
+  --sp1:4px;--sp2:8px;--sp3:12px;--sp4:16px;--sp5:20px;--sp6:24px;--sp8:32px;--sp10:40px;
 }

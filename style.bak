@@ -491,7 +491,7 @@ input[type=checkbox]:checked::after{content:'';position:absolute;left:4px;top:1.
 .tab2:hover:not(.active){background:var(--blue-ll);color:var(--yak-dark);cursor:pointer}
 .toc a:hover{cursor:pointer}
 .menu-pop div:hover{background:var(--blue-ll);color:var(--yak-blue);cursor:pointer}
-.analytics-subtabs .sub:hover:not(.active){background:var(--blue-ll);border-bottom-color:var(--yak-blue);color:var(--yak-blue);cursor:pointer}
+.analytics-subtabs .sub:hover:not(.active){background:var(--blue-ll);border-color:var(--yak-blue);color:var(--yak-blue);cursor:pointer}
 tbody tr:hover td{background:var(--blue-ll);cursor:pointer}
 .icon-chip:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--yak-blue);cursor:pointer}
 .tbl-act:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--yak-blue);cursor:pointer}
@@ -536,7 +536,7 @@ input[type=checkbox]:focus{outline:2px solid rgba(15,77,188,.3);outline-offset:1
 
 
 /* ── Module Selection Cards ── */
-.mod-card{border-radius:var(--r);color:#fff;padding:14px 16px;cursor:pointer;transition:all .18s ease;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;min-height:80px}
+.mod-card{border-radius:var(--r);color:#fff;padding:14px 16px;cursor:pointer;transition:all .18s ease;position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;min-height:80px;justify-content:center}
 .mod-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
 .mod-card:active{transform:translateY(0)}
 .mod-kd{background:linear-gradient(135deg,var(--yak-dark) 0%,var(--yak-blue) 100%)}
@@ -549,7 +549,7 @@ input[type=checkbox]:focus{outline:2px solid rgba(15,77,188,.3);outline-offset:1
 .mod-sub{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px}
 .mod-arrow{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tr)}
 .mod-card:hover .mod-arrow{background:rgba(255,255,255,.3)}
-.mod-badge{position:relative;font-size:9px;font-weight:700;background:rgba(255,255,255,.2);border-radius:3px;padding:2px 5px;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.mod-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;background:rgba(255,255,255,.2);border-radius:3px;padding:2px 5px;text-transform:uppercase;letter-spacing:.04em}
 
 
 /* ── Status count chips in svodka ── */
@@ -738,7 +738,7 @@ tbody tr:hover td{background:rgba(15,77,188,.03)}
   color:var(--txt2);font-size:11px;font-weight:700;text-decoration:none;
   font-family:inherit;cursor:pointer;white-space:nowrap;transition:all var(--tr)
 }
-.app-back::before{display:none}
+.app-back::before{content:'';width:7px;height:7px;border-left:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg)}
 .app-back:hover{background:var(--blue-ll);border-color:var(--yak-blue);color:var(--yak-blue);text-decoration:none}
 .app-tb .crumb,.scr > .app-tb .crumb{flex:1}
 .section-block .split-hero > div:last-child > .module-actions:first-child{

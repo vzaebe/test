@@ -9,368 +9,7 @@
 <link rel="stylesheet" href="assets/base.css"/>
 <link rel="stylesheet" href="assets/components.css"/>
 <link rel="stylesheet" href="assets/shell.css"/>
-<style>
-/* ═══════════════════════════════════════════════════════════════
-   ЛОКАЛЬНЫЕ НАДСТРОЙКИ СТРАНИЦЫ — только то, чего нет в общей DS.
-   Все цвета/радиусы/тени берутся из var(--token) дизайн-системы.
-   ═══════════════════════════════════════════════════════════════ */
-
-/* — TOC и шапка — */
-.toc{position:sticky;top:0;background:rgba(240,243,248,.92);backdrop-filter:blur(10px);
-  padding:10px 22px;border-bottom:1px solid var(--line2);z-index:100;
-  display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin:0 -24px 24px -24px}
-.toc a{font-size:11px;font-weight:700;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;transition:all var(--tr);text-decoration:none}
-.toc a:hover{background:#fff;border-color:var(--line2);color:var(--yak-dark)}
-.toc a.a{background:var(--yak-blue);color:#fff;border-color:var(--yak-blue)}
-.page-head{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.page-head .crumbs{font-size:11px;color:var(--muted)}
-.page-head .crumbs a{color:var(--muted);text-decoration:none}
-.page-head .crumbs a:hover{color:var(--yak-blue)}
-.page-head .meta{display:flex;align-items:center;gap:8px}
-.page-head .meta .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--blue-l);background:var(--blue-ll);color:var(--yak-blue);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-.fn{margin-top:60px;color:var(--muted);font-size:11.5px;line-height:1.6;padding-top:24px;border-top:1px solid var(--line2)}
-.fn strong{color:var(--yak-dark);font-weight:700}
-
-/* ═══════════════════════════════════════════════════════════════
-   APP-SHELL — каждый экран показан внутри полноценного приложения:
-   слева тёмный rail, сверху topbar, в основном холсте — рабочий
-   контент. Так пользователь видит, в каком месте системы он сейчас,
-   а не «отдельные окошки в воздухе».
-   ═══════════════════════════════════════════════════════════════ */
-.app-shell{display:grid;grid-template-columns:208px 1fr;border:1px solid var(--line2);
-  border-radius:var(--rl);overflow:hidden;background:#fff;min-height:560px;
-  box-shadow:0 4px 14px rgba(0,38,100,.06)}
-
-/* — Rail (канон design-system.html · Layout Shell) — */
-.shell-rail{background:var(--yak-dark);color:#E5ECF5;padding:0;display:flex;flex-direction:column;gap:0}
-.shell-rail-head{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)}
-.shell-rail-head .logo-mini{margin:0;width:30px;height:30px;font-size:11px;background:var(--yak-blue);color:#fff;display:grid;place-items:center;border-radius:8px;font-weight:800;letter-spacing:.04em}
-.shell-rail-head-text{display:flex;flex-direction:column;line-height:1.1}
-.shell-rail-head-text b{font-size:12px;font-weight:700;color:#fff;letter-spacing:.02em}
-.shell-rail-head-text small{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
-.shell-rail-group{padding:14px 12px 6px;display:flex;flex-direction:column;gap:2px}
-.shell-rail-group .gh{font-size:9.5px;font-weight:800;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.1em;padding:4px 10px 8px}
-.shell-rb{width:100%;height:34px;border-radius:8px;border:none;background:transparent;
-  display:flex;align-items:center;gap:10px;padding:0 10px;color:rgba(255,255,255,.72);cursor:pointer;
-  font-size:12.5px;font-weight:500;transition:all var(--tr);text-align:left;font-family:inherit}
-.shell-rb svg{flex:0 0 14px;color:rgba(255,255,255,.55)}
-.shell-rb .cnt{margin-left:auto;font-size:10.5px;font-weight:700;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:2px 7px;border-radius:99px;min-width:20px;text-align:center}
-.shell-rb:hover{background:rgba(255,255,255,.06);color:#fff}
-.shell-rb:hover svg{color:#fff}
-.shell-rb.a{background:var(--yak-blue);color:#fff;font-weight:600}
-.shell-rb.a svg{color:#fff}
-.shell-rb.a .cnt{background:rgba(255,255,255,.18);color:#fff}
-.shell-rail-foot{margin-top:auto;padding:12px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
-.shell-rail-foot .ava{width:30px;height:30px;border-radius:50%;background:var(--yak-blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px;flex:0 0 30px}
-.shell-rail-foot .who{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.shell-rail-foot .who b{font-size:11.5px;color:#fff;font-weight:600}
-.shell-rail-foot .who small{font-size:10px;color:rgba(255,255,255,.5)}
-
-/* — Main + topbar + canvas — */
-.app-main{display:flex;flex-direction:column;min-width:0;background:var(--bg)}
-.app-tb{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line2)}
-.app-tb .crumb{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);min-width:0}
-.app-tb .crumb b{color:var(--yak-dark);font-weight:700;font-size:12px}
-.app-tb .crumb .sep{color:var(--muted2);font-size:10px}
-.app-tb .right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.app-search{height:30px;width:240px;border:1px solid var(--line);border-radius:var(--rs);
-  background:var(--n50);padding:0 10px;display:flex;align-items:center;gap:8px;color:var(--muted2);font-size:11.5px}
-.app-search svg{width:12px;height:12px;flex-shrink:0;color:var(--muted)}
-.app-tbtn{height:30px;width:30px;border-radius:var(--rs);border:1px solid var(--line);
-  background:#fff;display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:all var(--tr)}
-.app-tbtn:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--blue)}
-.app-tbtn svg{width:14px;height:14px}
-.app-canvas{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:10px;min-height:0}
-
-/* — Workspace inside the canvas (3-panel layout) — */
-.ws-3{display:grid;grid-template-columns:minmax(240px,264px) minmax(0,1fr) minmax(280px,320px);gap:10px;flex:1;min-height:520px;min-width:0}
-.ws-2{display:grid;grid-template-columns:minmax(240px,280px) minmax(0,1fr);gap:10px;flex:1;min-height:520px;min-width:0}
-.ws-panel{background:#fff;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.ws-ph{padding:10px 12px;border-bottom:1px solid var(--line2);background:var(--panel2);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.ws-ph h6{margin:0;font-size:12px;color:var(--yak-dark);font-weight:700;letter-spacing:.01em}
-.ws-pb{padding:10px 12px;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
-.ws-pb.empty{align-items:center;justify-content:center;color:var(--muted2);font-size:11px;text-align:center;padding:32px 14px}
-
-/* Focus mode (на тех экранах, где надо подсветить одну панель) */
-.scr.has-focus .ws-panel:not(.is-focus){opacity:.42;filter:grayscale(.35);transition:opacity var(--tr),filter var(--tr)}
-.ws-panel.is-focus{position:relative;outline:2px solid var(--yak-blue);outline-offset:2px;border-radius:var(--r);box-shadow:0 8px 22px rgba(15,77,188,.10)}
-
-/* — Compact process row in left list —
-   Цветной маркер слева уже передаёт статус, поэтому правый текстовый бейдж убран:
-   текст «Проверяется/Согласован/С зам.» не помещался в 264-пиксельную панель. */
-.pl-row{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line3);border-radius:var(--rs);background:#fff;cursor:pointer;transition:all var(--tr)}
-.pl-row:hover{background:var(--blue-ll);border-color:var(--blue)}
-.pl-row.a{background:var(--blue-ll);border-color:var(--blue);box-shadow:inset 3px 0 0 var(--blue)}
-.pl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line3)}
-.pl-name{font-size:11px;font-weight:700;color:var(--txt);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'JetBrains Mono','SFMono-Regular',Consolas,monospace;letter-spacing:-.01em}
-.pl-meta{font-size:9.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:6px}
-.pl-prio{width:6px;height:6px;border-radius:50%;background:var(--yak-coral);flex-shrink:0}
-
-/* — 7.2 hero (карточка выпускаемого процесса) — */
-.proc-hero{display:flex;align-items:flex-start;gap:14px;padding:14px;background:linear-gradient(180deg,#fff,#fafcff);border:1px solid var(--line2);border-radius:var(--r)}
-.proc-hero .icn{width:42px;height:42px;border-radius:var(--rs);display:grid;place-items:center;background:var(--blue-ll);color:var(--blue);flex-shrink:0;border:1px solid var(--blue-l)}
-.proc-hero .icn svg{width:22px;height:22px}
-.proc-hero .info{flex:1;min-width:0}
-.proc-hero .title{font-family:'JetBrains Mono','SFMono-Regular',Consolas,monospace;font-size:14px;font-weight:700;color:var(--yak-dark);margin-bottom:3px;letter-spacing:-.01em}
-.proc-hero .sub{font-size:11.5px;color:var(--txt2);margin-bottom:8px;line-height:1.45}
-.proc-hero .badges{display:flex;gap:6px;flex-wrap:wrap}
-.proc-hero .files{display:flex;gap:5px;align-self:flex-start;flex-shrink:0}
-.proc-hero .fc{width:34px;height:42px;border-radius:var(--rs);display:grid;place-items:center;font-size:9px;font-weight:800;letter-spacing:.04em;cursor:pointer;transition:all var(--tr)}
-.proc-hero .fc:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,38,100,.12)}
-.proc-hero .fc.pdf{background:var(--err-ll);color:var(--err);border:1px solid var(--err-l)}
-.proc-hero .fc.doc{background:var(--blue-ll);color:var(--blue);border:1px solid var(--blue-l)}
-
-.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.proc-grid .cell{padding:9px 11px;background:#fff;border:1px solid var(--line2);border-radius:var(--rs)}
-.proc-grid .cell .k{font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
-.proc-grid .cell .v{font-size:11.5px;color:var(--txt);font-weight:600;line-height:1.35}
-.proc-grid .cell.coral{border-left:3px solid var(--yak-coral)}
-.proc-grid .cell.blue{border-left:3px solid var(--blue)}
-.proc-grid .cell.ok{border-left:3px solid var(--ok)}
-.proc-grid .cell.warn{border-left:3px solid var(--warn)}
-
-/* Date stripe */
-.date-stripe{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#fff;border:1px solid var(--line2);border-radius:var(--rs);overflow:hidden}
-.date-stripe .ds{padding:9px 12px;display:flex;flex-direction:column;gap:3px;border-right:1px solid var(--line2)}
-.date-stripe .ds:last-child{border-right:none}
-.date-stripe .ds .k{font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-.date-stripe .ds .v{font-size:13px;font-weight:700;color:var(--yak-dark);font-feature-settings:"tnum"}
-.date-stripe .ds.ok .v{color:var(--ok)}
-.date-stripe .ds.warn .v{color:var(--warn)}
-
-/* Action toolbar of icon-chips */
-.act-row{display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs)}
-.act-row .icon-chip{height:28px;font-size:11px}
-
-/* — Stages list (panel 7.3) —
-   Иконка-кружок sn слева (цвет + графический символ статуса) уже полностью кодирует
-   состояние этапа. Правый текстовый бейдж убран — он давал «Согл./Пров./С зам./Не зап./Подп.»,
-   что выглядело обрубками. Теперь название этапа помещается полностью. */
-.stages-list{display:flex;flex-direction:column;gap:5px}
-.stage-row{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:9px 11px;background:#fff;border:1px solid var(--line2);border-radius:var(--rs);align-items:center;transition:all var(--tr);cursor:pointer}
-.stage-row:hover{border-color:var(--blue);background:var(--blue-ll)}
-.stage-row.a{border-color:var(--blue);background:var(--blue-ll);box-shadow:inset 3px 0 0 var(--blue)}
-.stage-row .sn{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;border:1.5px solid rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
-.stage-row .sn svg{width:11px;height:11px;color:#fff}
-.stage-row .nm{font-size:11.5px;font-weight:700;color:var(--txt);min-width:0}
-.stage-row .nm .meta{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-top:2px}
-
-/* ═══════════════════════════════════════════════════════════════
-   GRAPH — настоящий SVG-граф маршрута, а не «коробки в ряд»
-   ═══════════════════════════════════════════════════════════════ */
-.graph-canvas{background:linear-gradient(180deg,#fff,#fafcff);border:1px solid var(--line2);border-radius:var(--r);position:relative;overflow:hidden;
-  background-image:radial-gradient(rgba(15,77,188,.08) 1px, transparent 1px);
-  background-size:14px 14px;background-position:7px 7px}
-.graph-canvas svg{display:block;width:100%;height:auto}
-.graph-tools{display:flex;gap:5px;padding:8px 10px;background:#fff;border-bottom:1px solid var(--line2);align-items:center}
-.graph-tools .gt-title{font-size:11.5px;font-weight:700;color:var(--yak-dark);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.graph-tools .icon-chip{height:26px;width:26px;min-width:26px;padding:0}
-.graph-legend{display:flex;flex-wrap:wrap;gap:10px;padding:8px 12px;background:var(--n50);border-top:1px solid var(--line2);font-size:10.5px;color:var(--muted)}
-.graph-legend .leg{display:inline-flex;align-items:center;gap:6px;font-weight:600}
-.graph-legend .leg i{width:12px;height:12px;border-radius:3px;display:inline-block}
-.graph-legend .leg i.ok{background:var(--ok-l);border:1.5px solid var(--ok)}
-.graph-legend .leg i.run{background:var(--blue-l);border:1.5px solid var(--blue)}
-.graph-legend .leg i.warn{background:var(--warn-l);border:1.5px solid var(--warn)}
-.graph-legend .leg i.req{background:var(--n50);border:1.5px solid var(--yak-gray)}
-.graph-legend .leg i.opt{background:#fff;border:1.5px dashed var(--yak-gray)}
-.graph-legend .leg i.sel{background:#F0FDF4;border:1.5px dashed var(--ok)}
-
-/* ═══════════════════════════════════════════════════════════════
-   TIMELINE — лента истории действий.
-   Аватары-кружки с инициалами убраны: фотографии/инициалы никто не сопровождает,
-   а цветной маркер слева на оси времени уже различает тип события.
-   Состав строки: цветной маркер · фамилия+роль · действие · дата/время.
-   ═══════════════════════════════════════════════════════════════ */
-.tl{position:relative;padding:6px 0 6px 22px}
-.tl::before{content:'';position:absolute;left:6px;top:14px;bottom:14px;width:2px;background:var(--line2)}
-.tl-item{position:relative;padding:8px 12px 8px 14px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line2);border-left:3px solid var(--blue);border-radius:var(--rs);margin-bottom:8px}
-.tl-item:last-child{margin-bottom:0}
-.tl-item::before{content:'';position:absolute;left:-21px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2.5px solid #fff;box-shadow:0 0 0 1.5px var(--blue);z-index:1}
-.tl-item.ok{border-left-color:var(--ok)}
-.tl-item.ok::before{background:var(--ok);box-shadow:0 0 0 1.5px var(--ok)}
-.tl-item.warn{border-left-color:var(--warn)}
-.tl-item.warn::before{background:var(--warn);box-shadow:0 0 0 1.5px var(--warn)}
-.tl-item.err{border-left-color:var(--err)}
-.tl-item.err::before{background:var(--err);box-shadow:0 0 0 1.5px var(--err)}
-.tl-item.gray{border-left-color:var(--yak-gray)}
-.tl-item.gray::before{background:var(--yak-gray);box-shadow:0 0 0 1.5px var(--yak-gray)}
-.tl-body{min-width:0}
-.tl-body .who{font-size:11.5px;font-weight:700;color:var(--txt);margin-bottom:4px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.tl-body .who .role{display:inline-block;font-size:9.5px;font-weight:700;color:var(--muted);background:var(--n100);padding:2px 7px;border-radius:99px;text-transform:none;letter-spacing:0}
-.tl-body .what{font-size:11px;color:var(--txt2);line-height:1.5}
-.tl-body .what code{background:var(--n50);padding:1px 5px;border-radius:3px;font-size:10.5px;color:var(--yak-dark);border:1px solid var(--line3);font-family:'JetBrains Mono','SFMono-Regular',Consolas,monospace}
-.tl-body .what .tag{display:inline-flex;align-items:center;gap:4px;height:18px;padding:0 7px;border-radius:99px;font-size:10px;font-weight:600;margin:0 2px}
-.tl-body .what .tag.ok{background:var(--ok-l);color:var(--ok)}
-.tl-body .what .tag.warn{background:var(--warn-l);color:var(--warn)}
-.tl-time{font-size:10px;color:var(--muted);font-feature-settings:"tnum";white-space:nowrap;text-align:right;font-weight:600;line-height:1.5;flex-shrink:0}
-.tl-time .d{display:block;color:var(--txt2);font-weight:700;font-size:11px;margin-bottom:2px}
-
-/* ═══════════════════════════════════════════════════════════════
-   DOWNLOAD UI
-   ═══════════════════════════════════════════════════════════════ */
-.dl-card{background:#fff;border:1px solid var(--line2);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:14px}
-.dl-icn{width:48px;height:48px;border-radius:var(--rs);background:var(--ok-ll);color:var(--ok);display:grid;place-items:center;flex-shrink:0;border:1px solid var(--ok-l)}
-.dl-icn svg{width:24px;height:24px}
-.dl-info{flex:1;min-width:0}
-.dl-info .nm{font-size:12.5px;color:var(--txt);font-weight:700}
-.dl-info .meta{font-size:10.5px;color:var(--muted);margin-top:2px;display:flex;gap:10px}
-.dl-info .meta b{color:var(--txt2);font-weight:700}
-.dl-prog{height:6px;background:var(--n100);border-radius:99px;margin-top:8px;overflow:hidden}
-.dl-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),#10b981);border-radius:99px}
-.dl-actions{display:flex;gap:5px;flex-shrink:0}
-
-/* ═══════════════════════════════════════════════════════════════
-   MODAL STAGE — модалка живёт прямо внутри app-shell, поверх
-   приглушённой рабочей области, а не в стороне от системы.
-   ═══════════════════════════════════════════════════════════════ */
-.modal-stage{position:relative;flex:1;min-height:520px;display:flex;justify-content:center;align-items:flex-start;padding:24px;background:rgba(0,38,100,.32);border-radius:var(--r);overflow:auto}
-.modal-stage > .mb{box-shadow:0 24px 60px rgba(0,38,100,.32);max-width:680px;width:100%;border:1px solid var(--line2);position:relative;z-index:2}
-.modal-stage > .mb.wide{max-width:780px}
-.modal-stage > .mb.narrow{max-width:480px}
-/* фоновое представление приглушённой рабочей области */
-.modal-stage .stage-bg{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:264px 1fr 320px;gap:10px;padding:14px;opacity:.32;filter:grayscale(.35) blur(.5px);pointer-events:none;z-index:1}
-.modal-stage .stage-bg .ws-panel{height:auto;min-height:200px}
-
-/* Form blocks внутри модалки */
-.mb-section{display:flex;flex-direction:column;gap:8px}
-.mb-section + .mb-section{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2)}
-.mb-section .mb-title{font-size:10.5px;font-weight:800;color:var(--yak-blue);text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
-.mb-section .mb-title .num{width:18px;height:18px;border-radius:4px;background:var(--blue-ll);display:grid;place-items:center;font-size:10px;font-weight:800;color:var(--blue)}
-
-/* Stage builder — обновлённый «конструктор шагов» (комментарий 3) */
-.stage-builder{display:flex;flex-direction:column;gap:6px;padding:8px;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs)}
-.sb-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:9px 11px;background:#fff;border:1px solid var(--line2);border-radius:var(--rs);transition:all var(--tr)}
-.sb-row.req{border-left:3px solid var(--yak-gray);background:var(--n50);opacity:.85}
-.sb-row.req .sb-toggle{visibility:hidden}
-.sb-row.req .sb-name::after{content:'обязательный';margin-left:8px;font-size:9px;font-weight:700;color:var(--muted);background:var(--n100);padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em}
-.sb-row.opt{border-left:3px dashed var(--yak-gray)}
-.sb-row.opt.on{border-left:3px solid var(--ok);background:var(--ok-ll)}
-.sb-num{width:22px;height:22px;border-radius:4px;background:var(--blue-ll);display:grid;place-items:center;font-size:10px;font-weight:800;color:var(--blue);flex-shrink:0}
-.sb-name{font-size:11.5px;font-weight:600;color:var(--txt)}
-.sb-name .sub{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-top:2px}
-.sb-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:10.5px;font-weight:700;color:var(--muted)}
-.sb-toggle .sw{width:30px;height:18px;border-radius:99px;background:var(--n200);position:relative;transition:background var(--tr);flex-shrink:0}
-.sb-toggle .sw::after{content:'';position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left var(--tr);box-shadow:0 1px 2px rgba(0,0,0,.18)}
-.sb-row.opt.on .sb-toggle .sw{background:var(--ok)}
-.sb-row.opt.on .sb-toggle .sw::after{left:14px}
-.sb-row.opt.on .sb-toggle{color:var(--ok)}
-
-/* — Subject curator chip (комментарий 3 — "ставим тик на тексте") — */
-.curator-chip{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border:1px solid var(--line2);border-radius:var(--rs);transition:all var(--tr);cursor:pointer}
-.curator-chip:hover{border-color:var(--blue);background:var(--blue-ll)}
-.curator-chip.on{border-color:var(--blue);background:var(--blue-ll)}
-.curator-chip .ck-box{flex-shrink:0}
-.curator-chip .lab{font-size:11.5px;font-weight:700;color:var(--txt)}
-.curator-chip .lab .sub{display:block;font-size:10px;font-weight:500;color:var(--muted);margin-top:2px}
-.curator-chip .pick{margin-left:auto;font-size:11px;color:var(--blue);font-weight:600}
-
-/* — Branch chips + employee picker (7.2.2.1) — */
-.branch-chips{display:flex;gap:5px;flex-wrap:wrap}
-.br-chip{height:26px;padding:0 12px;border-radius:99px;background:#fff;border:1px solid var(--line2);font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;transition:all var(--tr)}
-.br-chip:hover{background:var(--blue-ll);border-color:var(--blue);color:var(--blue)}
-.br-chip.a{background:var(--yak-blue);border-color:var(--yak-blue);color:#fff}
-.emp-picker{display:flex;flex-direction:column;gap:4px;max-height:240px;overflow:auto;border:1px solid var(--line2);border-radius:var(--rs);padding:6px;background:var(--n50)}
-.emp-row{display:grid;grid-template-columns:30px 1fr auto;gap:9px;padding:8px 10px;background:#fff;border:1px solid var(--line3);border-radius:var(--rs);cursor:pointer;align-items:center;transition:all var(--tr)}
-.emp-row:hover{border-color:var(--blue);background:var(--blue-ll)}
-.emp-row.a{border-color:var(--blue);background:var(--blue-ll);box-shadow:inset 3px 0 0 var(--blue)}
-.emp-row .ava{width:28px;height:28px;border-radius:50%;background:var(--yak-sky);color:var(--yak-dark);display:grid;place-items:center;font-weight:700;font-size:10px}
-.emp-row .info{min-width:0}
-.emp-row b{font-size:11.5px;color:var(--txt);font-weight:700;display:block;line-height:1.2}
-.emp-row small{color:var(--muted);font-size:10px;display:block;margin-top:2px}
-.emp-row .pos{font-size:10px;color:var(--blue);font-weight:700;background:var(--blue-ll);padding:2px 8px;border-radius:99px}
-
-/* — Priority justification card (7.2.2.6) — */
-.prio-card{background:linear-gradient(135deg,var(--warn-ll),#fff);border:1px solid var(--warn-l);border-left:4px solid var(--yak-coral);border-radius:var(--r);padding:14px;display:flex;align-items:flex-start;gap:14px}
-.prio-card .pi{width:40px;height:40px;border-radius:var(--rs);background:var(--yak-coral);color:#fff;display:grid;place-items:center;flex-shrink:0}
-.prio-card .pi svg{width:20px;height:20px}
-.prio-card .pb{flex:1;min-width:0}
-.prio-card .pb .pt{font-size:13px;font-weight:700;color:var(--yak-dark);margin-bottom:4px}
-.prio-card .pb .ps{font-size:11.5px;color:var(--txt2);line-height:1.55}
-.prio-card .pb .meta{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;font-size:10.5px;color:var(--muted)}
-.prio-card .pb .meta b{color:var(--txt);font-weight:700}
-.prio-card .pb .doc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:6px 10px;background:#fff;border:1px solid var(--line2);border-radius:var(--rs);font-size:11px;font-weight:600;color:var(--err);cursor:pointer;transition:all var(--tr)}
-.prio-card .pb .doc-pill:hover{background:var(--err-ll);border-color:var(--err-l)}
-.prio-card .pb .doc-pill svg{width:14px;height:14px}
-
-/* — Tabs inside the released-process panel (7.2) — */
-.proc-tabs{display:flex;gap:2px;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs);padding:3px;margin-bottom:10px}
-.proc-tab{height:28px;padding:0 12px;border-radius:5px;border:none;background:transparent;color:var(--muted);display:inline-flex;align-items:center;font-size:11px;font-weight:700;cursor:pointer;transition:all var(--tr);font-family:inherit}
-.proc-tab:hover:not(.a){background:#fff;color:var(--yak-dark)}
-.proc-tab.a{background:#fff;color:var(--yak-blue);box-shadow:0 1px 2px rgba(0,0,0,.06)}
-
-/* — Mini stages strip in process card — */
-.mini-stages{display:flex;align-items:center;gap:0;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs);padding:8px 10px;overflow-x:auto}
-.ms-step{display:flex;align-items:center;gap:6px;padding:0 8px;flex-shrink:0;min-width:0}
-.ms-step .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;border:1.5px solid #fff;box-shadow:0 0 0 1.5px var(--line2)}
-.ms-step .lab{font-size:10.5px;font-weight:600;color:var(--txt2);white-space:nowrap}
-.ms-step.ok .dot{background:var(--ok);box-shadow:0 0 0 1.5px var(--ok)}
-.ms-step.run .dot{background:var(--blue);box-shadow:0 0 0 1.5px var(--blue)}
-.ms-step.warn .dot{background:var(--warn);box-shadow:0 0 0 1.5px var(--warn)}
-.ms-step.run .lab{color:var(--blue);font-weight:700}
-.ms-step.warn .lab{color:var(--warn);font-weight:700}
-.ms-arrow{width:14px;height:1px;background:var(--line);position:relative;flex-shrink:0}
-.ms-arrow::after{content:'';position:absolute;right:-3px;top:-3px;width:0;height:0;border:3px solid transparent;border-left-color:var(--line)}
-
-/* — Clarified file actions and edge cases from review comments — */
-.doc-actions{display:flex;gap:6px;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap;min-width:180px}
-.doc-actions .icon-chip{height:30px}
-.review-coverage{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.coverage-card{min-width:0;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs);padding:10px;display:flex;flex-direction:column;gap:8px}
-.coverage-card h6{margin:0;font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
-.coverage-line{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11px;color:var(--txt2)}
-.coverage-line strong,.coverage-line span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.coverage-count{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:99px;background:#fff;color:var(--yak-blue);font-size:10px;font-weight:800;flex-shrink:0}
-.coverage-stack{display:flex;flex-direction:column;gap:5px;min-width:0}
-.coverage-chip{height:22px;border-radius:99px;background:#fff;padding:0 8px;display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--txt2);min-width:0;max-width:100%}
-.coverage-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.coverage-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
-
-/* — Flat UI mode for this page: no nested cards — */
-body.flat-ui .ws-panel,
-body.flat-ui .side-sheet{
-  border:1px solid var(--line2);
-  box-shadow:0 4px 14px rgba(0,38,100,.06);
-}
-body.flat-ui .ws-ph{
-  border-bottom:0;
-  background:transparent;
-  padding-bottom:6px;
-}
-body.flat-ui .ws-pb{gap:10px}
-body.flat-ui .ws-pb :is(
-  .proc-hero,.stage-action-bar,.process-action-bar,.date-stripe,.mini-stages,.graph-canvas,
-  .prio-card,.priority-block,.file-list,.file-row,.comment-card,.person,.nt,.row-chip,.st-row,.coverage-card,
-  .stage-row,.pl-row,.emp-row,.curator-chip,.sb-row,.tl-item,.proc-grid .cell
-){
-  border:0!important;
-  box-shadow:none!important;
-  background:var(--n50)!important;
-}
-body.flat-ui .file-list-row,
-body.flat-ui .mock-list-row,
-body.flat-ui .row-chip{border-bottom:0!important}
-body.flat-ui .action-bar .sep,
-body.flat-ui .stage-action-bar .sep,
-body.flat-ui .process-action-bar .sep{opacity:.45}
-body.flat-ui .date-stripe .ds{border-right:0}
-body.flat-ui .tl::before{opacity:.6}
-
-/* Responsive collapse */
-@media(max-width:1100px){
-  .ws-3,.ws-2,.app-shell{grid-template-columns:1fr}
-  .app-shell{grid-template-rows:auto 1fr}
-  .shell-rail{flex-direction:row;overflow-x:auto;flex-wrap:wrap;align-content:flex-start}
-  .proc-grid{grid-template-columns:repeat(2,1fr)}
-  .review-coverage{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .doc-actions{justify-content:flex-start;min-width:0}
-}
-@media(max-width:680px){
-  .review-coverage{grid-template-columns:1fr}
-}
-.scr-label{margin:28px 0 6px;padding:0}
-.scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
-.scr-label p{font-size:11.5px;color:var(--muted2,#9aa);margin:2px 0 0;max-width:760px}
-</style>
+<link rel="stylesheet" href="assets/pages.css"/>
 </head>
 <body class="flat-ui">
 <div class="pg">
@@ -479,19 +118,17 @@ body.flat-ui .tl::before{opacity:.6}
       <!-- Main -->
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Главная</span><span class="sep">/</span><b>Выпуск документов</b></div>
           <div class="right">
-            <div class="app-search"><svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><line x1="10.5" y1="10.5" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Поиск по № документа / процессу…</div>
             <button class="app-tbtn" title="Уведомления"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 12V8a4.5 4.5 0 019 0v4M2 12h12M6.5 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
-            <button class="bt p sm">+ Добавить выпуск</button>
           </div>
         </div>
         <div class="app-canvas">
           <div class="ws-3">
             <!-- Левая панель — В ФОКУСЕ -->
             <div class="ws-panel is-focus">
-              <div class="ws-ph"><h6>Перечень процессов выпуска</h6><span class="bg bn"><span class="dt"></span>24</span></div>
+              <div class="ws-ph"><h6>Перечень процессов выпуска</h6><span class="bg bn"><span class="dt"></span>24</span><div class="app-search"><svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><line x1="10.5" y1="10.5" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Поиск…</div><button class="bt p sm">+ Добавить</button></div>
               <div class="ws-pb">
                 <div class="pl-row a" title="Проверяется"><span class="pl-dot" style="background:var(--blue)"></span><div><div class="pl-name">КВ.МС21-47-054911.TSZ</div><div class="pl-meta"><span class="pl-prio"></span>Цой С.В. · ИИ</div></div></div>
                 <div class="pl-row" title="Завершён"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417-49.CN</div><div class="pl-meta">Маслак А.Е. · РНО</div></div></div>
@@ -590,7 +227,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Главная</span><span class="sep">/</span><span>Выпуск документов</span><span class="sep">/</span><b>Добавление процесса выпуска</b></div>
           <div class="right"><button class="app-tbtn" title="Закрыть"><svg viewBox="0 0 16 16" fill="none"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
         </div>
@@ -754,7 +391,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Главная</span><span class="sep">/</span><span>Выпуск документов</span><span class="sep">/</span><b>КВ.МС21-47-054911.TSZ</b></div>
           <div class="right">
             <button class="app-tbtn"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 12V8a4.5 4.5 0 019 0v4M2 12h12M6.5 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
@@ -976,7 +613,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Переназначение выпускающего</b></div>
         </div>
         <div class="app-canvas">
@@ -1120,7 +757,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Редактирование процесса</b></div>
         </div>
         <div class="app-canvas">
@@ -1262,7 +899,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф проверки</b></div>
         </div>
         <div class="app-canvas">
@@ -1434,7 +1071,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>История СУДП</b></div>
         </div>
         <div class="app-canvas">
@@ -1551,7 +1188,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>История процесса</b></div>
         </div>
         <div class="app-canvas">
@@ -1656,7 +1293,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>История процесса</b></div>
           <div class="right"><button class="bt p sm direct-download"><svg viewBox="0 0 16 16" fill="none" style="width:12px;height:12px;margin-right:4px"><path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Экспорт XLSX</button></div>
         </div>
@@ -1767,7 +1404,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Обоснование приоритета</b></div>
         </div>
         <div class="app-canvas">
@@ -1878,7 +1515,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><b>КВ.МС21-47-054911.TSZ</b></div>
         </div>
         <div class="app-canvas">
@@ -2005,7 +1642,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф проверки</b></div></div>
         <div class="app-canvas">
           <div class="g2" style="flex:1">
@@ -2207,7 +1844,7 @@ body.flat-ui .tl::before{opacity:.6}
       </aside>
       <div class="app-main">
         <div class="app-tb">
-    <button class="app-back">Назад</button>
+    <button class="app-back">← Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Этап проверки «Гл. конструктор»</b></div></div>
         <div class="app-canvas">
           <div class="ws-2">

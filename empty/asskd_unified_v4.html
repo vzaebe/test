@@ -543,7 +543,7 @@ input[type=checkbox]:focus{outline:2px solid rgba(15,77,188,.3);outline-offset:1
 
 
 /* ── Module Selection Cards ── */
-.mod-card{border-radius:var(--r);color:#fff;padding:14px 16px;cursor:pointer;transition:all .18s ease;position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;min-height:80px}
+.mod-card{border-radius:var(--r);color:#fff;padding:14px 16px;cursor:pointer;transition:all .18s ease;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;min-height:80px}
 .mod-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
 .mod-card:active{transform:translateY(0)}
 .mod-kd{background:linear-gradient(135deg,var(--yak-dark) 0%,var(--yak-blue) 100%)}
@@ -556,7 +556,7 @@ input[type=checkbox]:focus{outline:2px solid rgba(15,77,188,.3);outline-offset:1
 .mod-sub{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px}
 .mod-arrow{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tr)}
 .mod-card:hover .mod-arrow{background:rgba(255,255,255,.3)}
-.mod-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;background:rgba(255,255,255,.2);border-radius:3px;padding:2px 5px;text-transform:uppercase;letter-spacing:.04em}
+.mod-badge{position:relative;font-size:9px;font-weight:700;background:rgba(255,255,255,.2);border-radius:3px;padding:2px 5px;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
 
 
 /* ── Status count chips in svodka ── */
@@ -1293,10 +1293,10 @@ tbody tr:hover td{background:rgba(15,77,188,.03)}
 <div class="cd">
 <h3>Главная страница — выбор модуля</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-<div class="mod-card mod-kd" tabindex="0"><div class="mod-abbr">КД</div><div class="mod-info"><div class="mod-name">Конструкторские документы</div><div class="mod-sub">Согласование и выпуск КД</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mod-badge">Модуль в разработке</div></div>
-<div class="mod-card mod-szh" tabindex="0"><div class="mod-abbr">СЖ</div><div class="mod-info"><div class="mod-name">Вопросы из Спец. журналов</div><div class="mod-sub">Работа с СЖ и замечаниями</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-<div class="mod-card mod-sp" tabindex="0"><div class="mod-abbr">СП</div><div class="mod-info"><div class="mod-name">Сообщения о проблеме</div><div class="mod-sub">СЖР и проблемные записи</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-<div class="mod-card mod-sd" tabindex="0"><div class="mod-abbr">СД</div><div class="mod-info"><div class="mod-name">Сертификационные документы</div><div class="mod-sub">Опытно-пром. эксплуатация</div></div><div class="mod-arrow"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+<div class="mod-card mod-kd" tabindex="0"><div class="mod-abbr">КД</div><div class="mod-info"><div class="mod-name">Конструкторские документы</div><div class="mod-sub">Согласование и выпуск КД</div></div><div class="mod-badge">Модуль в разработке</div></div>
+<div class="mod-card mod-szh" tabindex="0"><div class="mod-abbr">СЖ</div><div class="mod-info"><div class="mod-name">Вопросы из Спец. журналов</div><div class="mod-sub">Работа с СЖ и замечаниями</div></div></div>
+<div class="mod-card mod-sp" tabindex="0"><div class="mod-abbr">СП</div><div class="mod-info"><div class="mod-name">Сообщения о проблеме</div><div class="mod-sub">СЖР и проблемные записи</div></div></div>
+<div class="mod-card mod-sd" tabindex="0"><div class="mod-abbr">СД</div><div class="mod-info"><div class="mod-name">Сертификационные документы</div><div class="mod-sub">Опытно-пром. эксплуатация</div></div></div>
 </div>
 <div class="nt" style="margin-top:10px">Навигация главной страницы разделяет модули системы. После выбора модуля «Конструкторские документы» пользователь попадает в раздел «Мои процессы».</div>
 </div>
