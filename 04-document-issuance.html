@@ -1,10 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>АССКД · 5. Раздел «Выпуск документов»</title>
-<meta name="description" content="Выпускающий процесс: список, карточки, граф, кнопки управления статусом и редактированием — всё в едином системном контексте."/>
+<meta name="description" content="Процесс выпуска документов: список, карточка выпуска, маршрут проверки, явные файловые действия, статусы и служебные окна в едином системном контексте."/>
 <link rel="stylesheet" href="assets/tokens.css"/>
 <link rel="stylesheet" href="assets/base.css"/>
 <link rel="stylesheet" href="assets/components.css"/>
@@ -83,8 +83,8 @@
 .app-canvas{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:10px;min-height:0}
 
 /* — Workspace inside the canvas (3-panel layout) — */
-.ws-3{display:grid;grid-template-columns:264px 1fr 320px;gap:10px;flex:1;min-height:520px}
-.ws-2{display:grid;grid-template-columns:280px 1fr;gap:10px;flex:1;min-height:520px}
+.ws-3{display:grid;grid-template-columns:minmax(240px,264px) minmax(0,1fr) minmax(280px,320px);gap:10px;flex:1;min-height:520px;min-width:0}
+.ws-2{display:grid;grid-template-columns:minmax(240px,280px) minmax(0,1fr);gap:10px;flex:1;min-height:520px;min-width:0}
 .ws-panel{background:#fff;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
 .ws-ph{padding:10px 12px;border-bottom:1px solid var(--line2);background:var(--panel2);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .ws-ph h6{margin:0;font-size:12px;color:var(--yak-dark);font-weight:700;letter-spacing:.01em}
@@ -311,6 +311,20 @@
 .ms-arrow{width:14px;height:1px;background:var(--line);position:relative;flex-shrink:0}
 .ms-arrow::after{content:'';position:absolute;right:-3px;top:-3px;width:0;height:0;border:3px solid transparent;border-left-color:var(--line)}
 
+/* — Clarified file actions and edge cases from review comments — */
+.doc-actions{display:flex;gap:6px;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap;min-width:180px}
+.doc-actions .icon-chip{height:30px}
+.review-coverage{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.coverage-card{min-width:0;background:var(--n50);border:1px solid var(--line2);border-radius:var(--rs);padding:10px;display:flex;flex-direction:column;gap:8px}
+.coverage-card h6{margin:0;font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.coverage-line{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11px;color:var(--txt2)}
+.coverage-line strong,.coverage-line span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.coverage-count{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:99px;background:#fff;color:var(--yak-blue);font-size:10px;font-weight:800;flex-shrink:0}
+.coverage-stack{display:flex;flex-direction:column;gap:5px;min-width:0}
+.coverage-chip{height:22px;border-radius:99px;background:#fff;padding:0 8px;display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--txt2);min-width:0;max-width:100%}
+.coverage-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.coverage-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
 /* — Flat UI mode for this page: no nested cards — */
 body.flat-ui .ws-panel,
 body.flat-ui .side-sheet{
@@ -325,7 +339,7 @@ body.flat-ui .ws-ph{
 body.flat-ui .ws-pb{gap:10px}
 body.flat-ui .ws-pb :is(
   .proc-hero,.stage-action-bar,.process-action-bar,.date-stripe,.mini-stages,.graph-canvas,
-  .prio-card,.priority-block,.file-list,.file-row,.comment-card,.person,.nt,.row-chip,.st-row,
+  .prio-card,.priority-block,.file-list,.file-row,.comment-card,.person,.nt,.row-chip,.st-row,.coverage-card,
   .stage-row,.pl-row,.emp-row,.curator-chip,.sb-row,.tl-item,.proc-grid .cell
 ){
   border:0!important;
@@ -347,6 +361,11 @@ body.flat-ui .tl::before{opacity:.6}
   .app-shell{grid-template-rows:auto 1fr}
   .shell-rail{flex-direction:row;overflow-x:auto;flex-wrap:wrap;align-content:flex-start}
   .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .review-coverage{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .doc-actions{justify-content:flex-start;min-width:0}
+}
+@media(max-width:680px){
+  .review-coverage{grid-template-columns:1fr}
 }
 .scr-label{margin:28px 0 6px;padding:0}
 .scr-label h3{font-size:13px;font-weight:700;color:var(--muted);margin:0;letter-spacing:.01em}
@@ -357,7 +376,7 @@ body.flat-ui .tl::before{opacity:.6}
 <div class="pg">
 <nav class="toc">
   <a href="index.html">← Каталог</a>
-  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="01-design-system.html">1. Дизайн-система</a>
   <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
   <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
   <a href="04-document-issuance.html" class="a">5. Раздел «Выпуск документов»</a>
@@ -385,7 +404,7 @@ body.flat-ui .tl::before{opacity:.6}
 
 <!-- ═══════════════════════════════════════════════════════════════════
      ОБЩАЯ КОМПОНОВКА: каждый экран — это <div class="scr-label">
-  <h3>7.1 Панель «Перечень процессов на согласовании»</h3>
+  <h3>7.1 Панель «Перечень процессов выпуска»</h3>
   <p>Левая панель раздела. Подсвечена как фокус экрана; остальные панели приглушены, чтобы было видно, в каком контексте работает пользователь.</p>
 </div>
 <article class="scr"> с
@@ -395,7 +414,7 @@ body.flat-ui .tl::before{opacity:.6}
      ═══════════════════════════════════════════════════════════════════ -->
 
 <!-- ─────────────────────────────────────────────────────────────
-     7.1 — Перечень процессов на согласовании
+     7.1 — Перечень процессов выпуска
      ───────────────────────────────────────────────────────────── -->
 <article class="scr has-focus" id="scr-7-01">
   
@@ -448,7 +467,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -465,35 +484,34 @@ body.flat-ui .tl::before{opacity:.6}
           <div class="right">
             <div class="app-search"><svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><line x1="10.5" y1="10.5" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Поиск по № документа / процессу…</div>
             <button class="app-tbtn" title="Уведомления"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 12V8a4.5 4.5 0 019 0v4M2 12h12M6.5 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
-            <button class="bt p sm">+ Добавить процесс</button>
+            <button class="bt p sm">+ Добавить выпуск</button>
           </div>
         </div>
         <div class="app-canvas">
           <div class="ws-3">
             <!-- Левая панель — В ФОКУСЕ -->
             <div class="ws-panel is-focus">
-              <div class="ws-ph"><h6>Перечень процессов на согласовании</h6><span class="bg bn"><span class="dt"></span>24</span></div>
+              <div class="ws-ph"><h6>Перечень процессов выпуска</h6><span class="bg bn"><span class="dt"></span>24</span></div>
               <div class="ws-pb">
                 <div class="pl-row a" title="Проверяется"><span class="pl-dot" style="background:var(--blue)"></span><div><div class="pl-name">КВ.МС21-47-054911.TSZ</div><div class="pl-meta"><span class="pl-prio"></span>Цой С.В. · ИИ</div></div></div>
-                <div class="pl-row" title="Согласован"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417-49.CN</div><div class="pl-meta">Маслак А.Е. · РНО</div></div></div>
+                <div class="pl-row" title="Завершён"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417-49.CN</div><div class="pl-meta">Маслак А.Е. · РНО</div></div></div>
                 <div class="pl-row" title="С замечаниями"><span class="pl-dot" style="background:var(--warn)"></span><div><div class="pl-name">КВ.1211-56-345053-25.CN</div><div class="pl-meta">Алексеева Е.В. · ИИ</div></div></div>
                 <div class="pl-row" title="Требуется подпись"><span class="pl-dot" style="background:var(--yak-coral)"></span><div><div class="pl-name">КВ.1211-56-346555-09.CN</div><div class="pl-meta"><span class="pl-prio"></span>Иванов И.И. · ТСЭ</div></div></div>
                 <div class="pl-row" title="Не запущен"><span class="pl-dot" style="background:var(--yak-gray)"></span><div><div class="pl-name">КВ.1211-67-014420-12.CN</div><div class="pl-meta">Петров П.П. · РНО</div></div></div>
-                <div class="pl-row" title="Остановлен"><span class="pl-dot" style="background:#7C3AED"></span><div><div class="pl-name">КВ.1211-67-014425-08.CN</div><div class="pl-meta">Соколов А.А. · РНО</div></div></div>
+                <div class="pl-row" title="Запрос на откат"><span class="pl-dot" style="background:var(--yak-red)"></span><div><div class="pl-name">КВ.1211-67-014425-08.CN</div><div class="pl-meta">Соколов А.А. · РНО</div></div></div>
               </div>
-              <div class="inline-toast">Список прокручивается внутри панели</div>
             </div>
             <!-- Центральная панель — приглушена, показывает «выберите процесс» -->
             <div class="ws-panel">
               <div class="ws-ph"><h6>Выпускаемый процесс</h6></div>
               <div class="ws-pb empty">
                 <svg viewBox="0 0 24 24" fill="none" style="width:32px;height:32px;color:var(--muted2);margin-bottom:8px"><path d="M4 4h16v4H4zM4 12h16v4H4zM4 20h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                Выберите процесс из перечня слева — здесь появятся данные выпускаемого документа, маршрут согласования и кнопки управления.
+                Выберите процесс из перечня слева — здесь появятся данные выпускаемого документа, маршрут проверки выпуска и доступные действия.
               </div>
             </div>
             <!-- Правая панель — приглушена -->
             <div class="ws-panel">
-              <div class="ws-ph"><h6>Этапы согласования</h6></div>
+              <div class="ws-ph"><h6>Этапы проверки выпуска</h6></div>
               <div class="ws-pb empty">— нет активного процесса —</div>
             </div>
           </div>
@@ -508,7 +526,7 @@ body.flat-ui .tl::before{opacity:.6}
      7.1.1 — Модалка «Добавление процесса» в контексте системы
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.1.1 Добавление процесса</h3>
+  <h3>7.1.1 Добавление процесса выпуска</h3>
   <p>Окно добавления процесса показано прямо поверх рабочего экрана раздела. Видно, откуда оно открыто, рабочая область приглушена, модалка занимает фокус.</p>
 </div>
 <article class="scr" id="scr-7-02">
@@ -561,7 +579,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -573,7 +591,7 @@ body.flat-ui .tl::before{opacity:.6}
       <div class="app-main">
         <div class="app-tb">
     <button class="app-back">Назад</button>
-    <div class="crumb"><span>Главная</span><span class="sep">/</span><span>Выпуск документов</span><span class="sep">/</span><b>Добавление процесса</b></div>
+    <div class="crumb"><span>Главная</span><span class="sep">/</span><span>Выпуск документов</span><span class="sep">/</span><b>Добавление процесса выпуска</b></div>
           <div class="right"><button class="app-tbtn" title="Закрыть"><svg viewBox="0 0 16 16" fill="none"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
         </div>
         <div class="app-canvas">
@@ -586,7 +604,7 @@ body.flat-ui .tl::before{opacity:.6}
             </div>
             <!-- Модалка -->
             <div class="mb wide">
-              <div class="mh"><h5>Добавление процесса</h5><div class="mc"><svg viewBox="0 0 16 16" fill="none" width="12" height="12"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div></div>
+              <div class="mh"><h5>Добавление процесса выпуска</h5><div class="mc"><svg viewBox="0 0 16 16" fill="none" width="12" height="12"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div></div>
               <div class="mbd" style="display:flex;flex-direction:column;gap:0">
                 <!-- Блок 1 — данные процесса -->
                 <div class="mb-section">
@@ -601,14 +619,14 @@ body.flat-ui .tl::before{opacity:.6}
                   <!-- Чекбокс с большим кликабельным полем — комментарий 3 -->
                   <div class="curator-chip on">
                     <span class="ck-box checked"></span>
-                    <div class="lab">Куратор от подразделения-заказчика<span class="sub">отдельный согласующий, привязанный к подразделению-заказчику</span></div>
+                    <div class="lab">Куратор от подразделения-заказчика<span class="sub">отдельный ответственный, привязанный к подразделению-заказчику</span></div>
                     <span class="pick">5717 · Отдел эфф. проектирования →</span>
                   </div>
                 </div>
 
-                <!-- Блок 2 — граф маршрута согласования -->
+                <!-- Блок 2 — граф маршрута проверки выпуска -->
                 <div class="mb-section">
-                  <div class="mb-title"><span class="num">2</span>Этапы согласования · граф маршрута</div>
+                  <div class="mb-title"><span class="num">2</span>Этапы проверки выпуска · граф маршрута</div>
                   <div class="graph-canvas">
                     <svg viewBox="0 0 860 190" xmlns="http://www.w3.org/2000/svg">
                       <defs>
@@ -651,14 +669,14 @@ body.flat-ui .tl::before{opacity:.6}
 
                 <!-- Блок 3 — смежные этапы -->
                 <div class="mb-section">
-                  <div class="mb-title"><span class="num">3</span>Дополнительные (смежные) этапы</div>
+                  <div class="mb-title"><span class="num">3</span>Дополнительные этапы проверки</div>
                   <div class="g2">
                     <div class="fg"><label>Подключить смежный этап</label><div class="fd sel" style="width:100%">Выбрано: 2 подразделения</div></div>
-                    <div class="fg"><label>Срок этапа, дн.</label><div class="fd" style="width:100%">5</div></div>
+                    <div class="fg"><label>Дедлайн этапа (дн.)</label><div class="fd" style="width:100%">5</div></div>
                   </div>
                 </div>
               </div>
-              <div class="mf"><div class="bt s">Отмена</div><div class="bt p">Создать процесс</div></div>
+              <div class="mf"><div class="bt s">Отмена</div><div class="bt p">Создать выпуск</div></div>
             </div>
           </div>
         </div>
@@ -673,7 +691,7 @@ body.flat-ui .tl::before{opacity:.6}
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
   <h3>7.2 Панель «Выпускаемый процесс»</h3>
-  <p>Карточка центральной панели с реальным наполнением: hero-шапка, KPI-сетка, мини-граф маршрута, тулбар управляющих действий и срок-лента.</p>
+  <p>Карточка центральной панели с реальным наполнением: hero-шапка, KPI-сетка, маршрут проверки, явные действия с файлами, edge cases и срок-лента.</p>
 </div>
 <article class="scr has-focus" id="scr-7-03">
   
@@ -725,7 +743,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -749,7 +767,7 @@ body.flat-ui .tl::before{opacity:.6}
               <div class="ws-ph"><h6>Перечень процессов</h6></div>
               <div class="ws-pb">
                 <div class="pl-row a" title="Проверяется"><span class="pl-dot" style="background:var(--blue)"></span><div><div class="pl-name">КВ.МС21-47-054911.TSZ</div><div class="pl-meta">Цой С.В.</div></div></div>
-                <div class="pl-row" title="Согласован"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417</div><div class="pl-meta">Маслак А.Е.</div></div></div>
+                <div class="pl-row" title="Завершён"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417</div><div class="pl-meta">Маслак А.Е.</div></div></div>
                 <div class="pl-row" title="С замечаниями"><span class="pl-dot" style="background:var(--warn)"></span><div><div class="pl-name">КВ.1211-56-345053</div><div class="pl-meta">Алексеева Е.В.</div></div></div>
               </div>
             </div>
@@ -778,9 +796,8 @@ body.flat-ui .tl::before{opacity:.6}
                       <span class="bg bn"><span class="dt"></span>5717 · ОЭП</span>
                     </div>
                   </div>
-                  <div class="files">
-                    <div class="fc pdf">PDF</div>
-                    <div class="fc doc">DOC</div>
+                  <div class="doc-actions">
+                    <button class="icon-chip direct-download"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать</button>
                   </div>
                 </div>
 
@@ -798,6 +815,31 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="ds"><div class="k">Старт процесса</div><div class="v">01.04.2026</div></div>
                   <div class="ds ok"><div class="k">Прогноз завершения</div><div class="v">12.04.2026</div></div>
                   <div class="ds warn"><div class="k">Плановый срок</div><div class="v">14.04.2026</div></div>
+                </div>
+
+                <div class="review-coverage">
+                  <div class="coverage-card">
+                    <h6>Документы</h6>
+                    <div class="coverage-line"><strong>КВ.МС21-47-054911.TSZ</strong><span class="coverage-count">+2</span></div>
+                    <div class="coverage-line"><span>Длинное имя скрывается через ellipsis</span><span class="coverage-count">3 файла</span></div>
+                  </div>
+                  <div class="coverage-card">
+                    <h6>Задачи</h6>
+                    <div class="coverage-line"><span>Проверка прочности</span><span class="coverage-count">2</span></div>
+                    <div class="coverage-line"><span>Одна активная, одна в очереди</span></div>
+                  </div>
+                  <div class="coverage-card">
+                    <h6>Участники</h6>
+                    <div class="coverage-stack">
+                      <span class="coverage-chip"><i class="coverage-dot"></i><span>Цой С.В.</span></span>
+                      <span class="coverage-chip"><i class="coverage-dot" style="background:var(--ok)"></i><span>Петров П.П. + ещё 3</span></span>
+                    </div>
+                  </div>
+                  <div class="coverage-card">
+                    <h6>Dropdown</h6>
+                    <div class="coverage-line"><span>5717 · ОЭП</span><span class="coverage-count">1</span></div>
+                    <div class="coverage-line"><span>5717 · ОЭП, 741 · РНО, 886 · ТСЭ</span><span class="coverage-count">3</span></div>
+                  </div>
                 </div>
 
                 <!-- Graph route -->
@@ -818,7 +860,7 @@ body.flat-ui .tl::before{opacity:.6}
                     <g transform="translate(30,35)">
                       <rect x="0" y="0" width="112" height="64" rx="8" class="graph-node done"/>
                       <text x="12" y="22" font-size="11" font-weight="700" fill="#1A1F2B">Тех. контроль</text>
-                      <text x="12" y="42" font-size="9" fill="#059669">согласован</text>
+                      <text x="12" y="42" font-size="9" fill="#059669">проверен</text>
                     </g>
                     <g transform="translate(220,35)">
                       <rect x="0" y="0" width="112" height="64" rx="8" class="graph-node current"/>
@@ -846,10 +888,11 @@ body.flat-ui .tl::before{opacity:.6}
                 <!-- Action toolbar -->
                 <div class="process-action-bar">
                   <span class="scope-label">Процесс</span>
-                  <button class="bt p sm">Граф маршрута</button>
+                  <button class="bt p sm">Открыть текущий этап</button>
+                  <button class="bt s sm">Граф проверки</button>
                   <button class="bt s sm">История изменений СУДП</button>
                   <button class="bt s sm">История процесса</button>
-                  <button class="bt s sm direct-download">Скачать отчёт</button>
+                  <button class="bt s sm direct-download">Экспорт XLSX</button>
                   <button class="bt s sm">Обоснование приоритета</button>
                   <button class="bt s sm">Файлы процесса</button>
                   <span class="inline-toast">Файл выгружен</span>
@@ -922,7 +965,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -997,7 +1040,7 @@ body.flat-ui .tl::before{opacity:.6}
                     </div>
                   </div>
                 </div>
-                <div class="nt"><strong>Текущий выпускающий.</strong> Цой С.В. (5717 · ОЭП). После переназначения процесс перейдёт в работу к выбранному сотруднику.</div>
+                <div class="nt"><strong>Текущий выпускающий:</strong> Цой С.В. (5717 · ОЭП)</div>
               </div>
               <div class="mf"><div class="bt s">Отмена</div><div class="bt p">Назначить выпускающего</div></div>
             </div>
@@ -1066,7 +1109,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1098,7 +1141,7 @@ body.flat-ui .tl::before{opacity:.6}
                   </div>
                 </div>
                 <div class="mb-section">
-                  <div class="mb-title"><span class="num">2</span>Состав этапов · граф с редактированием</div>
+                  <div class="mb-title"><span class="num">2</span>Состав этапов · просмотр маршрута</div>
                   <div class="g2" style="align-items:start">
                     <div class="graph-canvas">
                       <svg viewBox="0 0 430 230" xmlns="http://www.w3.org/2000/svg">
@@ -1133,15 +1176,15 @@ body.flat-ui .tl::before{opacity:.6}
                       </svg>
                     </div>
                     <div class="stage-builder">
-                      <div class="sb-row req"><div class="sb-num">1</div><div class="sb-name">Технологический контроль<span class="sub">всегда в маршруте</span></div><span class="sb-toggle"><span class="sw"></span>фикс.</span></div>
-                      <div class="sb-row req"><div class="sb-num">2</div><div class="sb-name">Начальник отделения<span class="sub">всегда в маршруте</span></div><span class="sb-toggle"><span class="sw"></span>фикс.</span></div>
-                      <div class="sb-row opt on"><div class="sb-num">3</div><div class="sb-name">Главный конструктор<span class="sub">узел активирован на графе</span></div><span class="sb-toggle"><span class="sw"></span>включён</span></div>
-                      <div class="sb-row opt"><div class="sb-num">4</div><div class="sb-name">Независимая инспекция<span class="sub">узел пунктиром, можно включить</span></div><span class="sb-toggle"><span class="sw"></span>выключен</span></div>
+                      <div class="sb-row req"><div class="sb-num">1</div><div class="sb-name">Технологический контроль<span class="sub">обязательный</span></div><span class="bg bd">фикс.</span></div>
+                      <div class="sb-row req"><div class="sb-num">2</div><div class="sb-name">Начальник отделения<span class="sub">обязательный</span></div><span class="bg bd">фикс.</span></div>
+                      <div class="sb-row opt on"><div class="sb-num">3</div><div class="sb-name">Главный конструктор<span class="sub">включён в маршрут</span></div><span class="bg bi">включён</span></div>
+                      <div class="sb-row opt"><div class="sb-num">4</div><div class="sb-name">Независимая инспекция<span class="sub">не включён в маршрут</span></div><span class="bg bs">выключен</span></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="mf"><div class="bt s">Отмена</div><div class="bt p">Сохранить изменения</div></div>
+              <div class="mf"><div class="bt p">Закрыть</div></div>
             </div>
           </div>
         </div>
@@ -1152,10 +1195,10 @@ body.flat-ui .tl::before{opacity:.6}
 
 
 <!-- ─────────────────────────────────────────────────────────────
-     7.2.2.2 graph — настоящий SVG-граф маршрута (комментарий 7)
+     7.2.2.2 graph — настоящий SVG-граф маршрута проверки (комментарий 7)
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.2.2.2 Графовое представление шаблона маршрута</h3>
+  <h3>7.2.2.2 Графовое представление шаблона проверки</h3>
   <p>Настоящий SVG-граф: узлы соединены стрелками, цвет = статус, форма = тип (обязательный / опциональный).</p>
 </div>
 <article class="scr" id="scr-7-06">
@@ -1208,7 +1251,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1220,12 +1263,12 @@ body.flat-ui .tl::before{opacity:.6}
       <div class="app-main">
         <div class="app-tb">
     <button class="app-back">Назад</button>
-    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф маршрута</b></div>
+    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф проверки</b></div>
         </div>
         <div class="app-canvas">
           <div class="ws-panel" style="flex:1">
             <div class="graph-tools">
-              <span class="gt-title">Граф маршрута согласования · КВ.МС21-47-054911.TSZ</span>
+              <span class="gt-title">Граф проверки выпуска · КВ.МС21-47-054911.TSZ</span>
               <button class="icon-chip" title="Приблизить"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="4" x2="8" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
               <button class="icon-chip" title="Отдалить"><svg viewBox="0 0 16 16" fill="none"><line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
               <button class="icon-chip" title="По размеру"><svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="5" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></button>
@@ -1260,7 +1303,7 @@ body.flat-ui .tl::before{opacity:.6}
                   <rect x="0" y="0" width="100" height="60" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                   <circle cx="14" cy="18" r="5" fill="#059669"/>
                   <text x="24" y="22" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Тех. контроль</text>
-                  <text x="14" y="40" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">СОГЛАСОВАН</text>
+                  <text x="14" y="40" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">ПРОВЕРЕН</text>
                   <text x="14" y="52" font-family="Stem,Arial,sans-serif" font-size="9" fill="#6B7280">Иванов И.И. · 10.04</text>
                 </g>
                 <!-- Node 2: Дед head (ok) -->
@@ -1268,7 +1311,7 @@ body.flat-ui .tl::before{opacity:.6}
                   <rect x="0" y="0" width="100" height="60" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                   <circle cx="14" cy="18" r="5" fill="#059669"/>
                   <text x="24" y="22" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Нач. отделения</text>
-                  <text x="14" y="40" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">СОГЛАСОВАН</text>
+                  <text x="14" y="40" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">ПРОВЕРЕН</text>
                   <text x="14" y="52" font-family="Stem,Arial,sans-serif" font-size="9" fill="#6B7280">Петров П.П. · 11.04</text>
                 </g>
                 <!-- Node 3: Chief designer (run) -->
@@ -1301,14 +1344,14 @@ body.flat-ui .tl::before{opacity:.6}
                 <g transform="translate(595,215)">
                   <rect x="0" y="0" width="140" height="60" rx="8" fill="#FFFFFF" stroke="#808F9A" stroke-width="1.5" stroke-dasharray="6 4"/>
                   <circle cx="14" cy="18" r="5" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
-                  <text x="24" y="22" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Доп. согл. (РНО)</text>
+                  <text x="24" y="22" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Доп. проверка (РНО)</text>
                   <text x="14" y="40" font-family="Stem,Arial,sans-serif" font-size="9" fill="#9CA3AF" font-weight="700">ОПЦ. · ВЫКЛ.</text>
                   <text x="14" y="52" font-family="Stem,Arial,sans-serif" font-size="9" fill="#6B7280">не активирован</text>
                 </g>
               </svg>
             </div>
             <div class="graph-legend">
-              <span class="leg"><i class="ok"></i>согласован</span>
+              <span class="leg"><i class="ok"></i>проверен</span>
               <span class="leg"><i class="run"></i>в проверке</span>
               <span class="leg"><i class="warn"></i>с замечаниями</span>
               <span class="leg"><i class="req"></i>обязательный</span>
@@ -1380,7 +1423,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1403,7 +1446,7 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="tl-item ok">
                     <div class="tl-body">
                       <div class="who">Иванов И.И. <span class="role">Тех. контроль</span></div>
-                      <div class="what">Изменение статуса в СУДП: <code>В проверке</code> → <span class="tag ok">Согласован</span></div>
+                      <div class="what">Изменение статуса в СУДП: <code>В проверке</code> → <span class="tag ok">Проверен</span></div>
                     </div>
                     <div class="tl-time"><span class="d">10.04.2026</span>11:42:18</div>
                   </div>
@@ -1417,7 +1460,7 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="tl-item">
                     <div class="tl-body">
                       <div class="who">Курочкин И.И. <span class="role">Куратор</span></div>
-                      <div class="what">Подключён смежный этап «Доп. согласование РНО» <span class="tag warn">опциональный</span></div>
+                      <div class="what">Подключён смежный этап «Доп. проверка РНО» <span class="tag warn">опциональный</span></div>
                     </div>
                     <div class="tl-time"><span class="d">02.04.2026</span>14:20:51</div>
                   </div>
@@ -1444,8 +1487,8 @@ body.flat-ui .tl::before{opacity:.6}
      7.2.2.4 — История процесса (timeline)
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.2.2.4 История процесса согласования</h3>
-  <p>Аналогичная лента, но по действиям пользователей внутри процесса (этапы, замечания, ответы).</p>
+  <h3>7.2.2.4 История процесса выпуска</h3>
+  <p>Лента действий пользователей внутри процесса выпуска: этапы проверки, замечания, ответы и служебные изменения.</p>
 </div>
 <article class="scr" id="scr-7-08">
   
@@ -1497,7 +1540,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1514,11 +1557,11 @@ body.flat-ui .tl::before{opacity:.6}
         <div class="app-canvas">
           <div style="max-width:920px;width:100%;margin:0 auto">
             <div class="side-sheet">
-              <div class="mh"><h5>История процесса согласования</h5><div class="mc"><svg viewBox="0 0 16 16" fill="none" width="12" height="12"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div></div>
+              <div class="mh"><h5>История процесса выпуска</h5><div class="mc"><svg viewBox="0 0 16 16" fill="none" width="12" height="12"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div></div>
               <div class="mbd">
                 <div class="tl">
                   <div class="tl-item ok">
-                    <div class="tl-body"><div class="who">Иванов И.И. <span class="role">Тех. контроль</span></div><div class="what">Этап «Технологический контроль» <span class="tag ok">согласован</span></div></div>
+                    <div class="tl-body"><div class="who">Иванов И.И. <span class="role">Тех. контроль</span></div><div class="what">Этап «Технологический контроль» <span class="tag ok">проверен</span></div></div>
                     <div class="tl-time"><span class="d">10.04.2026</span>11:42</div>
                   </div>
                   <div class="tl-item warn">
@@ -1535,7 +1578,7 @@ body.flat-ui .tl::before{opacity:.6}
                   </div>
                 </div>
               </div>
-              <div class="mf"><div class="bt s">Назад к процессу</div><div class="bt p direct-download">Скачать отчёт</div></div>
+              <div class="mf"><div class="bt s">Назад к процессу</div><div class="bt p direct-download">Экспорт XLSX</div></div>
             </div>
           </div>
         </div>
@@ -1602,7 +1645,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1615,13 +1658,12 @@ body.flat-ui .tl::before{opacity:.6}
         <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>История процесса</b></div>
-          <div class="right"><button class="bt p sm direct-download"><svg viewBox="0 0 16 16" fill="none" style="width:12px;height:12px;margin-right:4px"><path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать отчёт</button></div>
+          <div class="right"><button class="bt p sm direct-download"><svg viewBox="0 0 16 16" fill="none" style="width:12px;height:12px;margin-right:4px"><path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Экспорт XLSX</button></div>
         </div>
         <div class="app-canvas">
           <div class="ws-panel" style="flex:1">
             <div class="ws-ph"><h6>История процесса · прямой экспорт</h6><span class="inline-toast">Файл выгружен</span></div>
             <div class="ws-pb">
-              <div class="nt"><strong>Без промежуточного окна.</strong> XLSX скачивается прямым действием из истории процесса. Этот пример фиксирует inline-confirmation вместо отдельной модалки или экрана скачивания.</div>
               <!-- Download result -->
               <div class="dl-card">
                 <div class="dl-icn"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h11l3 3v15H5z" stroke="currentColor" stroke-width="1.6"/><path d="M16 3v3h3" stroke="currentColor" stroke-width="1.6"/><path d="M8 11h8M8 15h8M8 19h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
@@ -1631,18 +1673,16 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="dl-prog"><i style="width:100%"></i></div>
                 </div>
                 <div class="dl-actions">
-                  <button class="icon-chip direct-download"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать повторно</button>
-                  <button class="icon-chip"><svg viewBox="0 0 16 16" fill="none"><path d="M3 6h10M3 10h10M3 14h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Открыть</button>
+                  <button class="icon-chip direct-download"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать</button>
                 </div>
               </div>
 
-              <!-- Preview -->
-              <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:8px">Предпросмотр содержимого</div>
+              <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:8px">Состав выгрузки</div>
               <div class="tw2">
                 <table>
                   <thead><tr><th>Этап</th><th>Статус</th><th>Дата</th><th>Сотрудник</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Технологический контроль</strong></td><td><span class="bg bs"><span class="dt"></span>Согласован</span></td><td>10.04.2026 11:42</td><td>Иванов И.И.</td></tr>
+                    <tr><td><strong>Технологический контроль</strong></td><td><span class="bg bs"><span class="dt"></span>Проверен</span></td><td>10.04.2026 11:42</td><td>Иванов И.И.</td></tr>
                     <tr><td><strong>Начальник отделения</strong></td><td><span class="bg bi"><span class="dt"></span>Проверяется</span></td><td>11.04.2026</td><td>Петров П.П.</td></tr>
                     <tr><td><strong>Главный конструктор</strong></td><td><span class="bg bw"><span class="dt"></span>С замечаниями</span></td><td>12.04.2026</td><td>Курочкин И.И.</td></tr>
                     <tr><td><strong>Независимая инспекция</strong></td><td><span class="bg bn"><span class="dt"></span>Не запущен</span></td><td>—</td><td>—</td></tr>
@@ -1650,7 +1690,6 @@ body.flat-ui .tl::before{opacity:.6}
                   </tbody>
                 </table>
               </div>
-              <div class="inline-toast">Предпросмотр прокручивается внутри панели</div>
             </div>
           </div>
         </div>
@@ -1717,7 +1756,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1744,7 +1783,7 @@ body.flat-ui .tl::before{opacity:.6}
                     <div class="meta">
                       <span><b>Сотрудник:</b> Егоров С.С.</span>
                       <span><b>Дата:</b> 02.04.2026</span>
-                      <span><b>SLA:</b> 5 рабочих дней</span>
+                      <span><b>SLA:</b> 5 рабочих дней <span style="color:var(--muted);font-weight:400">(макс. срок рассмотрения по регламенту)</span></span>
                     </div>
                   </div>
                 </div>
@@ -1752,12 +1791,12 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="file-list-row">
                     <div class="file-type pdf">PDF</div>
                     <div><strong>obosnovanie_priority.pdf</strong><small>02.04.2026 · Егоров С.С. · 820 КБ</small></div>
-                    <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                    <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
                   </div>
                   <div class="file-list-row">
                     <div class="file-type doc">DOC</div>
                     <div><strong>priority_request_5717.docx</strong><small>02.04.2026 · Цой С.В. · 310 КБ</small></div>
-                    <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                    <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
                   </div>
                 </div>
               </div>
@@ -1772,10 +1811,10 @@ body.flat-ui .tl::before{opacity:.6}
 
 
 <!-- ─────────────────────────────────────────────────────────────
-     7.3 — Панель «Перечень этапов согласования»
+     7.3 — Панель «Перечень этапов проверки»
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.3 Панель «Перечень этапов согласования»</h3>
+  <h3>7.3 Панель «Перечень этапов проверки»</h3>
   <p>Правая панель раздела (в фокусе): список этапов с цветными статусами, кнопка перехода в граф.</p>
 </div>
 <article class="scr has-focus" id="scr-7-11">
@@ -1828,7 +1867,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1848,7 +1887,7 @@ body.flat-ui .tl::before{opacity:.6}
               <div class="ws-ph"><h6>Перечень процессов</h6></div>
               <div class="ws-pb">
                 <div class="pl-row a" title="Проверяется"><span class="pl-dot" style="background:var(--blue)"></span><div><div class="pl-name">КВ.МС21-47-054911.TSZ</div><div class="pl-meta">Цой С.В.</div></div></div>
-                <div class="pl-row" title="Согласован"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417</div><div class="pl-meta">Маслак А.Е.</div></div></div>
+                <div class="pl-row" title="Завершён"><span class="pl-dot" style="background:var(--ok)"></span><div><div class="pl-name">КВ.1211-67-014417</div><div class="pl-meta">Маслак А.Е.</div></div></div>
               </div>
             </div>
             <div class="ws-panel">
@@ -1864,10 +1903,10 @@ body.flat-ui .tl::before{opacity:.6}
               </div>
             </div>
             <div class="ws-panel is-focus">
-              <div class="ws-ph"><h6>Перечень этапов согласования</h6><button class="bt s sm">Граф →</button></div>
+              <div class="ws-ph"><h6>Перечень этапов проверки</h6><button class="bt s sm">Граф →</button></div>
               <div class="ws-pb">
                 <div class="stages-list">
-                  <div class="stage-row" title="Согласован">
+                  <div class="stage-row" title="Проверен">
                     <div class="sn" style="background:var(--ok)"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 6.5,11.5 13,5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <div class="nm">Технологический контроль<span class="meta">Иванов И.И. · 10.04.2026</span></div>
                   </div>
@@ -1902,7 +1941,7 @@ body.flat-ui .tl::before{opacity:.6}
      7.3.1 — Графовое представление (вертикальный + горизонтальный)
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.3.1 Графовое представление — два вида отображения</h3>
+  <h3>7.3.1 Граф проверки — два вида отображения</h3>
   <p>Тот же маршрут можно посмотреть горизонтально (по умолчанию) и вертикально — переключатель вида в правом верхнем углу.</p>
 </div>
 <article class="scr" id="scr-7-12">
@@ -1955,7 +1994,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -1967,7 +2006,7 @@ body.flat-ui .tl::before{opacity:.6}
       <div class="app-main">
         <div class="app-tb">
     <button class="app-back">Назад</button>
-    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф маршрута</b></div></div>
+    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Граф проверки</b></div></div>
         <div class="app-canvas">
           <div class="g2" style="flex:1">
             <!-- Vertical -->
@@ -1993,13 +2032,13 @@ body.flat-ui .tl::before{opacity:.6}
                     <rect width="160" height="40" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                     <circle cx="14" cy="20" r="5" fill="#059669"/>
                     <text x="26" y="18" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Тех. контроль</text>
-                    <text x="26" y="32" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">СОГЛАСОВАН</text>
+                    <text x="26" y="32" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">ПРОВЕРЕН</text>
                   </g>
                   <g transform="translate(80,96)">
                     <rect width="160" height="40" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                     <circle cx="14" cy="20" r="5" fill="#059669"/>
                     <text x="26" y="18" font-family="Stem,Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1F2B">Нач. отделения</text>
-                    <text x="26" y="32" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">СОГЛАСОВАН</text>
+                    <text x="26" y="32" font-family="Stem,Arial,sans-serif" font-size="9" fill="#059669" font-weight="700">ПРОВЕРЕН</text>
                   </g>
                   <g transform="translate(80,176)">
                     <rect width="160" height="40" rx="8" fill="#EBF1FA" stroke="#0F4DBC" stroke-width="2.5"/>
@@ -2054,7 +2093,7 @@ body.flat-ui .tl::before{opacity:.6}
                     <rect width="100" height="40" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                     <circle cx="12" cy="14" r="4" fill="#059669"/>
                     <text x="22" y="17" font-family="Stem,Arial,sans-serif" font-size="10" font-weight="700" fill="#1A1F2B">Тех. контр.</text>
-                    <text x="12" y="32" font-family="Stem,Arial,sans-serif" font-size="8" fill="#059669" font-weight="700">СОГЛ.</text>
+                    <text x="12" y="32" font-family="Stem,Arial,sans-serif" font-size="8" fill="#059669" font-weight="700">ПРОВ.</text>
                   </g>
                   <g transform="translate(220,100)">
                     <rect width="100" height="40" rx="8" fill="#EBF1FA" stroke="#0F4DBC" stroke-width="2"/>
@@ -2067,7 +2106,7 @@ body.flat-ui .tl::before{opacity:.6}
                     <rect width="100" height="40" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
                     <circle cx="12" cy="14" r="4" fill="#059669"/>
                     <text x="22" y="17" font-family="Stem,Arial,sans-serif" font-size="10" font-weight="700" fill="#1A1F2B">Нач. отд.</text>
-                    <text x="12" y="32" font-family="Stem,Arial,sans-serif" font-size="8" fill="#059669" font-weight="700">СОГЛ.</text>
+                    <text x="12" y="32" font-family="Stem,Arial,sans-serif" font-size="8" fill="#059669" font-weight="700">ПРОВ.</text>
                   </g>
                   <g transform="translate(220,200)">
                     <rect width="100" height="40" rx="8" fill="#F0FDF4" stroke="#059669" stroke-width="1.8" stroke-dasharray="5 4"/>
@@ -2085,7 +2124,7 @@ body.flat-ui .tl::before{opacity:.6}
                 </svg>
               </div>
               <div class="graph-legend">
-                <span class="leg"><i class="ok"></i>согл.</span>
+                <span class="leg"><i class="ok"></i>проверен</span>
                 <span class="leg"><i class="run"></i>в проверке</span>
                 <span class="leg"><i class="req"></i>обяз.</span>
                 <span class="leg"><i class="sel"></i>опц. вкл.</span>
@@ -2101,11 +2140,11 @@ body.flat-ui .tl::before{opacity:.6}
 
 
 <!-- ─────────────────────────────────────────────────────────────
-     7.4 — Панель «Этап согласования»
+     7.4 — Панель «Этап проверки»
      ───────────────────────────────────────────────────────────── -->
 <div class="scr-label">
-  <h3>7.4 Панель «Этап согласования»</h3>
-  <p>Карточка выбранного этапа: данные, согласующий, лента замечаний с ответами.</p>
+  <h3>7.4 Панель «Этап проверки»</h3>
+  <p>Карточка выбранного этапа: данные, ответственные, замечания, задачи и явные действия без смешения с выпуском всего документа.</p>
 </div>
 <article class="scr has-focus" id="scr-7-13">
   
@@ -2157,7 +2196,7 @@ body.flat-ui .tl::before{opacity:.6}
           </button>
           <button class="shell-rb">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h10M3 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Маршруты согласования
+            Маршруты проверки
           </button>
         </div>
 
@@ -2169,7 +2208,7 @@ body.flat-ui .tl::before{opacity:.6}
       <div class="app-main">
         <div class="app-tb">
     <button class="app-back">Назад</button>
-    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Этап «Гл. конструктор»</b></div></div>
+    <div class="crumb"><span>Выпуск документов</span><span class="sep">/</span><span>КВ.МС21-47-054911.TSZ</span><span class="sep">/</span><b>Этап проверки «Гл. конструктор»</b></div></div>
         <div class="app-canvas">
           <div class="ws-2">
             <div class="ws-panel">
@@ -2189,10 +2228,10 @@ body.flat-ui .tl::before{opacity:.6}
                 <div class="stage-action-bar sticky stage-action-bar-ui">
                   <span class="scope-label">Этап</span>
                   <div class="action-group">
-                    <button class="bt p sm">Согласовать</button>
-                    <button class="bt w sm">С замечаниями</button>
+                    <button class="bt p sm">Подтвердить этап</button>
+                    <button class="bt w sm">Вернуть с замечанием</button>
                     <button class="bt tl2 sm">Добавить задачу</button>
-                    <button class="bt d sm">Откатить</button>
+                    <button class="bt d sm">Запросить откат</button>
                   </div>
                   <span class="sep"></span>
                   <div class="action-group">
@@ -2204,16 +2243,18 @@ body.flat-ui .tl::before{opacity:.6}
                 <div class="proc-hero">
                   <div class="icn" style="background:var(--blue-ll);color:var(--blue)"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
                   <div class="info">
-                    <div class="title" style="font-family:inherit;font-size:14px">Согласование конструкции</div>
+                    <div class="title" style="font-family:inherit;font-size:14px">Проверка выпуска конструкции</div>
                     <div class="sub">5717 · Отдел эффективности проектирования</div>
                     <div class="badges"><span class="bg bi"><span class="dt"></span>Проверяется</span><span class="bg bn"><span class="dt"></span>с 11.04.2026</span></div>
                   </div>
-                  <div class="files"><div class="fc pdf">PDF</div></div>
+                  <div class="doc-actions">
+                    <button class="icon-chip direct-download"><svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать</button>
+                  </div>
                 </div>
 
                 <div class="g2" style="grid-template-columns:1fr 1.4fr;align-items:start;gap:10px">
                   <div>
-                    <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Согласующий</div>
+                    <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Ответственный</div>
                     <div class="person">
                       <div class="ava">ПП</div>
                       <div>
@@ -2225,7 +2266,7 @@ body.flat-ui .tl::before{opacity:.6}
                   </div>
                   <div>
                     <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Замечания</div>
-                    <div class="nt"><strong>Есть активное замечание.</strong> Ответ можно дать без выхода из карточки этапа; история этапа и файлы этапа открываются в side-sheet.</div>
+                    <div class="nt"><strong>Есть активное замечание.</strong> Ответ относится к этапу проверки; история этапа и файлы этапа открываются в side-sheet без потери фонового контента.</div>
                     <div class="comment-thread">
                       <div class="comment-card open">
                         <div class="comment-text">Требуется уточнить расчёт прочности панели шп. 42-44.</div>

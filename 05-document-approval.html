@@ -206,34 +206,28 @@
 }
 .proc-item{
   display:grid;
-  grid-template-columns:16px 1fr auto;
+  grid-template-columns:18px 1fr auto;
   gap:10px;
   align-items:center;
-  padding:9px 10px;
+  padding:8px 10px;
   border:1px solid var(--line3);
   border-radius:var(--rs);
   background:#fff;
+  cursor:pointer;
+  transition:all var(--tr);
 }
+.proc-item:hover{background:var(--blue-ll);border-color:var(--blue)}
 .proc-item.active{
   background:var(--blue-ll);
   border-color:var(--blue);
   box-shadow:inset 3px 0 0 var(--blue);
 }
-.proc-item .bg{
+.proc-item .pl-dot{
   width:10px;
   height:10px;
-  min-width:10px;
-  min-height:10px;
   border-radius:50%;
-  padding:0;
-  background:transparent;
-  border:none!important;
-  display:inline-block;
-}
-.proc-item .bg .dt{
-  width:10px!important;
-  height:10px!important;
-  border-radius:50%!important;
+  flex-shrink:0;
+  box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line3);
 }
 .proc-item strong{
   display:block;
@@ -242,23 +236,25 @@
   font-weight:700;
   font-family:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
   letter-spacing:-.01em;
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 .proc-item small{
   display:block;
   margin-top:2px;
-  font-size:10px;
+  font-size:9.5px;
   color:var(--muted);
 }
 .proc-list .avatar-sm{
-  width:30px;
-  height:30px;
-  border-radius:10px;
+  width:26px;
+  height:26px;
+  border-radius:8px;
   background:var(--yak-dark);
   color:#fff;
   display:grid;
   place-items:center;
   font-size:9px;
   font-weight:700;
+  flex-shrink:0;
 }
 
 /* Единый вид action-bar: без текстового префикса и лишнего разделителя */
@@ -368,7 +364,7 @@
 <div class="pg">
 <nav class="toc">
   <a href="index.html">← Каталог</a>
-  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="01-design-system.html">1. Дизайн-система</a>
   <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
   <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
   <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
@@ -423,13 +419,12 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><b>Согласование документов</b></div>
-    <div class="right"><span class="pill-mini">Раздел 8</span></div>
+
   </div>
   
   <div class="scr-b">
 <div class="module-top">
-      <div><h4>Согласование документов</h4><p>Раздел содержит 3 панели: перечень процессов, процесс на согласовании, этап согласования</p></div>
-      <div class="module-actions"><span class="bg bn"><span class="dt"></span>Раздел 8 · Согласование</span></div>
+      <div><h4>Согласование документов</h4></div>
     </div>
 
     <div class="workspace3">
@@ -445,31 +440,31 @@
       <div class="proc-items">
 
         <div class="proc-item active">
-          <div><span class="bg bi"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--blue)"></span>
           <div><strong style="font-size:11px">КВ.МС21-47-054911.TSZ</strong><small>Проверяется</small></div>
           <div class="avatar-sm">ЦС</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bn"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--muted2)"></span>
           <div><strong style="font-size:11px">КВ.1211-67-014417-49.CN</strong><small>В очереди</small></div>
           <div class="avatar-sm">ВА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bw"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--warn)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-345053-25.CN</strong><small>С замечаниями</small></div>
           <div class="avatar-sm">ДА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bc"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--yak-coral)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>Треб. подпись</small></div>
           <div class="avatar-sm">ИМ</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bd"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--err)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>На контроле</small></div>
           <div class="avatar-sm">АП</div>
         </div>
@@ -482,7 +477,7 @@
     <div class="process-panel">
       <div class="panel-head">
         <div><h5>Процесс на согласовании</h5><p>Карточка выбранного документа и информация о выпускающем</p></div>
-        <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+        <div class="module-actions"><span class="bg bi">Проверяется</span></div>
       </div>
       <div class="panel-body">
         <div class="process-hero">
@@ -491,7 +486,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">КВ.МС21-47-054911.TSZ</div>
-                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>ИИ — согласование ИИ</span></div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi">Проверяется</span> <span class="bg bn">ИИ — согласование ИИ</span></div>
               </div>
             </div>
             <div class="kv">
@@ -501,9 +496,9 @@
               <div class="card-mini"><strong>Подразделение</strong><span>5717 · Отдел эффективности проектирования</span></div>
             </div>
           </div>
-          <div class="file-icons">
-            <div class="file-pill pdf">PDF</div>
-            <div class="file-pill doc">DOC</div>
+          <div class="file-icons" title="Типы вложенных файлов — не кнопки. Для открытия и скачивания используйте список «Файлы процесса»">
+            <div class="file-pill pdf" title="Документ содержит PDF-файл">PDF</div>
+            <div class="file-pill doc" title="Документ содержит DOC-файл">DOC</div>
           </div>
         </div>
       </div>
@@ -512,7 +507,7 @@
     <div class="stage-panel">
       <div class="panel-head">
         <div><h5>Этап согласования</h5><p>Три блока: информация по этапу, замечания, список задач</p></div>
-        <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+        <div class="module-actions"><span class="bg bi">Проверяется</span></div>
       </div>
       <div class="panel-body">
         <div class="stage-layout">
@@ -524,6 +519,7 @@
                 <div class="info-row"><strong>Подразделение</strong><span>Отдел эффективности проектирования</span></div>
                 <div class="signers">
                   <div class="person"><div class="ava">ДБ</div><div><strong>Бакланова Дарья Артемовна</strong><span>Подписант · 8014</span></div></div>
+                  <div class="person"><div class="ava">МХ</div><div><strong>Хлыстова Мария Антоновна</strong><span>Подписант · 8014</span></div></div>
                 </div>
               </div>
             </div>
@@ -583,7 +579,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Перечень процессов на согласовании</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.1</span></div>
   </div>
   
   <div class="scr-b">
@@ -605,31 +600,31 @@
       <div class="proc-items">
 
         <div class="proc-item active">
-          <div><span class="bg bi"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--blue)"></span>
           <div><strong style="font-size:11px">КВ.МС21-47-054911.TSZ</strong><small>Проверяется</small></div>
           <div class="avatar-sm">ЦС</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bn"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--muted2)"></span>
           <div><strong style="font-size:11px">КВ.1211-67-014417-49.CN</strong><small>В очереди</small></div>
           <div class="avatar-sm">ВА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bw"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--warn)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-345053-25.CN</strong><small>С замечаниями</small></div>
           <div class="avatar-sm">ДА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bc"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--yak-coral)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>Треб. подпись</small></div>
           <div class="avatar-sm">ИМ</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bd"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--err)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>На контроле</small></div>
           <div class="avatar-sm">АП</div>
         </div>
@@ -637,10 +632,6 @@
       </div>
     </div>
 
-      <div class="note-box">
-        <h6>Смысл экрана сохранён</h6>
-        <p>Слева расположен список документов на согласовании. В каждой строке сохранены статус, наименование процесса и пиктограмма с инициалами выпускающего сотрудника. Поиск и фильтр вынесены в верхнюю часть панели для быстрой навигации.</p>
-      </div>
     </div>
   </div>
 </article>
@@ -675,13 +666,12 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Процесс на согласовании</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.2</span></div>
   </div>
   
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Процесс на согласовании</h4><p>Информационная карточка выбранного процесса</p></div>
-      <div class="module-actions"><span class="bg bi"><span class="dt"></span>Выбран процесс</span></div>
+      <div class="module-actions"><span class="bg bi">Выбран процесс</span></div>
     </div>
 
     <div class="workspace3">
@@ -697,31 +687,31 @@
       <div class="proc-items">
 
         <div class="proc-item active">
-          <div><span class="bg bi"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--blue)"></span>
           <div><strong style="font-size:11px">КВ.МС21-47-054911.TSZ</strong><small>Проверяется</small></div>
           <div class="avatar-sm">ЦС</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bn"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--muted2)"></span>
           <div><strong style="font-size:11px">КВ.1211-67-014417-49.CN</strong><small>В очереди</small></div>
           <div class="avatar-sm">ВА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bw"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--warn)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-345053-25.CN</strong><small>С замечаниями</small></div>
           <div class="avatar-sm">ДА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bc"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--yak-coral)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>Треб. подпись</small></div>
           <div class="avatar-sm">ИМ</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bd"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--err)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>На контроле</small></div>
           <div class="avatar-sm">АП</div>
         </div>
@@ -734,7 +724,7 @@
     <div class="process-panel is-focus">
       <div class="panel-head">
         <div><h5>Процесс на согласовании</h5><p>Карточка выбранного документа и информация о выпускающем</p></div>
-        <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+        <div class="module-actions"><span class="bg bi">Проверяется</span></div>
       </div>
       <div class="panel-body">
         <div class="process-hero">
@@ -743,7 +733,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">КВ.МС21-47-054911.TSZ</div>
-                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>ИИ — согласование ИИ</span></div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi">Проверяется</span> <span class="bg bn">ИИ — согласование ИИ</span></div>
               </div>
             </div>
             <div class="kv">
@@ -753,15 +743,14 @@
               <div class="card-mini"><strong>Подразделение</strong><span>5717 · Отдел эффективности проектирования</span></div>
             </div>
           </div>
-          <div class="file-icons">
-            <div class="file-pill pdf">PDF</div>
-            <div class="file-pill doc">DOC</div>
+          <div class="file-icons" title="Типы вложенных файлов — не кнопки. Для открытия и скачивания используйте список «Файлы процесса»">
+            <div class="file-pill pdf" title="Документ содержит PDF-файл">PDF</div>
+            <div class="file-pill doc" title="Документ содержит DOC-файл">DOC</div>
           </div>
         </div>
       </div>
     </div>
 
-        <div class="note-box"><h6>Структура блока</h6><p>Верхняя карточка повторяет исходную семантику: статус в виде пиктограммы, наименование процесса, статус документа, тип шаблона и применяемость, а также блок по выпускающему сотруднику.</p></div>
       </div>
     </div>
   </div>
@@ -797,7 +786,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Процесс</span><span class="sep">/</span><b>Действия и история</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.2</span></div>
   </div>
   
   <div class="scr-b">
@@ -819,31 +807,31 @@
       <div class="proc-items">
 
         <div class="proc-item active">
-          <div><span class="bg bi"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--blue)"></span>
           <div><strong style="font-size:11px">КВ.МС21-47-054911.TSZ</strong><small>Проверяется</small></div>
           <div class="avatar-sm">ЦС</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bn"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--muted2)"></span>
           <div><strong style="font-size:11px">КВ.1211-67-014417-49.CN</strong><small>В очереди</small></div>
           <div class="avatar-sm">ВА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bw"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--warn)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-345053-25.CN</strong><small>С замечаниями</small></div>
           <div class="avatar-sm">ДА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bc"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--yak-coral)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>Треб. подпись</small></div>
           <div class="avatar-sm">ИМ</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bd"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--err)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>На контроле</small></div>
           <div class="avatar-sm">АП</div>
         </div>
@@ -856,7 +844,7 @@
     <div class="process-panel is-focus">
       <div class="panel-head">
         <div><h5>Процесс на согласовании</h5><p>Граф маршрута, истории, файлы и приоритет находятся на уровне процесса</p></div>
-        <div class="module-actions"><span class="bg bp"><span class="dt"></span>Тематика: Крыло</span><span class="priority-level critical">Очень срочно</span></div>
+        <div class="module-actions"><span class="bg bp">Тематика: Крыло</span><span class="priority-level critical">Очень срочно</span></div>
       </div>
       <div class="panel-body">
         <div class="process-hero">
@@ -865,7 +853,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">КВ.МС21-47-054911.TSZ</div>
-                <div style="margin-top:4px"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+                <div style="margin-top:4px"><span class="bg bi">Проверяется</span></div>
               </div>
             </div>
             <div class="kv">
@@ -875,9 +863,9 @@
               <div class="card-mini"><strong>Подразделение</strong><span>5717 · Отдел эффективности проектирования</span></div>
             </div>
           </div>
-          <div class="file-icons">
-            <div class="file-pill pdf">PDF</div>
-            <div class="file-pill doc">DOC</div>
+          <div class="file-icons" title="Типы вложенных файлов — не кнопки. Для открытия и скачивания используйте список «Файлы процесса»">
+            <div class="file-pill pdf" title="Документ содержит PDF-файл">PDF</div>
+            <div class="file-pill doc" title="Документ содержит DOC-файл">DOC</div>
           </div>
         </div>
         <div class="process-action-bar" style="margin-top:12px">
@@ -894,12 +882,12 @@
           <div class="file-list-row">
             <div class="file-type pdf">PDF</div>
             <div><strong>KV_MS21_054911_main.pdf</strong><small>10.04.2026 · Цой С.В. · 2,1 МБ</small></div>
-            <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+            <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
           </div>
           <div class="file-list-row">
             <div class="file-type doc">DOC</div>
             <div><strong>KV_MS21_054911_package.docx</strong><small>10.04.2026 · Цой С.В. · 870 КБ</small></div>
-            <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+            <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
           </div>
         </div>
         <div class="priority-modal-inline">
@@ -917,19 +905,19 @@
               <div class="pb">
                 <div class="pt"><span class="priority-level critical">Очень срочно</span> влияет на критический график выпуска КД</div>
                 <div class="ps">Документ влияет на критический график выпуска комплекта КД для MC-21. Задержка более чем на 2 рабочих дня переносит сроки сборки крыла.</div>
-                <div class="meta"><span><b>Сотрудник:</b> Егоров С.С.</span><span><b>Дата:</b> 02.04.2026</span><span><b>SLA:</b> 5 рабочих дней</span></div>
+                <div class="meta"><span><b>Сотрудник:</b> Егоров С.С.</span><span><b>Дата:</b> 02.04.2026</span><span><b>SLA:</b> 5 рабочих дней <span style="color:var(--muted);font-weight:400">(макс. срок рассмотрения по регламенту)</span></span></div>
               </div>
             </div>
             <div class="file-list">
               <div class="file-list-row">
                 <div class="file-type pdf">PDF</div>
                 <div class="file-main"><strong>obosnovanie_priority.pdf</strong><div class="file-meta">02.04.2026 · Егоров С.С. · 820 КБ</div></div>
-                <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
               </div>
               <div class="file-list-row">
                 <div class="file-type doc">DOC</div>
                 <div class="file-main"><strong>priority_request_5717.docx</strong><div class="file-meta">02.04.2026 · Цой С.В. · 310 КБ</div></div>
-                <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
               </div>
             </div>
           </div>
@@ -938,7 +926,6 @@
       </div>
     </div>
 
-        <div class="note-box"><h6>Разделение уровней</h6><p>На уровне процесса доступны граф маршрута, история изменений СУДП, история процесса, direct XLSX, обоснование приоритета и файлы процесса. История этапа и файлы этапа находятся только в блоке этапа.</p></div>
       </div>
     </div>
   </div>
@@ -974,13 +961,12 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><b>Этап согласования</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3</span></div>
   </div>
   
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Этап согласования</h4><p>Рабочее место для взаимодействия с конкретным этапом</p></div>
-      <div class="module-actions"><span class="bg bi"><span class="dt"></span>Раздел 8 · Согласование</span></div>
+
     </div>
 
     <div class="workspace3">
@@ -996,31 +982,31 @@
       <div class="proc-items">
 
         <div class="proc-item active">
-          <div><span class="bg bi"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--blue)"></span>
           <div><strong style="font-size:11px">КВ.МС21-47-054911.TSZ</strong><small>Проверяется</small></div>
           <div class="avatar-sm">ЦС</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bn"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--muted2)"></span>
           <div><strong style="font-size:11px">КВ.1211-67-014417-49.CN</strong><small>В очереди</small></div>
           <div class="avatar-sm">ВА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bw"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--warn)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-345053-25.CN</strong><small>С замечаниями</small></div>
           <div class="avatar-sm">ДА</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bc"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--yak-coral)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>Треб. подпись</small></div>
           <div class="avatar-sm">ИМ</div>
         </div>
 
         <div class="proc-item ">
-          <div><span class="bg bd"><span class="dt"></span></span></div>
+          <span class="pl-dot" style="background:var(--err)"></span>
           <div><strong style="font-size:11px">КВ.1211-56-346555-09.CN</strong><small>На контроле</small></div>
           <div class="avatar-sm">АП</div>
         </div>
@@ -1033,7 +1019,7 @@
     <div class="process-panel">
       <div class="panel-head">
         <div><h5>Процесс на согласовании</h5><p>Карточка выбранного документа и информация о выпускающем</p></div>
-        <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+        <div class="module-actions"><span class="bg bi">Проверяется</span></div>
       </div>
       <div class="panel-body">
         <div class="process-hero">
@@ -1042,7 +1028,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">КВ.МС21-47-054911.TSZ</div>
-                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>ИИ — согласование ИИ</span></div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:4px"><span class="bg bi">Проверяется</span> <span class="bg bn">ИИ — согласование ИИ</span></div>
               </div>
             </div>
             <div class="kv">
@@ -1052,9 +1038,9 @@
               <div class="card-mini"><strong>Подразделение</strong><span>5717 · Отдел эффективности проектирования</span></div>
             </div>
           </div>
-          <div class="file-icons">
-            <div class="file-pill pdf">PDF</div>
-            <div class="file-pill doc">DOC</div>
+          <div class="file-icons" title="Типы вложенных файлов — не кнопки. Для открытия и скачивания используйте список «Файлы процесса»">
+            <div class="file-pill pdf" title="Документ содержит PDF-файл">PDF</div>
+            <div class="file-pill doc" title="Документ содержит DOC-файл">DOC</div>
           </div>
         </div>
       </div>
@@ -1063,7 +1049,7 @@
     <div class="stage-panel is-focus">
       <div class="panel-head">
         <div><h5>Этап согласования</h5><p>Три блока: информация по этапу, замечания, список задач</p></div>
-        <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+        <div class="module-actions"><span class="bg bi">Проверяется</span></div>
       </div>
       <div class="panel-body">
         <div class="stage-action-bar sticky">
@@ -1086,6 +1072,7 @@
                 <div class="info-row"><strong>Подразделение</strong><span>Отдел эффективности проектирования</span></div>
                 <div class="signers">
                   <div class="person"><div class="ava">ДБ</div><div><strong>Бакланова Дарья Артемовна</strong><span>Подписант · 8014</span></div></div>
+                  <div class="person"><div class="ava">МХ</div><div><strong>Хлыстова Мария Антоновна</strong><span>Подписант · 8014</span></div></div>
                 </div>
               </div>
             </div>
@@ -1149,13 +1136,12 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Информация по этапу</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1</span></div>
   </div>
   
   <div class="scr-b">
 <div class="module-top">
       <div><h4>Информация по этапу</h4><p>Действия уровня этапа закреплены рядом с выбранным этапом</p></div>
-      <div class="module-actions"><span class="bg bi"><span class="dt"></span>Проверяется</span></div>
+      <div class="module-actions"><span class="bg bi">Проверяется</span></div>
     </div>
 
     <div class="section-block">
@@ -1167,7 +1153,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1225,7 +1211,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Откатить</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.1</span></div>
   </div>
   
   <div class="scr-b">
@@ -1245,7 +1230,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1320,7 +1305,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Редактирование этапа</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.2</span></div>
   </div>
   
   <div class="scr-b">
@@ -1340,7 +1324,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1430,7 +1414,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>История этапа</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.3</span></div>
   </div>
   
   <div class="scr-b">
@@ -1450,7 +1433,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1518,7 +1501,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Информация</span><span class="sep">/</span><b>Файлы этапа</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
   
   <div class="scr-b">
@@ -1538,7 +1520,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1569,13 +1551,15 @@
           <div class="file-list">
             <div class="file-list-row">
               <div class="file-type doc">DOC</div>
-              <div><strong>Инструкция АССКД - ТС.docx</strong><small>14.01.2026 · Афанасенко В.В. · 210 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-main"><strong>Инструкция АССКД - ТС.docx</strong><div class="file-meta">Афанасенко В.В. · 14.01.2026 · 210 КБ</div></div>
+              <span class="bg bw">С замечаниями</span>
+              <div class="file-actions"><button class="bt s sm">Комментарий</button><button class="bt s sm direct-download">Скачать</button></div>
             </div>
             <div class="file-list-row">
               <div class="file-type pdf">PDF</div>
-              <div><strong>Пояснение_к_замечанию.pdf</strong><small>24.01.2026 · Хлыстова М.А. · 640 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-main"><strong>Пояснение_к_замечанию.pdf</strong><div class="file-meta">Хлыстова М.А. · 24.01.2026 · 640 КБ</div></div>
+              <span class="bg bi">Проверяется</span>
+              <div class="file-actions"><button class="bt s sm">Комментарий</button><button class="bt s sm direct-download">Скачать</button></div>
             </div>
           </div>
         </div>
@@ -1614,7 +1598,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Файлы</span><span class="sep">/</span><b>Комментарий</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
   
   <div class="scr-b">
@@ -1634,7 +1617,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1665,8 +1648,9 @@
           <div class="file-list">
             <div class="file-list-row">
               <div class="file-type doc">DOC</div>
-              <div><strong>Инструкция АССКД - ТС.docx</strong><small>14.01.2026 · Афанасенко В.В. · 210 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-main"><strong>Инструкция АССКД - ТС.docx</strong><div class="file-meta">Афанасенко В.В. · 14.01.2026 · 210 КБ</div></div>
+              <span class="bg bw">С замечаниями</span>
+              <div class="file-actions"><button class="bt s sm">Комментарий</button><button class="bt s sm direct-download">Скачать</button></div>
             </div>
           </div>
           <div class="comment-card answered" style="margin-top:12px">
@@ -1710,7 +1694,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Файлы</span><span class="sep">/</span><b>Добавление файла</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.1.4</span></div>
   </div>
   
   <div class="scr-b">
@@ -1730,7 +1713,7 @@
               <div class="si" style="background:var(--yak-blue);width:28px;height:28px"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:.6em;height:.6em"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
               <div>
                 <div style="font-size:16px;font-weight:700;color:var(--yak-dark)">Согласование должностным лицом технологического отделения</div>
-                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi"><span class="dt"></span>Проверяется</span> <span class="bg bn"><span class="dt"></span>Отдел эффективности проектирования</span></div>
+                <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap"><span class="bg bi">Проверяется</span> <span class="bg bn">Отдел эффективности проектирования</span></div>
               </div>
             </div>
             <div class="signers" style="margin-top:14px">
@@ -1805,7 +1788,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Замечания</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.2</span></div>
   </div>
   
   <div class="scr-b">
@@ -1884,7 +1866,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><b>Список задач</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.3</span></div>
   </div>
   
   <div class="scr-b">
@@ -1900,7 +1881,7 @@
           <div class="task-item">
             <div class="task-top">
               <div>
-                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2"><span class="dt"></span>Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2">Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
                 <div class="task-meta">
                   <div class="info-row"><strong>Дата начала проверки</strong><span>20.09.19 12:05</span></div>
                   <div class="info-row"><strong>Планируемая дата окончания</strong><span>20.09.21 12:05</span></div>
@@ -1915,6 +1896,26 @@
               <div class="bt tl2 sm">Добавить подзадачу</div>
             </div>
             <div class="person" style="margin-top:10px"><div class="ava">ДБ</div><div><strong>Бакланова Дарья Артемовна</strong><span>Проверяющий · 8599 · Отдел эффективности проектирования</span></div></div>
+            <div class="msg-input" style="margin-top:10px"><div class="fd">Введите замечание по задаче</div><div class="bt s sm"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><path d="M10 2L14 6L9 11H7V9L12 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11L4 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 7l3-3 2 2-3 3Z" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
+          </div>
+          <div class="task-item">
+            <div class="task-top">
+              <div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="bg bs">Ожидает проверки</span><strong style="font-size:13px">Задача 3</strong></div>
+                <div class="task-meta">
+                  <div class="info-row"><strong>Дата начала проверки</strong><span>—</span></div>
+                  <div class="info-row"><strong>Планируемая дата окончания</strong><span>25.09.21 17:00</span></div>
+                </div>
+              </div>
+              <div class="module-actions"><div class="icon-chip icon-chip-del"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><line x1="4" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="4" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="icon-chip"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle"><polygon points="5,3 13,8 5,13" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/></svg></div></div>
+            </div>
+            <div class="task-actions">
+              <div class="bt s sm">Заменить проверяющего</div>
+              <div class="bt ok sm">Согласовать</div>
+              <div class="bt d sm">Отклонить</div>
+              <div class="bt tl2 sm">Добавить подзадачу</div>
+            </div>
+            <div class="person" style="margin-top:10px"><div class="ava">АП</div><div><strong>Петрова Анна Сергеевна</strong><span>Проверяющий · 8014 · Отдел эффективности проектирования</span></div></div>
             <div class="msg-input" style="margin-top:10px"><div class="fd">Введите замечание по задаче</div><div class="bt s sm"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;vertical-align:middle"><path d="M10 2L14 6L9 11H7V9L12 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11L4 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 7l3-3 2 2-3 3Z" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
           </div>
         </div>
@@ -1953,7 +1954,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Задачи</span><span class="sep">/</span><b>Замена проверяющего</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.3.1</span></div>
   </div>
   
   <div class="scr-b">
@@ -1971,7 +1971,7 @@
           <div class="task-item">
             <div class="task-top">
               <div>
-                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2"><span class="dt"></span>Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2">Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
                 <div class="task-meta">
                   <div class="info-row"><strong>Дата начала проверки</strong><span>20.09.19 12:05</span></div>
                   <div class="info-row"><strong>Планируемая дата окончания</strong><span>20.09.21 12:05</span></div>
@@ -2033,7 +2033,6 @@
   <div class="app-tb">
     <button class="app-back">Назад</button>
     <div class="crumb"><a href="index.html">Главная</a><span class="sep">/</span><a href="#section-8">Согласование</a><span class="sep">/</span><span>Этап</span><span class="sep">/</span><span>Задачи</span><span class="sep">/</span><b>Добавление задачи</b></div>
-    <div class="right"><span class="pill-mini">Экран 8.3.3.1</span></div>
   </div>
   
   <div class="scr-b">
@@ -2051,7 +2050,7 @@
           <div class="task-item">
             <div class="task-top">
               <div>
-                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2"><span class="dt"></span>Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="bg bt2">Распределение</span><strong style="font-size:13px">Задача 2</strong></div>
                 <div class="task-meta">
                   <div class="info-row"><strong>Дата начала проверки</strong><span>20.09.19 12:05</span></div>
                   <div class="info-row"><strong>Планируемая дата окончания</strong><span>20.09.21 12:05</span></div>

@@ -883,7 +883,7 @@ table.t tbody tr:last-child td{border-bottom:none}
         <div class="st-row"><div class="si" style="background:#7C3AED"></div><div class="st-name">Остановлен</div><div class="st-desc">процесс приостановлен</div></div>
         <div class="st-row"><div class="si" style="background:var(--yak-gray)"></div><div class="st-name">Не запущен</div><div class="st-desc">ещё не стартовал</div></div>
         <div class="st-row"><div class="si" style="background:var(--yak-coral)"></div><div class="st-name">Треб. подпись</div><div class="st-desc">этап физической подписи</div></div>
-        <div class="st-row"><div class="si" style="background:var(--warn)"></div><div class="st-name">Запрос на откат</div><div class="st-desc">запрошен откат на пред. этап</div></div>
+        <div class="st-row"><div class="si" style="background:var(--yak-red)"></div><div class="st-name">Запрос на откат</div><div class="st-desc">запрошен откат на пред. этап</div></div>
       </div>
     </div>
     <div class="cd">
@@ -1127,8 +1127,8 @@ table.t tbody tr:last-child td{border-bottom:none}
 
   <div class="sub-h"><h3>12. Множественные файлы <span class="anchor">.file-list</span></h3><p>Один паттерн для файлов процесса, этапа и обоснования приоритета: имя, тип, дата, автор, размер, preview/open и direct download.</p></div>
   <div class="file-list">
-    <div class="file-list-row"><div class="file-type pdf">PDF</div><div class="file-main"><strong>obosnovanie_priority_20260402.pdf</strong><div class="file-meta">02.04.2026 · Егоров С.С. · 428 КБ</div></div><div class="btn-row"><button class="icon-chip">Открыть</button><button class="icon-chip">Скачать</button></div></div>
-    <div class="file-list-row"><div class="file-type docx">DOCX</div><div class="file-main"><strong>reply_stage_comment_01.docx</strong><div class="file-meta">09.04.2026 · Иванов И.И. · 1,2 МБ</div></div><div class="btn-row"><button class="icon-chip">Открыть</button><button class="icon-chip">Скачать</button></div></div>
+    <div class="file-list-row"><div class="file-type pdf">PDF</div><div class="file-main"><strong>obosnovanie_priority_20260402.pdf</strong><div class="file-meta">02.04.2026 · Егоров С.С. · 428 КБ</div></div><div class="file-actions"><button class="icon-chip direct-download">↓</button></div></div>
+    <div class="file-list-row"><div class="file-type docx">DOCX</div><div class="file-main"><strong>reply_stage_comment_01.docx</strong><div class="file-meta">09.04.2026 · Иванов И.И. · 1,2 МБ</div></div><div class="file-actions"><button class="icon-chip direct-download">↓</button></div></div>
   </div>
 
   <div class="sub-h"><h3>13. Приоритет отдельно от статуса</h3><p>Приоритет не использует словарь статусов. Есть уровень приоритета и отдельное «Обоснование приоритета».</p></div>
@@ -1168,7 +1168,7 @@ table.t tbody tr:last-child td{border-bottom:none}
   <div class="cd">
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:12px;line-height:1.5">
       <div><b>Процесс</b><br>Граф маршрута, История изменений СУДП, История процесса, Скачать XLSX, Обоснование приоритета, Файлы процесса.</div>
-      <div><b>Этап</b><br>Согласовать, С замечаниями, Добавить задачу, Откатить, Редактировать этап, История этапа, Файлы этапа.</div>
+      <div><b>Этап</b><br>Подтвердить этап, Вернуть с замечанием, Добавить задачу, Запросить откат, Редактировать этап, История этапа, Файлы этапа.</div>
       <div><b>Задача / файл</b><br>Задача живёт внутри этапа. Файл использует единый file-list и не создаёт отдельную «панель в панели».</div>
     </div>
     <div class="nt w" style="margin-top:12px"><strong>Запреты IA.</strong> Не делать панель в панели, вкладку во вкладке, повтор заголовка/статуса одной сущности в нескольких местах экрана и hover-only primary actions. Для коротких операционных списков использовать внутренний scroll, а не декоративную пагинацию.</div>
@@ -1945,7 +1945,7 @@ body.flat-ui .tl::before{opacity:.6}
 <div class="pg">
 <nav class="toc">
   <a href="index.html">← Каталог</a>
-  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="01-design-system.html">1. Дизайн-система</a>
   <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
   <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
   <a href="04-document-issuance.html" class="a">5. Раздел «Выпуск документов»</a>
@@ -2600,7 +2600,7 @@ body.flat-ui .tl::before{opacity:.6}
                     </div>
                   </div>
                 </div>
-                <div class="nt"><strong>Текущий выпускающий.</strong> Цой С.В. (5717 · ОЭП). После переназначения процесс перейдёт в работу к выбранному сотруднику.</div>
+                <div class="nt"><strong>Текущий выпускающий:</strong> Цой С.В. (5717 · ОЭП)</div>
               </div>
               <div class="mf"><div class="bt s">Отмена</div><div class="bt p">Назначить выпускающего</div></div>
             </div>
@@ -3239,7 +3239,6 @@ body.flat-ui .tl::before{opacity:.6}
           <div class="ws-panel" style="flex:1">
             <div class="ws-ph"><h6>История процесса · прямой экспорт</h6><span class="inline-toast">Файл выгружен</span></div>
             <div class="ws-pb">
-              <div class="nt"><strong>Без промежуточного окна.</strong> XLSX скачивается прямым действием из истории процесса. Этот пример фиксирует inline-confirmation вместо отдельной модалки или экрана скачивания.</div>
               <!-- Download result -->
               <div class="dl-card">
                 <div class="dl-icn"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h11l3 3v15H5z" stroke="currentColor" stroke-width="1.6"/><path d="M16 3v3h3" stroke="currentColor" stroke-width="1.6"/><path d="M8 11h8M8 15h8M8 19h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
@@ -3373,12 +3372,12 @@ body.flat-ui .tl::before{opacity:.6}
                   <div class="file-list-row">
                     <div class="file-type pdf">PDF</div>
                     <div><strong>obosnovanie_priority.pdf</strong><small>02.04.2026 · Егоров С.С. · 820 КБ</small></div>
-                    <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                    <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
                   </div>
                   <div class="file-list-row">
                     <div class="file-type doc">DOC</div>
                     <div><strong>priority_request_5717.docx</strong><small>02.04.2026 · Цой С.В. · 310 КБ</small></div>
-                    <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                    <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
                   </div>
                 </div>
               </div>
@@ -4261,7 +4260,7 @@ body.flat-ui .tl::before{opacity:.6}
 <div class="pg">
 <nav class="toc">
   <a href="index.html">← Каталог</a>
-  <a href="01-design-system.html">1. Дизайн-система · Справочники интерфейса</a>
+  <a href="01-design-system.html">1. Дизайн-система</a>
   <a href="02-entry-home.html">3. Вход в систему · Главная страница</a>
   <a href="03-my-processes.html">4. Раздел «Мои процессы»</a>
   <a href="04-document-issuance.html">5. Раздел «Выпуск документов»</a>
@@ -4800,12 +4799,12 @@ body.flat-ui .tl::before{opacity:.6}
           <div class="file-list-row">
             <div class="file-type pdf">PDF</div>
             <div><strong>KV_MS21_054911_main.pdf</strong><small>10.04.2026 · Цой С.В. · 2,1 МБ</small></div>
-            <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+            <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
           </div>
           <div class="file-list-row">
             <div class="file-type doc">DOC</div>
             <div><strong>KV_MS21_054911_package.docx</strong><small>10.04.2026 · Цой С.В. · 870 КБ</small></div>
-            <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+            <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
           </div>
         </div>
         <div class="priority-modal-inline">
@@ -4830,12 +4829,12 @@ body.flat-ui .tl::before{opacity:.6}
               <div class="file-list-row">
                 <div class="file-type pdf">PDF</div>
                 <div class="file-main"><strong>obosnovanie_priority.pdf</strong><div class="file-meta">02.04.2026 · Егоров С.С. · 820 КБ</div></div>
-                <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
               </div>
               <div class="file-list-row">
                 <div class="file-type doc">DOC</div>
                 <div class="file-main"><strong>priority_request_5717.docx</strong><div class="file-meta">02.04.2026 · Цой С.В. · 310 КБ</div></div>
-                <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+                <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
               </div>
             </div>
           </div>
@@ -5495,12 +5494,12 @@ body.flat-ui .tl::before{opacity:.6}
             <div class="file-list-row">
               <div class="file-type doc">DOC</div>
               <div><strong>Инструкция ССКД - ТС.docx</strong><small>14.01.2026 · Сотрудник · 210 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
             </div>
             <div class="file-list-row">
               <div class="file-type pdf">PDF</div>
               <div><strong>Пояснение_к_замечанию.pdf</strong><small>24.01.2026 · Хлыстова М.А. · 640 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
             </div>
           </div>
         </div>
@@ -5594,7 +5593,7 @@ body.flat-ui .tl::before{opacity:.6}
             <div class="file-list-row">
               <div class="file-type doc">DOC</div>
               <div><strong>Инструкция ССКД - ТС.docx</strong><small>14.01.2026 · Сотрудник · 210 КБ</small></div>
-              <div class="file-actions"><button class="bt s sm">Открыть</button><button class="bt s sm direct-download">Скачать</button></div>
+              <div class="file-actions"><button class="bt s sm direct-download">Скачать</button></div>
             </div>
           </div>
           <div class="comment-card answered" style="margin-top:12px">
